@@ -12,29 +12,41 @@
 \usepackage{graphicx}
 \graphicspath{ {./Pictures/} }
 \usepackage{float}
-\usepackage[margin=1.25in]{geometry}
-\setlength{\parindent}{1.25em}
+\usepackage[margin=1in]{geometry}
+\setlength{\parindent}{0em}
 \sectionfont{\fontsize{12}{12}\selectfont}
 \nonfrenchspacing
 \renewcommand{\baselinestretch}{1.5}
 \usepackage{indentfirst}
+\usepackage{enumitem}
+\setlist[itemize]{topsep=0pt,itemsep=0pt,partopsep=0pt,parsep=0pt}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\titleformat{\section}[block]{\color{blue}\Large\bfseries\filcenter}{}{1em}{}
 
 \title{Macroeconomics B Notes}
-\author{Nicholas Umashev \footnote{Please see google notes}}
+\author{Nicholas Umashev \footnote{Add pages from google Notes}}
 \date{2019}
 
 \begin{document}
 
 \maketitle
 
+\tableofcontents
+
+\newpage
+
 \section{Dynamic Optimisation in Continuous Time}
 
-\par \underline{Continuous vs Discrete Time}: in discrete time the intervals between periods are $\Delta>0$ (e.g. the interval between $t$ and $t+1$ is 1), in continuous time the intervals between periods are $\Delta \rightarrow 0$
-\par \underline{Continuous Variables Issue}: while state variables are often naturally continuous, when using computational methods we can only evaluation the value function  on a finite number of points
+\par \underline{\bf{Continuous vs Discrete Time}}: in discrete time the intervals between periods are $\Delta>0$ (e.g. the interval between $t$ and $t+1$ is 1), in continuous time the intervals between periods are $\Delta \rightarrow 0$
 \begin{itemize}
-    \item \underline{Solution}: we can address this problem via using (1) discretization of the state space, or, (2) polynomial approximation to the value function
+    \item  \underline{Continuous Variables Issue}: while state variables are often naturally continuous, when using computational methods we can only evaluation the value function  on a finite number of points
+    \begin{itemize}
+        \item \underline{Solution}: we can address this problem via using (1) discretization of the state space, or, (2) polynomial approximation to the value function
+    \end{itemize}
 \end{itemize}
-\par \underline{Discretization Method}: consider a problem with continuous state and control variables $\mathfrak{x} \in \mathbb{R}$, discretization just replaces $\mathfrak{x}$ and $\mathfrak{u}$ by the finite grids $\widehat{\mathfrak{x}} = \{ x^{1}, \dots, x^{n} \}$ and $\widehat{\mathfrak{u}} = \{ u^{1}, \dots, u^{n} \}$
+\vspace{2.5mm}
+\par \underline{\bf{Discretization Method}}: consider a problem with continuous state and control variables $\mathfrak{x} \in \mathbb{R}$, discretization just replaces $\mathfrak{x}$ and $\mathfrak{u}$ by the finite grids $\widehat{\mathfrak{x}} = \{ x^{1}, \dots, x^{n} \}$ and $\widehat{\mathfrak{u}} = \{ u^{1}, \dots, u^{n} \}$
 \begin{itemize}
     \item \underline{Value Function Impact}: now the value function becomes a finite list of numbers, $V = [V^{1}, \dots, V^{n}]^{T}$
     \item  \underline{Advantage}: the maximization step is much simpler than under the original bellman equation, which is a key advantage of discretization methods
@@ -54,19 +66,31 @@
         \end{itemize}
     \end{itemize}
 \end{itemize}
-\par \underline{Ordinary Differential Equations (ODEs)}: a "differential" equation" is one where the unknown is a function (instead of a variable) and the equation includes one or more of the derivatives of the function, an "ordinary differential equation" equation is one for which the unknown is a function of only one variable (typically time)
+\vspace{2.5mm}
+\par \underline{\bf{Ordinary Differential Equations (ODEs)}}: a "differential" equation" is one where the unknown is a function (instead of a variable) and the equation includes one or more of the derivatives of the function, an "ordinary differential equation" equation is one for which the unknown is a function of only one variable (typically time)
 \begin{itemize}
     \item \underline{Partial ODEs}: where the unknown is a function of more than one variable
     \item  \underline{First-Order ODE Form}: $\dot{x}(t) = F(t, x(t))$, where $\dot{x}(t) \equiv dx(t)/dt$ and $t \in [t_{a}, t_{b}]$
     \begin{itemize}
         \item \underline{Unknown}: here the unknown is a function $x(t)$ with $x: [t_{a}, t_{b}] \rightarrow \mathbb{R}$
         \item  \underline{Uniqueness}: the solution is not unique with the form having infinitely many solutions indexed by an integrating constant C. However, generally the constant C can be uniquely determined by requiring the solution to pass through a given point on the $tx$-plane
+        \item  \underline{Example}: $\dot{x}(t) = 2t$ with $t \in [0,\infty)$
+        \begin{itemize}
+            \item \underline{Solution without Initial Condition}: the general solution is $x(t) = t^{2} + C$
+            \item  \underline{Solution with Initial Condition}: suppose we impose the initial condition $x(0) = 1$, therefore $C=1$ and the particular solution is $x(t) t^{2} + 1$
+            \item \includegraphics[width=8cm, height=6cm]{pic5}
+        \end{itemize}
+
     \end{itemize}
-    \item  \underline{Example}: $\dot{x}(t) = 2t$ with $t \in [0,\infty)$
+    \item  \underline{Finite-Difference Methods for Solution}: here we approximate derivates using finite-differences to approximate the solution to the ODE. This involves finding $\dot{x}(t) = F(t,x(t))$, $x(t_{a}) = x_{a}$, and $t \in [t_{a}, t_{b}]$. There are a wide range of methods depending on how the derivatives are approximated
     \begin{itemize}
-        \item \underline{Solution without Initial Condition}: the general solution is $x(t) = t^{2} + C$
-        \item  \underline{Solution with Initial Condition}: suppose we impose the initial condition $x(0) = 1$, therefore $C=1$ and the particular solution is $x(t) t^{2} + 1$
-        \item \includegraphics[width=8cm, height=6cm]{pic5}
+        \item  \underline{Euler's Method}
+        \begin{itemize}
+            \item  \underline{Step 1}: specify a grid for t, i.e. $t_{0} = t_{a} < t_{1} < t_{2} < \dots < t_{N} = t_{b}$
+            \item  \underline{Step 2}: approximate the ODE using the difference equation $$\tfrac{x(t_{i+1}) - x(t_{i})}{t_{i+1}-t_{i}} = F(t_{i},x(t_{i}))$$ over $i = 0, \dots, N-1$, where $x(t_{0})=x_{a}$ is fixed by the initial condition
+            \item  \includegraphics[width=8cm, height=6cm]{pic6}
+            \item  \includegraphics[width=8cm, height=6cm]{pic7}
+        \end{itemize}
     \end{itemize}
 \end{itemize}
 

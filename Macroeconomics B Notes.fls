@@ -76,6 +76,16 @@ INPUT c:/texlive/2019/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 INPUT c:/texlive/2019/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 INPUT c:/texlive/2019/texmf-dist/tex/latex/tools/indentfirst.sty
 INPUT c:/texlive/2019/texmf-dist/tex/latex/tools/indentfirst.sty
+INPUT c:/texlive/2019/texmf-dist/tex/latex/enumitem/enumitem.sty
+INPUT c:/texlive/2019/texmf-dist/tex/latex/enumitem/enumitem.sty
+INPUT c:/texlive/2019/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT c:/texlive/2019/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT c:/texlive/2019/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT c:/texlive/2019/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT c:/texlive/2019/texmf-dist/tex/latex/titlesec/titlesec.sty
+INPUT c:/texlive/2019/texmf-dist/tex/latex/titlesec/titlesec.sty
+INPUT c:/texlive/2019/texmf-dist/tex/latex/titlesec/block.tss
+INPUT c:/texlive/2019/texmf-dist/tex/latex/titlesec/block.tss
 INPUT Macroeconomics B Notes.aux
 INPUT Macroeconomics B Notes.aux
 OUTPUT Macroeconomics B Notes.aux
@@ -120,22 +130,21 @@ INPUT c:/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+OUTPUT Macroeconomics B Notes.pdf
+INPUT c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
-INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT c:/texlive/2019/texmf-dist/tex/latex/amsfonts/ueuf.fd
 INPUT c:/texlive/2019/texmf-dist/tex/latex/amsfonts/ueuf.fd
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/euler/eufm10.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/euler/eufm7.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/euler/eufm5.tfm
-INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
-OUTPUT Macroeconomics B Notes.pdf
-INPUT c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT ./Pictures/pic1.png
 INPUT ./Pictures/pic1.png
 INPUT ./Pictures/pic1.png
@@ -148,15 +157,26 @@ INPUT ./Pictures/pic3.png
 INPUT ./Pictures/pic4.png
 INPUT ./Pictures/pic4.png
 INPUT ./Pictures/pic4.png
+INPUT ./Pictures/pic5.png
+INPUT ./Pictures/pic5.png
+INPUT ./Pictures/pic5.png
+INPUT ./Pictures/pic6.png
+INPUT ./Pictures/pic6.png
+INPUT ./Pictures/pic6.png
+INPUT ./Pictures/pic7.png
+INPUT ./Pictures/pic7.png
+INPUT ./Pictures/pic7.png
 INPUT Macroeconomics B Notes.aux
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
+INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
