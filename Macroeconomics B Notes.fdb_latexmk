@@ -1,7 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1565280094 "Macroeconomics B Notes.tex" "Macroeconomics B Notes.pdf" "Macroeconomics B Notes" 1565280097
-  "Macroeconomics B Notes.aux" 1565280097 133 c390986e3e71f3c23a171b3848e951fc "pdflatex"
-  "Macroeconomics B Notes.tex" 1565280080 6495 27b75be74d49c3024ff72c0a07ac6a21 ""
+["pdflatex"] 1565353189 "Macroeconomics B Notes.tex" "Macroeconomics B Notes.pdf" "Macroeconomics B Notes" 1565353193
+  "Macroeconomics B Notes.aux" 1565353192 133 c390986e3e71f3c23a171b3848e951fc "pdflatex"
+  "Macroeconomics B Notes.tex" 1565353187 11937 ced769471670b6b7b194d4fb6a42a64a ""
+  "Macroeconomics B Notes.toc" 1565353192 85 336e5d735de04c44075a5702dddef1ac "pdflatex"
   "Pictures/pic1.png" 1565253331 65986 939d0dccefadc3b427bfa079e5ecac64 ""
   "Pictures/pic2.png" 1565257045 75745 88b1bf67e252eccdbd5ed34324be5acf ""
   "Pictures/pic3.png" 1565257113 104868 1cabcbabd2ab7cd240e707a6c58c63ef ""
@@ -9,6 +10,7 @@
   "Pictures/pic5.png" 1565270244 63093 736970f39979041d5c880d001d9eeb5f ""
   "Pictures/pic6.png" 1565280045 64209 9ec983cbf77e44f4258ae0a129e71287 ""
   "Pictures/pic7.png" 1565280020 74992 290f20ca214c82039e077b464a2175d5 ""
+  "Pictures/pic8.png" 1565348295 42831 e8a9ceddda30f87e8956c09f0bbf42d2 ""
   "c:/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1559142340 3332 103109f5612ad95229751940c61aada0 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1559137578 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1559137578 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -109,6 +111,7 @@
   "c:/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1559149713 4261111 e6fccf9b600032244239379bce8cc28d ""
   "c:/texlive/2019/texmf.cnf" 1559149536 673 4ae7b2f49cee444c5343a45b5d0f169c ""
   (generated)
-  "Macroeconomics B Notes.pdf"
   "Macroeconomics B Notes.log"
+  "Macroeconomics B Notes.toc"
+  "Macroeconomics B Notes.pdf"
   "Macroeconomics B Notes.aux"

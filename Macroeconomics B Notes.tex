@@ -80,7 +80,6 @@
             \item  \underline{Solution with Initial Condition}: suppose we impose the initial condition $x(0) = 1$, therefore $C=1$ and the particular solution is $x(t) t^{2} + 1$
             \item \includegraphics[width=8cm, height=6cm]{pic5}
         \end{itemize}
-
     \end{itemize}
     \item  \underline{Finite-Difference Methods for Solution}: here we approximate derivates using finite-differences to approximate the solution to the ODE. This involves finding $\dot{x}(t) = F(t,x(t))$, $x(t_{a}) = x_{a}$, and $t \in [t_{a}, t_{b}]$. There are a wide range of methods depending on how the derivatives are approximated
     \begin{itemize}
@@ -91,6 +90,50 @@
             \item  \includegraphics[width=8cm, height=6cm]{pic6}
             \item  \includegraphics[width=8cm, height=6cm]{pic7}
         \end{itemize}
+    \end{itemize}
+    \item \underline{ODE Systems}: consider the system of two equations in two unknowns
+    \begin{gather*}\dot{x}(t) = f(t, x(t), y(t)) \\ \dot{y}(t) = g(t, x(t), y(t)) \end{gather*} where $t \in [t_{a}, t_{b}]$. The general solution typically depends on two arbitrary constants,  say A and B, and can be written as \begin{gather*} x(t) = \phi_{1} (t; A, B) \\ y(t) = \phi_{2} (t; A,B) \end{gather*} Here A and B can be pinned down via two conditions on the solution and two types of problems emerge depending on the nature of such conditions. Note that, like single-equation ODEs, exact solutions to ODE systems can only be obtained under special cases
+    \begin{itemize}
+        \item \underline{Initial Value Problem(IVP)}: $x(t_{a}) = x_{a}$, $y(t_{a}) = y_{a}$, can be solved numerically by applying Euler's Methods
+        \begin{itemize}
+            \item \underline{Step 1}: discretize the domain
+            \item  \underline{Step 2}: iterate forward starting from $x(t_{a}) = x_{a}$ and $y(t_{a}) = y_{a}$
+        \end{itemize}
+        \item  \underline{Boundary Value Problem (BVP)}: $x(t_{a}) = x_{a}$, $y(t_{b}) = y_{b}$, can be solved by applying a shooting algorithm
+        \begin{itemize}
+            \item \underline{Step 1}: make an initial guess for $y(t_{a})$ called $y_{a}^{G}$
+            \item \underline{Step 2}: solve the ODE system by applying Euler's method given $x(t_{a}) = x_{a}$ and $y(t_{a}) = y_{a}^{G}$
+            \item \underline{Step 3}: if $y(t_{b})$ is 'close enough' to $y_{b}$ then stop, else update $y_{a}^{G}$ and go back to step 2
+            \item \includegraphics[width=8cm, height=6cm]{pic8}
+        \end{itemize}
+    \end{itemize}
+    \item \underline{Higher-Order ODEs}: techniques for solving ODE systems also apply to analysing higher-order Equations
+    \begin{itemize}
+        \item \underline{Example}: consider the second-order ODE \begin{gather*} \ddot{x}(t) = f(t, \dot(t), x(t)) \end{gather*} where $\ddot{x}(t) \equiv \partial^{2}x(t) / \partial t^{2}$.
+        Define the new variables $y = \dot{x}$ and you are left with the two-equation ODE system
+        \begin{gather*} \dot{y} (t) = f(t, y(t), x(t)) \\ \dot{x}(t) = y(t) \end{gather*}
+    \end{itemize}
+\end{itemize}
+\vspace{2.5mm}
+\par \underline{\bf{The Maximum Principle}}: the typical continuous time optimization problem is
+\begin{gather*} \max_{x(t), y(t)} \ \int_{0}^{t_{1}} f (t,x(t), y(t)) \ \ \ dt \end{gather*}
+subject to
+\begin{gather*} \dot{x}(t) = g\big(t, x(t), y(t)\big), \ \ \ x(t) \in \mathcal{X} \ \forall t, \ \ \ y(t) \in \mathcal{Y} \ \forall t, \ \ \ x(0) = x_{0} \end{gather*}
+There are two main issues with conventional solution methods to this problem; (1) we are choosing over infinitely dimensional objects such as the function $x: [0, t_{1}] \rightarrow \mathcal{X}$, (2) the constaints include a differential equation rather than a set of equalities/inequalities. In order to overcome these issues and find a solution, we apply the maximum principle theorem
+\begin{itemize}
+    \item \underline{Notation and Assumptions}: $x$ is the state variable, $y$ is the control variable, $\mathcal{X} \subset \mathbb{R}$  and $\mathcal{Y} \subset \mathbb{R}$ are nonempty and convex, $f$ and $g$ are continuously differentiable in their arguments, we define a Hamiltonian, and for simplicity we assume $t_{1} < \infty$
+    \begin{itemize}
+        \item  \underline{Hamiltonian}: we define the hamiltonian $$H(t,x(t),y(t),\mu(t)) \equiv f(t,x(t),y(t)) + \mu(t)g(t,x(t),y(t))$$ where $\mu(t)$ is a continuously differentiable function called the costate variable
+    \end{itemize}
+    \item  \underline{Maximum Principle Theorem}: suppose that the aforementioned continuous time problem has an interior continuous solution $(\widehat{x}(t), \widehat{y}(t))$. Then there exists a continuously differentiable function $\mu(t)$ such that
+    \begin{gather*} H_{y}(t,\widehat{x}(t), \widehat{y}(t), \mu(t)) = 0 \ \forall t \in [0, t_{1}] \\ \dot{\mu}(t) = -H_{x}(t, \widehat{x}(t), \widehat{y}(t), \mu(t)) \ \forall t \in [0, t_{1}] \\ \mu(t_{1}) = 0 \end{gather*}
+    \begin{itemize}
+        \item \underline{ODE Usage}: by $H_{y}(t,\widehat{x}(t), \widehat{y}(t), \mu(t)) = 0$ we can write $y = Y(t, x \mu)$. Using $\dot{\mu}(t) = -H_{x}(t, \widehat{x}(t), \widehat{y}(t), \mu(t))$ and $mu(t_{1}) = 0$ and combining the law of motion we are left with
+        \begin{gather*} \dot{x} = g\big(t, x, Y(t,x,\mu)\big) \\ \dot{\mu} = -H_{x}\big(t,x,Y(t,x,\mu),\mu \big) \\ x(0) = x_{0}, \ \ \ \mu(t_{1}) = 0 \end{gather*}
+        which is an ODE system in $x$ and $\mu$ that can be solved numerically by applying the shooting algorithm
+        \item \underline{Sufficient Condition Requirements}: the maximum principle only provides necessary conditions for an optimum, sufficient conditions for a maximum rely on concavity properties of the objective and on convexity of the feasible set
+        \item \underline{Technique Generalization}: the techniques generalize to multidimensional problems (where $x$ and $y$ are vectors), infinite horizon problems (ie $t_{1} = \infty$), and to including terminal conditions on the final state (e.g. $x(t_{1}) = x_{1}$)
+        \item \underline{Index}: the variable t may represent time or any other index
     \end{itemize}
 \end{itemize}
 
