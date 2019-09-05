@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.5.30)  2 SEP 2019 22:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.5.30)  5 SEP 2019 18:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -611,51 +611,51 @@ Overfull \hbox (19.85693pt too wide) in paragraph at lines 479--480
  []
 
 [17] [18] [19] [20]
-Underfull \hbox (badness 10000) in paragraph at lines 586--593
+Underfull \hbox (badness 10000) in paragraph at lines 587--594
 
  []
 
 <./Pictures/pic11.jpg, id=98, 436.63126pt x 203.5605pt>
 File: ./Pictures/pic11.jpg Graphic file (type jpg)
 <use ./Pictures/pic11.jpg>
-Package pdftex.def Info: ./Pictures/pic11.jpg  used on input line 594.
+Package pdftex.def Info: ./Pictures/pic11.jpg  used on input line 595.
 (pdftex.def)             Requested size: 113.80792pt x 85.35815pt.
-[21 <./Pictures/pic11.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 625--627
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 603--605
 
  []
 
 <./Pictures/pic12.png, id=102, 460.119pt x 293.29575pt>
 File: ./Pictures/pic12.png Graphic file (type png)
 <use ./Pictures/pic12.png>
-Package pdftex.def Info: ./Pictures/pic12.png  used on input line 628.
+Package pdftex.def Info: ./Pictures/pic12.png  used on input line 606.
 (pdftex.def)             Requested size: 227.6227pt x 170.72028pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 630--632
+Underfull \hbox (badness 10000) in paragraph at lines 608--611
 
  []
 
 <./Pictures/pic13.png, id=103, 384.83775pt x 289.08pt>
 File: ./Pictures/pic13.png Graphic file (type png)
 <use ./Pictures/pic13.png>
-Package pdftex.def Info: ./Pictures/pic13.png  used on input line 633.
+Package pdftex.def Info: ./Pictures/pic13.png  used on input line 612.
 (pdftex.def)             Requested size: 227.6219pt x 170.71451pt.
-[22 <./Pictures/pic12.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 635--637
+[22 <./Pictures/pic11.jpg> <./Pictures/pic12.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 614--616
 
  []
 
-<./Pictures/pic14.png, id=108, 348.1005pt x 315.579pt>
+<./Pictures/pic14.png, id=108, 435.42674pt x 343.88475pt>
 File: ./Pictures/pic14.png Graphic file (type png)
 <use ./Pictures/pic14.png>
-Package pdftex.def Info: ./Pictures/pic14.png  used on input line 638.
-(pdftex.def)             Requested size: 227.62239pt x 170.71347pt.
-
-Overfull \hbox (9.60701pt too wide) in paragraph at lines 641--642
+Package pdftex.def Info: ./Pictures/pic14.png  used on input line 617.
+(pdftex.def)             Requested size: 227.61914pt x 170.71935pt.
+[23 <./Pictures/pic13.png> <./Pictures/pic14.png>]
+Overfull \hbox (9.60701pt too wide) in paragraph at lines 644--645
 []$[]$\OT1/cmr/m/n/10 : early work on one-sided lim-ited com-mit-ment mod-els aimed at analysing
  []
 
-[23 <./Pictures/pic13.png> <./Pictures/pic14.png>] (./Macroeconomics B Notes.aux) ) 
+[24] (./Macroeconomics B Notes.aux) ) 
 Here is how much of TeX's memory you used:
  14974 strings out of 492609
  286088 string characters out of 6132818
@@ -664,12 +664,12 @@ Here is how much of TeX's memory you used:
  11904 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,22n,48p,1213b,1007s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/20
-19/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "Macroeconomics B Notes.pdf" (23 pages, 588563 bytes).
+<c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on "Macroeconomics B Notes.pdf" (24 pages, 660401 bytes).
 PDF statistics:
- 178 PDF objects out of 1000 (max. 8388607)
- 116 compressed objects within 2 object streams
+ 181 PDF objects out of 1000 (max. 8388607)
+ 118 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  53 words of extra memory for PDF output out of 10000 (max. 10000000)
 
