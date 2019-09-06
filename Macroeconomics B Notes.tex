@@ -30,7 +30,7 @@
 \usepackage{cancel}
 
 \title{Macroeconomics B Notes}
-\author{Nicholas Umashev \footnote{Add pages from google Notes}}
+\author{Nicholas Umashev \footnote{content is not of my own authorship}}
 \date{2019}
 
 \begin{document}
@@ -106,18 +106,13 @@ W(x_{T}): \ \text{the terminal condition at} \ x_{t}
         \end{gather*}
         with the terminal condition $V_{T}(x) = W(x)$.
          \begin{itemize}
-            \item  \underline{Intuition}: the value function at time $t$ is going to be the maximum utility given next period's value function, today's return, and the terminal condition. Note that the Bellman Equation describes the value function, at a given point in time, as a function of itself in another point in time
+            \item  \underline{Intuition}: the value function at time $t$ is going to be the maximum utility given next period's value function, today's return, and the terminal condition. Note that the Bellman Equation describes the value function, at a given point in time, as a function of itself in another point in time. Note that the maximizer of the Bellman equation is a policy function $h(x)$ (also notated as $U_{t}(x)$) that satisfies $$V(x) = r[x, h(x)] + \beta V \left\{g[(x, h(x)] \right\}$$
          \end{itemize}
     \end{itemize}
     \item  \underline{Policy Function $U_{t}(x)$}: the policy function describes the utility that, given the state, is the maximum of the value function. In other words, the maximizer of the RHS of the bellman equation is a policy function $h(x)$. Given $V_{t}(x)$, we define the policy function by
     \begin{gather*}
-        U_{t}(x) = r[x, h(x)] + \beta V \left\{g[(x, h(x)] \right\} \ \ \text{or} \ \ U_{t}(x) = \arg \max_{u} \left\{ r(x,u) + \beta V_{t+1} (g(x, u)) \right\}
+        U_{t}(x) = \arg \max_{u} \left\{ r(x,u) + \beta V_{t+1} (g(x, u)) \right\}
     \end{gather*}
-%    \item  \underline{Value vs Policy Function}: the Value Function is the value of x that maximizes the objective function for a single given time period, while the Policy function is the time period that has the highest objective function for a single given x. This is represented in the below vector, with the green highlighting representing the Value Function and the yellow highlighting representing the Policy Function
-%    \newline
-%    \begin{center}
-%    \includegraphics[width=6cm, height=3cm]{pic15}
-%    \end{center}
     \item \underline{Assumptions}: in order to solve the Bellman Equation we need to impose the following assumptions
     \begin{itemize}
         \item  \underline{Assuumption 1}: the Bellman Equation has a unique strictly concave solution
