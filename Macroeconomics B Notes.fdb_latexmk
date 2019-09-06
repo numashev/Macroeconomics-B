@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1567671867 "Macroeconomics B Notes.tex" "Macroeconomics B Notes.pdf" "Macroeconomics B Notes" 1567671876
-  "Macroeconomics B Notes.aux" 1567671875 499 6571908f73564f9d5e1e64b62a6280fa "pdflatex"
-  "Macroeconomics B Notes.tex" 1567671869 59373 622878df5fd119d7137c3e0a4b73c12e ""
-  "Macroeconomics B Notes.toc" 1567671875 239 2d2e8a7afcff9e1ec994850ac5537298 "pdflatex"
+["pdflatex"] 1567757990 "Macroeconomics B Notes.tex" "Macroeconomics B Notes.pdf" "Macroeconomics B Notes" 1567758000
+  "Macroeconomics B Notes.aux" 1567757998 499 1a639abe921616a1e17df899a9f6fa9a "pdflatex"
+  "Macroeconomics B Notes.tex" 1567757973 64840 1553421ea5cab7162ab20b7040f3a8ab ""
+  "Macroeconomics B Notes.toc" 1567757998 239 e5b4bbebc41cda96c950c3c7c3854cbd "pdflatex"
   "Pictures/pic11.jpg" 1567420016 25412 d8dcfb57d1b62d84b5da05eabf25ae13 ""
   "Pictures/pic12.png" 1567423739 49010 7c17c9b1774ac475556f42d40e39ae3e ""
   "Pictures/pic13.png" 1567423976 36485 f7f882cfa5b8c2fbbe4d9056046a72d6 ""
@@ -135,6 +135,7 @@
   "c:/texlive/2019/texmf-dist/tex/latex/base/inputenc.sty" 1559143935 5052 b64c57f4a38aae0d2745f8298fa50814 ""
   "c:/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd" 1559143936 2472 aa08940f0a4dc6c24ae9f943b04ae0b9 ""
   "c:/texlive/2019/texmf-dist/tex/latex/base/size10.clo" 1559143936 8294 6d6e23d5169c0d89d173f6c7e08a005a ""
+  "c:/texlive/2019/texmf-dist/tex/latex/cancel/cancel.sty" 1559139027 7592 dd751af313a16a0308545d5bfd7aaaa2 ""
   "c:/texlive/2019/texmf-dist/tex/latex/changepage/changepage.sty" 1559139416 4523 a9044e2dc40e764dac60d2acda7ae919 ""
   "c:/texlive/2019/texmf-dist/tex/latex/enumitem/enumitem.sty" 1559141652 51603 ccc7546d1e15809a779ade2c44d54044 ""
   "c:/texlive/2019/texmf-dist/tex/latex/etoolbox/etoolbox.sty" 1559141784 43865 f83cc2fa3767abdb988c7d2cd17c02bf ""
@@ -177,7 +178,7 @@
   "c:/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1559149713 4261111 e6fccf9b600032244239379bce8cc28d ""
   "c:/texlive/2019/texmf.cnf" 1559149536 673 4ae7b2f49cee444c5343a45b5d0f169c ""
   (generated)
-  "Macroeconomics B Notes.aux"
-  "Macroeconomics B Notes.pdf"
   "Macroeconomics B Notes.toc"
+  "Macroeconomics B Notes.pdf"
+  "Macroeconomics B Notes.aux"
   "Macroeconomics B Notes.log"

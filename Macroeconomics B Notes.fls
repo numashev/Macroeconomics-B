@@ -179,6 +179,8 @@ INPUT c:/texlive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/ti
 INPUT c:/texlive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
 INPUT c:/texlive/2019/texmf-dist/tex/latex/titlesec/block.tss
 INPUT c:/texlive/2019/texmf-dist/tex/latex/titlesec/block.tss
+INPUT c:/texlive/2019/texmf-dist/tex/latex/cancel/cancel.sty
+INPUT c:/texlive/2019/texmf-dist/tex/latex/cancel/cancel.sty
 INPUT Macroeconomics B Notes.aux
 INPUT Macroeconomics B Notes.aux
 OUTPUT Macroeconomics B Notes.aux

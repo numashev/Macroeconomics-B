@@ -27,6 +27,7 @@
 \usetikzlibrary{calc}
 \newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
 \titleformat{\section}[block]{\color{blue}\Large\bfseries\filcenter}{}{1em}{}
+\usepackage{cancel}
 
 \title{Macroeconomics B Notes}
 \author{Nicholas Umashev \footnote{Add pages from google Notes}}
@@ -50,12 +51,12 @@
     \end{gather*}
     where $c_{t}$ is consumption, $k_{t}$ is capital, $\theta_{t}$ is a productivity shock
     \begin{itemize}
-        \item  \underline{Issue}:     This problem involves maximization over an infinite sequence of controls, subjects to an infinite sequence of constraints, and where each period's optimal decisions depend on the history of shocks and past decisions - making the problem more difficult
+        \item  \underline{Issue}: this problem involves maximization over an infinite sequence of controls, subjects to an infinite sequence of constraints, and where each period's optimal decisions depend on the history of shocks and past decisions - making the problem more difficult
         \item \underline{Solution}: we are looking for a solution of the form $\{c_{t}^{*}(\theta^{t})\}_{t=0}^{\infty}$ and $\{k_{t}^{*}(\theta^{t})\}_{t=0}^{\infty}$ where $\theta^{t} = \{ \theta_{0}, \theta_{1}, \dots, \theta_{t} \}$ is the history of shocks up to $tS$
     \end{itemize}
 \end{itemize}
 \vspace{2.5mm}
-\par \underline{Dynamic Programming}: breaks up optimization problems into a series of small and more tractable problems where the smaller problems are casted in a recursive way. Here the solution to such problems (under certain regularity conditions) can be used to recover the solution to the original problem
+\par \underline{Dynamic Programming}: breaks up optimization problems into a series of small and more tractable problems where the smaller problems are casted in a recursive way and are solved for a time-invariant policy function. Here the solution to such problems (under certain regularity conditions) can be used to recover the solution to the original problem
 \begin{itemize}
     \item \underline{Bellman's Optimality Principle}: an optimal policy has the property that whwatever the initial state and initial decisions are, the remaining decisions must constitute an optimal policy with regard to the state resulting from the first decision.
     \begin{itemize}
@@ -65,6 +66,9 @@
     \item  \underline{State Variables}: set of variables summarizing the state of the economy at each point in time
     \item  \underline{Control Variables}: the set of choice variables at each point in time
     \item  \underline{Value Function}: the optimal value of the original problem, given the states
+    \begin{itemize}
+        \item \underline{Note}:
+    \end{itemize}
     \item  \underline{Policy Function}: the optimal value for the control variables, given the states
 \end{itemize}
 \vspace{2.5mm}
@@ -82,7 +86,8 @@ g(x_{t}, u_{t}): \ \text{the law of motion for the state} \\
 W(x_{T}): \ \text{the terminal condition at} \ x_{t}
 \end{gather*}
 \begin{itemize}
-    \item  \underline{Recursive Transformation}: based on the original problem being time separable we can write it as a series of recursive functions. The original problem asks us to find a sequence of $T$ controls (i.e. find $\{ u^{*}_{t} \}_{t=0}^{T-1}$) while the recursive formulation asks us to solve $T$ problems with one control each (i.e. find the series of $U_{t}^{*}(x)$ over the set $t$). We make the following Transformation
+    \item  \underline{Recursive Transformation}: based on the original problem being time separable we can write it as a series of recursive functions. The original problem asks us to find a sequence of $T$ controls (i.e. find $\{ u^{*}_{t} \}_{t=0}^{T-1}$) while the recursive formulation asks us to solve $T$ problems with one control each (i.e. find the series of $U_{t}^{*}(x)$ over the set $t$). In other words, we transform the original problem of finding an infinite sequence of controls that maximizes our function for the problem of finding the optimal value function $V(x)$ and a function $h$ that solves the continuum of maximum problems (ie one maximum problem for each value of x). Here $h$ is a time-invariant policy function that maps the state $x_{t}$ into the control $u_{t}$ such that we can iteratively use $u_{t} = h(x_{t})$ and $x_{t+1} = g(x_{t}, u_{t})$ to find the sequence $\{u_{s}\}_{s=0}^{\infty}$
+    We make the following Transformation
     \begin{gather*}
         \max_{\{u_{t}\}_{t=0}^{T−1}} \sum_{t=0}^{T−1} \beta^{t}r(x_{t},u_{t}) + W(x_{T}) \\
         \text{subject to:} \ x_{t+1} = g(x_{t},u_{t}) \ \forall t, \ \ \ x_{0} \ \text{is given} \\
@@ -95,15 +100,35 @@ W(x_{T}): \ \text{the terminal condition at} \ x_{t}
     \end{gather*}
     Note that this is different from our objective function in that the time starts at $t$ and not 0
     \begin{itemize}
-        \item \underline{Bellman Condition}: given the structure of the problem, the value function satisfies the Bellman Equation where $V_{t}(x) = \max_{u} \left\{ r(x,u) + \beta V_{t+1} (g(x, u)) \right\}$ with the terminal condition $V_{T}(x) = W(x)$
+        \item \underline{Bellman Condition}: given the structure of the problem, the value function satisfies the Bellman Equation. Here we want to solve for $V(x)$ and $h(x)$ together which are linked by the Bellman Equation:
+        \begin{gather*}
+            V_{t}(x) = \max_{u} \left\{ r(x,u) + \beta V_{t+1} (g(x, u)) \right\}
+        \end{gather*}
+        with the terminal condition $V_{T}(x) = W(x)$.
          \begin{itemize}
             \item  \underline{Intuition}: the value function at time $t$ is going to be the maximum utility given next period's value function, today's return, and the terminal condition. Note that the Bellman Equation describes the value function, at a given point in time, as a function of itself in another point in time
          \end{itemize}
     \end{itemize}
-    \item  \underline{Policy Function $U_{t}(x)$}: the policy function describes the utility that, given the state, is the maximum of the value function. Given $V_{t}(x)$, we define the policy function by
+    \item  \underline{Policy Function $U_{t}(x)$}: the policy function describes the utility that, given the state, is the maximum of the value function. In other words, the maximizer of the RHS of the bellman equation is a policy function $h(x)$. Given $V_{t}(x)$, we define the policy function by
     \begin{gather*}
-        U_{t}(x) = \arg \max_{u} \left\{ r(x,u) + \beta V_{t+1} (g(x, u)) \right\}
+        U_{t}(x) = r[x, h(x)] + \beta V \left\{g[(x, h(x)] \right\} \ \ \text{or} \ \ U_{t}(x) = \arg \max_{u} \left\{ r(x,u) + \beta V_{t+1} (g(x, u)) \right\}
     \end{gather*}
+%    \item  \underline{Value vs Policy Function}: the Value Function is the value of x that maximizes the objective function for a single given time period, while the Policy function is the time period that has the highest objective function for a single given x. This is represented in the below vector, with the green highlighting representing the Value Function and the yellow highlighting representing the Policy Function
+%    \newline
+%    \begin{center}
+%    \includegraphics[width=6cm, height=3cm]{pic15}
+%    \end{center}
+    \item \underline{Assumptions}: in order to solve the Bellman Equation we need to impose the following assumptions
+    \begin{itemize}
+        \item  \underline{Assuumption 1}: the Bellman Equation has a unique strictly concave solution
+        \item  \underline{Assumption 2}: the solution is approached in the limit as $j \rightarrow \infty$ by iterations on
+        \begin{gather*}
+            V_{j+1}(x) = \max_{u} \left\{r(x,u) + \beta V_{j}(\widetilde{x}) \right\}
+        \end{gather*}
+        Subject to $\widetilde{x} = g(x,u)$, $x$ given, and starting from any bounded and continuous initial $V_{0}$. Note that $\widetilde{x}$ is tomorrows $x$
+        \item  \underline{Assumption 3}: there is a unique and time-invariant optimal policy of the form $u_{t} = h(x_{t})$, where $h$ is chosen to maximize the RHS of the Bellman equation
+        \item  \underline{Assumption 4}: off the corners, the limiting value function $V$ is differentiable
+    \end{itemize}
     \item  \underline{Solution}: the Bellman Equation and the Policy Function are the building blocks for constructing the optimal solution
     \begin{itemize}
         \item  \underline{Step 1 - Backward Induction}: compute $\{ V_{t} (x) \}_{t=0}^{T}$ and $\{ U_{t} (x) \}_{t=0}^{T−1}$ by backward induction using the Bellman Equation
@@ -150,7 +175,7 @@ We want to compute the solution $\{u_{t}^{*}, x_{t+1}^{*}\}_{t=0}^{\infty}$
 \begin{itemize}
     \item \underline{Assumptions}: in addition to the previous finite horizon problem assumptions we assume that $r(\cdot)$ is bounded, also note that now the bellman equation is a functional equation in V
     \item  \underline{No Backward Induction}: since there is no terminal condition to start with (ie V is time-invariant) we cannot use backward induction
-    \item  \underline{Conditions for a Solution}: the following four conditions must hold for the infinite horizon problem to be solved
+    \item \underline{Conditions for a Solution}: the following four conditions must hold for the infinite horizon problem to be solved
     \begin{itemize}
         \item \underline{Condition 1}: the Bellman Equation has a unique strictly concave solution $V^{*}$
         \item \underline{Condition 2}: let $V^{0}$ be any bounded and continuous VF and let $V^{j}$ satisfy
@@ -165,7 +190,7 @@ We want to compute the solution $\{u_{t}^{*}, x_{t+1}^{*}\}_{t=0}^{\infty}$
         \end{gather*}
     \end{itemize}
     Note that the second condition implies that if you have any function $V_{0}$ that is bounded and continuous then if you iterate on $j$ you will eventually find the solution $V^{*}$ (ie a steady state). The third condition implies that from finding $V^{*}$ you can use $u_{*}$ to then backwards iterate to find $U^{*}$
-    \item  \underline{Guess and Verify Method}: also known as the method of undetermined coefficients, this relies on the uniqueness of the solution to the Bellman Equation (condition 1) and can be solved analytically with pen and paper (though does not always work)
+    \item  \underline{Guess and Verify Method}: also known as the method of undetermined coefficients, this involves guessing and verifying a solution $V$ to the Bellman Equation. This relies on the uniqueness of the solution to the Bellman Equation (condition 1) and can be solved analytically with pen and paper (though does not always work)
         \begin{itemize}
             \item  \underline{Step 1}: guess that the true value function has a particular parametric form $V^{G}(x; A)$ where A is a vector of unknown parameters
             \item  \underline{Step 2}: compute $\widehat{V}(x;A) = \max_{u} \{r(x,u) + \beta V^{G}(g(x,u);A) \}$
@@ -177,20 +202,29 @@ We want to compute the solution $\{u_{t}^{*}, x_{t+1}^{*}\}_{t=0}^{\infty}$
                 \item \underline{Note}: compare the derived optimized value function $\widehat{V}(x;A)$ from step 2 to $V^{G}(x; A)$
             \end{itemize}
         \end{itemize}
-    \item \underline{Value Function Iteration Method}:this method always works because by solution method condition 2 we have $V^{*} = \lim_{j \rightarrow \infty} V^{j}$, however this method can be very slow particularly for problems with more than one state
+    \item \underline{Value Function Iteration Method}: we proceed by constructing a sequence of value functions and associated policy functions. The sequence is created by iterating on the following equation, starting from $V_{0} = 0$, and continuing until $V_{j}$ has converged:
+    \begin{gather*}
+        V_{j+1}(x) = \max_{u} \left\{r(x,u) + \beta V_{j} (\widetilde{x}) \right\} \\
+        \text{subject to} \ \ \ \widetilde{x} = g(x,u), \ x \ \ \text{given}
+    \end{gather*}
+     This method always works because by solution method condition 2 we have $V^{*} = \lim_{j \rightarrow \infty} V^{j}$, however this method can be very slow particularly for problems with more than one state
     \begin{itemize}
         \item  \underline{Step 1}: start from any bounded and continuous guess $V^{0}$
         \item  \underline{Step 2}: iterate on $V^{j}(x) = \max_{u} \{ r(x,u) + \beta V^{j−1} (g(x,u)) \}$ until convergence (ie until $||V^{j} − V^{j−1}|| < \varepsilon$)
     \end{itemize}
     \item  \underline{Policy Function Iteration Method}
     \begin{itemize}
-        \item  \underline{Step 1}: pick a feasible policy function $U^{0}(x)$ and compute the value associated with operating forever with that policy by finding a function $g$ determined only by given variables/parameters
-        \begin{itemize}
-            \item \underline{Note}: $V^{0}(x) = \tfrac{r(x,U^{0}(x))}{1 − \beta}$
-        \end{itemize}
-        \item  \underline{Step 2}: for $j \geq 1$ generate a new policy by solving $U^{j}(x) = \arg \max_{u} \{ r(x,u) + \beta V^{j−1} (g(x,u)) \}$
-        \item  \underline{Step 3}: compute the value $V^{j}$ associated with operating with $U^{j}$ forever
-        \item  \underline{Step 4}: iterate until convergence of $V^{j}$
+        \item  \underline{Step 1}: pick a feasible policy function $U^{0}(x)$ (or $u = h_{0}(x)$) and compute the value associated with operating forever with that policy
+        \begin{gather*}
+            V_{h_{j}}(x) = \sum_{t=0}^{\infty} \beta^{t} r [x_{t}, h_{j}(x_{t})]
+        \end{gather*}
+        where $x_{t+1} = g[x_{t}, h_{j}(x_{t})]$ with $j=0$
+        \item  \underline{Step 2}: generate a new policy $u = h_{j+1}(x)$ that solves the two period problem
+        \begin{gather*}
+            \max_{u} \left\{r(x,u) + \beta V_{h_{j}} [g(x,u)]\right\}
+        \end{gather*}
+        for each x
+        \item  \underline{Step 3}: iterate over j until convergence, repeating steps 1 and 2
     \end{itemize}
     \item  \underline{Example}: consider a social planner solving
     \begin{gather*}
@@ -210,27 +244,27 @@ We want to compute the solution $\{u_{t}^{*}, x_{t+1}^{*}\}_{t=0}^{\infty}$
         \end{gather*}
         \item  \underline{Guess and Verify Solution}: here we guess the functional form $V^{G}(k; E, F) = E + F \ln (k)$ where E and F are unknown constants. We then plug in $V^{G}(x; E, F)$ into the RHS of the Bellman equation yielding
         \begin{gather*}
-            \widehat{V}(k; E, F) = \max_{k} \Big\{ \ln(Ak^{\alpha} - k^{'}) + \beta V^{G}(k^{'}; E, F) \Big\}
+            \widehat{V}(k; E, F) = \max_{k} \Big\{ \ln(Ak^{\alpha} - k^{'}) + \beta V^{G}(k^{'}; E, F) \Big\} = \max_{k} \Big\{ \ln(Ak^{\alpha} - k^{'}) + \beta(E + F \ln (k)) \Big\}
         \end{gather*}
-         Taking first order conditions results in the optimal policy function $k^{'}(k) = \tfrac{\beta F}{1 + \beta F}Ak^{\alpha}$. Substituting the optimal policy function into the objective function yields
+         Taking first order conditions and log-linearizing results in the optimal policy function $k^{'}(k) = \frac{\beta F}{1 + \beta F}Ak^{\alpha}$. Substituting the optimal policy function into the objective function yields
          \begin{gather*}
              \widehat{V}(k;E,F) = \underbrace{\bigg[ \ln \Big(\frac{A}{1+\beta F} \Big) + \beta F \ln \Big( \frac{\beta F}{1 + \beta F} A \Big) + \beta E \bigg]}_{E^{'}} + \underbrace{\alpha(1+\beta F) \ln(k)}_{F^{'}} \\
              \Updownarrow \\
              \widehat{V}(k; E^{'}, F^{'}) = E^{'} + F^{'} \ln(k)
          \end{gather*}
-         When grouping the constants for $\widehat{V}(k; E’, F’)$ it has the same functional form as $V^{G}(k; E, F)$. Finally, we pin down the unknown coefficients by solving the system of Equations
+         When grouping the constants for $\widehat{V}(k; E’, F’)$ it has the same functional form as $V^{G}(k; E, F)$. Finally, we pin down the unknown coefficients by solving the system of equations
          \begin{align*}
              E^{*} &= \bigg[ \ln \Big(\frac{A}{1+\beta F} \Big) + \beta F \ln \Big( \frac{\beta F}{1 + \beta F} A \Big) + \beta E \bigg] \\
              F^{*} &= \alpha(1+\beta F) \ln(k)
          \end{align*}
-         This leaves us with the final solution $V^{*} = E^{*} + F^{*} \ln (k)$ and the optimal policy function $k^{'*}(k) = \tfrac{\beta F^{*}}{1 + \beta F^{*}} A k^{\alpha}$
+         Note that the equation for $E^{*}$ is derived from collecting constant terms and $F^{*}$ is derived from collecting the terms containing our dependent variable. This leaves us with the final solution $V^{*} = E^{*} + F^{*} \ln (k)$ and the optimal policy function $k^{'*}(k) = \frac{\beta F^{*}}{1 + \beta F^{*}} A k^{\alpha}$
          \begin{itemize}
              \item \underline{Solution Write Out}: here the Bellman Equation is $V(k) = \max_{k^{'}} \left\{ \ln(A k^{\alpha} - k^{'}) + \beta V(k^{'}) \right\}$
              \begin{itemize}
                  \item  \underline{Step 1}: my guess is $V^{G} (k) = F \ln (k) + E$ where $F$ and $E$ are our unknown constants
                  \item  \underline{Step 2}: using my guess we have
                  \begin{gather*}
-                     \widehat{V}(k) = \max_{k^{'}} \Big\{ \ln(Ak^{\alpha} - k’) + \beta (Ak^{\alpha} - k’) \Big\}
+                     \widehat{V}(k) = \max_{k^{'}} \Big\{ \ln(Ak^{\alpha} - k’) + \beta (Ak^{\alpha} - k’) \Big\} = \max_{k^{'}} \Big\{ \ln(Ak^{\alpha} - k^{'}) + \beta(E + F \ln (k^{'})) \Big\}
                  \end{gather*}
                  Taking first order conditions we have the following
                  \begin{gather*}
@@ -244,7 +278,7 @@ We want to compute the solution $\{u_{t}^{*}, x_{t+1}^{*}\}_{t=0}^{\infty}$
                  \end{gather*}
                  \item  \underline{Step 3}: to evaluate the parameters $(E^{*}, F^{*})$ we solve the system of equations implied by the functional form
                  \begin{align*}
-                     \widehat{V}(k) &= E^{'} + F^{'} \ln (k)
+                     \widehat{V}(k) &= E^{'} + F^{'} \ln (k) \\
                      V^{G}(k) &= E + F \ln(k)
                  \end{align*}
              This yields
@@ -269,8 +303,33 @@ We want to compute the solution $\{u_{t}^{*}, x_{t+1}^{*}\}_{t=0}^{\infty}$
         \item \underline{Timing}: $\varepsilon_{t+1}$ is realized at $t+1$ after $u_{t}$ has been chosen, therefore $x_{t}$ is a sufficient statistic at $$t$$
         \item \underline{iid Assumption}: this is important for recursive formulation for if shocks were persistent instead then the state vector should also incorporate past shock realizations
     \end{itemize}
-    \item \underline{Bellman Equation}: $V(x) = \max_{u} \{ r(x,u) + \beta \mathbb{E}[V(g(x,u, \varepsilon))|x] \}$ where $\mathbb{E} [V(g(x, u, \varepsilon))|x ] = \int V(g(x,u,\varepsilon))dF(\varepsilon)$
-    \item \underline{Solution Methods}: the previous solution methods still apply
+    \item \underline{Bellman Equation}: the Bellman Equation for this problem is
+    \begin{gather*}
+        V(x) = \max_{u} \{ r(x,u) + \beta \mathbb{E}[V(g(x,u, \varepsilon))|x] \}
+    \end{gather*}
+    where $\mathbb{E} [V(g(x, u, \varepsilon))|x ] = \int V(g(x,u,\varepsilon))dF(\varepsilon)$ and $V(x)$ is the optimal value of the problem starting from $x$ at $t=0$
+    \item \underline{Solution Methods}: the previous solution methods still apply and the solution $V(x)$ of the Bellman Equation can be computed by iterating on
+    \begin{gather*}
+        V_{j+1}(x) = \max_{u} \left\{r(x,u) + \beta \mathbb{E} \bigg[ V_{j}[g(x,u,\varepsilon) | x] \bigg] \right\}
+    \end{gather*}
+    starting from any bounded continuous initial $V_{0}$.
+    The first order necessary condition for the problem on the RHS of the Bellman Equation is
+    \begin{gather*}
+        r_{2}(x,u) + \beta \mathbb{E} \left\{V^{'} [g (x, u, \varepsilon)] g_{2}(x,u,\varepsilon) | x \right\} = 0
+    \end{gather*}
+    which we obtain simply by differentiating the Bellman Equation and passing the differentiation operation under the $\mathbb{E}$ (an integration) operator. Off corners, the value function satisfies
+    \begin{gather*}
+        V^{'}(x) = r_{1}[x, h(x)] + r_{2}[x, h(x)]h^{'}(x) + \beta \mathbb{E}\left\{ V^{'} \{g [x, h(x), \varepsilon] \} \{g_{1}[x,h(x), \varepsilon] + g_{2}[x, h(x), \varepsilon]h^{'}(x) \} | x \right\}
+    \end{gather*}
+    When the states and controls can be defined in such a way that $x$ does not appear in the transition equation, the formula for $V^{'}$ becomes
+    \begin{gather*}
+        V^{'}(x) = r_{1}[x, h(x)]
+    \end{gather*}
+    Substituting this formula into the first order necessary condition for the problem gives the stochastic Euler equation
+    \begin{gather*}
+        r_{2}(x,u) + \beta \mathbb{E} [r_{1}(\widetilde{x}, \widetilde{u})g_{2}(x, u, \varepsilon) | x] = 0
+    \end{gather*}
+    where tildes over $x$ and $u$ denote next period values.
     \begin{itemize}
         \item \underline{Integral Valuation}: the integral in expectation can be approximated by quadrature, if closed form solutions are infeasible
     \end{itemize}
@@ -311,26 +370,26 @@ We want to compute the solution $\{u_{t}^{*}, x_{t+1}^{*}\}_{t=0}^{\infty}$
                 V_{i}^{1} = \max \begin{bmatrix} \ln(Ak_{i}^{\alpha} - k_{i}) + \beta V_{1}^{0} \\ \ln(Ak_{i}^{\alpha} - k_{2}) + \beta V_{2}^{0} \\ \dots \\ \ln(Ak_{i}^{\alpha} - k_{n}) + \beta V_{n}^{0} \end{bmatrix} \ \ \ \forall i, \ \ \ \text{which reduces to} \ \ \ V_{n \times 1}^{1} = \begin{bmatrix} V_{1}^{1} \\ V_{2}^{1} \\ \dots \\ V_{n}^{1} \end{bmatrix}
             \end{gather*}
             \begin{itemize}
-                \item \underline{Note}: Where $V_{j}^{0}$ is the maximum element contained in the  $N \times 1$ vector of $v_{n \times 1}^{0}$'s. Note that this involves just picking the maximum possible element in the $v_{i}^{1}$ vector containing every possible level of capital for today (ie period $i$)
+                \item \underline{Note}: $V_{j}^{1}$ is the maximum element contained in the  $N \times 1$ vector of $v_{n \times 1}^{1}$'s. Note that this involves just picking the maximum possible element in the $v_{i}^{1}$ vector containing every possible level of capital for today (ie period $i$)
             \end{itemize}
             \item \underline{Step 3}: check for convergence, setting the tolerance level to the euclidean norm
             \begin{itemize}
                 \item \underline{Tolerance Level($\varepsilon$)}: $||v^{1} - v^{0}||< \varepsilon$ where $\varepsilon = \sqrt{\sum_{i=1}^{n}(v_{i}^{1}-v_{i}^{0})}$
             \end{itemize}
             \item  \underline{Step 4}: compute $v^{s}$ by solving $v_{i}^{s} = \max \left\{ \ln(Ak_{i}^{\alpha} - k_{j}) + \beta v_{j}^{s-1} \right\} \ \ \ \forall i$
-            \item  \underline{Step 5}: check convergence $||v^{s} - v^{s-1}||< \varepsilon$, if convergence holds then stop else go back to step 4 and iterate again
+            \item  \underline{Step 5}: check convergence $||v^{s} - v^{s-1}||< \varepsilon$, if convergence holds then stop else go back to step 2 and iterate again
         \end{itemize}
     \end{itemize}
 \end{itemize}
 \vspace{2.5mm}
-\par \underline{\bf{Ordinary Differential Equations (ODEs)}}: a "differential" equation" is one where the unknown is a function (instead of a variable) and the equation includes one or more of the derivatives of the function, an "ordinary differential equation" equation is one for which the unknown is a function of only one variable (typically time)
+\par \underline{\bf{Ordinary Differential Equations (ODEs)}}: a "differential" equation" is one where the unknown is a function (instead of a variable) and the equation includes one or more of the derivatives of the function, an "ordinary differential equation" equation is one for which the unknown is a function of only one variable (typically time). The order of an ODE is that of the highest derivative - i.e. if the highest derivative is an ODE of order n then it is an nth-order ODE. The goal when solving an ODE is to find the behaviour of of the equation with respect to the unknown (i.e. how it evolves with time)
 \begin{itemize}
     \item \underline{Partial ODEs}: where the unknown is a function of more than one variable
     \item  \underline{First-Order ODE Form}: $\dot{x}(t) = F(t, x(t))$, where $\dot{x}(t) \equiv dx(t)/dt$ and $t \in [t_{a}, t_{b}]$
     \begin{itemize}
         \item \underline{Unknown}: here the unknown is a function $x(t)$ with $x: [t_{a}, t_{b}] \rightarrow \mathbb{R}$ and can be found (without uniqueness) by integrating and combining with a initial condition
         \item  \underline{Uniqueness}: the solution is not unique with the form having infinitely many solutions indexed by an integrating constant C. However, generally the constant C can be uniquely determined by requiring the solution to pass through a given point on the $x(t)$-plane, providing us with a general and particular solution
-        \item  \underline{Example}: $\dot{x}(t) = 2t$ with $t \in [0,\infty)$
+        \item  \underline{Example}: $\dot{x}(t) = 2t$ with $t \in [0,\infty)$ where the dot on top of $x(t)$ represents the derivative of $x(t)$ with respect to time
         \begin{itemize}
             \item \underline{Solution without Initial Condition}: the general solution is $x(t) = t^{2} + C$
             \item  \underline{Solution with Initial Condition}: suppose we impose the initial condition $x(0) = 1$, therefore $C=1$ and the particular solution is $x(t) t^{2} + 1$
@@ -345,7 +404,7 @@ We want to compute the solution $\{u_{t}^{*}, x_{t+1}^{*}\}_{t=0}^{\infty}$
         \item  \underline{Euler's Method}: given the equation implied by the ODE
         \begin{itemize}
             \item  \underline{Step 1}: specify a grid for t, i.e. $t_{0} = t_{a} < t_{1} < t_{2} < \dots < t_{N} = t_{b}$
-            \item  \underline{Step 2}: we can approximate the ODE using the difference equation $$\frac{x(t_{i+1}) - x(t_{i})}{t_{i+1}-t_{i}} = F(t_{i},x(t_{i}))$$ over $i = 0, \dots, N-1$, where $x(t_{0})=x_{a}$ is fixed by the initial condition
+            \item  \underline{Step 2}: we can approximate the ODE using the difference equation $$\frac{x(t_{i+1}) - x(t_{i})}{t_{i+1}-t_{i}} = F(t_{i},x(t_{i}))$$ iterating over $i = 0, \dots, N-1$, where $x(t_{0})=x_{a}$ is fixed by the initial condition
                 \begin{itemize}
                     \item  \underline{Note}: the difference equation is obtained by rearranging the equation in step 1, we know all elements on the RHS of the difference equation which provides us with an explicit solution for $x(t_{1})$
                 \end{itemize}
