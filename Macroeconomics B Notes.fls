@@ -255,6 +255,7 @@ INPUT ./Pictures/pic8.png
 INPUT ./Pictures/pic9.png
 INPUT ./Pictures/pic9.png
 INPUT ./Pictures/pic9.png
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT ./Pictures/pic11.jpg
 INPUT ./Pictures/pic11.jpg
 INPUT ./Pictures/pic11.jpg
@@ -293,5 +294,6 @@ INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb

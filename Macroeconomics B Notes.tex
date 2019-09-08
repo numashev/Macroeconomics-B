@@ -72,14 +72,14 @@
     \item  \underline{Policy Function}: the optimal value for the control variables, given the states
 \end{itemize}
 \vspace{2.5mm}
-\par \underline{Primer on Dynamic Programming Concepts}: any optimization problem has some objective (such as minimizing cost) with the mathematical function that describes this objective being called the objective function.
-Dynamic programming breaks a multi-period planning problem into smaller steps at different points in time and therefore it requires keeping track of how the decision situation is evolving over time. The information about the current situation that is needed to make a correct decision is called the "the state". For example, to decide how much to consume and spend at each point in time, people would need to know their initial wealth and therfore wealth would be one of their state variables.
-The variables chosen at any given point in time are often called the "control" variables. For example, given their current wealth, people might decide how much to consume now. Choosing the control variables now may be equivalent to choosing the next state, since the next state is affected by the current control (in addition to other factors). For example, today's wealth (the state) and consumption (the control) might exactly determine tomorrow's wealth (the new state).
-The dynamic programming approach describes the optimal plan by finding a rule that tells what the control should be, given any possible value of the state. For example, if consumption $(c)$ depends only on wealth $(w)$ then we would seek a rule $c(w)$ that gives consumption as a function of wealth. Such a rule, determining the controls as a function of the states, is called a "policy function".
-Finally, the optimal decision rule is the one that achieves the best possible value of the objective. For example, if someone chooses consumption, given wealth, in order to maximize happiness (represented by a utility function), then each level of wealth with be associated with some highest possible level of happines $H(w)$. The best possible value of the objective, written as a function of the state, is called the value function.
+\par \underline{Primer on Dynamic Programming Concepts}: any optimization problem has some objective (such as minimizing cost) with the mathematical function that describes this objective being called the objective function. \\ \\
+Dynamic programming breaks a multi-period planning problem into smaller steps at different points in time and therefore it requires keeping track of how the decision situation is evolving over time. The information about the current situation that is needed to make a correct decision is called the "the state". For example, to decide how much to consume and spend at each point in time, people would need to know their initial wealth and therfore wealth would be one of their state variables.\\ \\
+The variables chosen at any given point in time are often called the "control" variables. For example, given their current wealth, people might decide how much to consume now. Choosing the control variables now may be equivalent to choosing the next state, since the next state is affected by the current control (in addition to other factors). For example, today's wealth (the state) and consumption (the control) might exactly determine tomorrow's wealth (the new state). \\ \\
+The dynamic programming approach describes the optimal plan by finding a rule that tells what the control should be, given any possible value of the state. For example, if consumption $(c)$ depends only on wealth $(w)$ then we would seek a rule $c(w)$ that gives consumption as a function of wealth. Such a rule, determining the controls as a function of the states, is called a "policy function". \\ \\
+Finally, the optimal decision rule is the one that achieves the best possible value of the objective. For example, if someone chooses consumption, given wealth, in order to maximize happiness (represented by a utility function), then each level of wealth with be associated with some highest possible level of happines $H(w)$. The best possible value of the objective, written as a function of the state, is called the value function. \\ \\
 \vspace{1mm}
-Therefore, a dynamic optimization problem in discrete time can be stated in a recursive, step-by-step, form known as backward induction by writing down the relationship between the value function in one period and the value function in the next period. The relationship between these two value functions is called the "Bellman Equation". In this approach, the optimal policy in the last time period is specified in advance as a function of the state variable's value at that time, and the resulting optimal value of the objective function is thus expressed in terms of that value of the state variable.
-Next, the next-to-last period's optimization involves maximizing the sum of that period's period-specific objective function and the optimal value of the future objective function, giving that period's optimal policy contingent upon the value of the state variable as of the next-to-last period decision.
+Therefore, a dynamic optimization problem in discrete time can be stated in a recursive, step-by-step, form known as backward induction by writing down the relationship between the value function in one period and the value function in the next period. The relationship between these two value functions is called the "Bellman Equation". In this approach, the optimal policy in the last time period is specified in advance as a function of the state variable's value at that time, and the resulting optimal value of the objective function is thus expressed in terms of that value of the state variable. \\ \\
+Next, the next-to-last period's optimization involves maximizing the sum of that period's period-specific objective function and the optimal value of the future objective function, giving that period's optimal policy contingent upon the value of the state variable as of the next-to-last period decision. \\ \\
 This logic continues recursively back in time, until the first period decision rule is derived, as a function of the initial state variable value, by optimizing the sum of the first-period-specific objective function and the value of the second period's value function, which gives the value for all the future periods. Thus, each period's decision is made by explicitly acknowledging that all future decisions will be optimally made.
 \vspace{2.5mm}
 \par \underline{Finite Horizon Problem}: consider a decision-maker solving the deterministic problem
@@ -96,7 +96,7 @@ g(x_{t}, u_{t}): \ \text{the law of motion for the state} \\
 W(x_{T}): \ \text{the terminal condition at} \ x_{t}
 \end{gather*}
 \begin{itemize}
-    \item  \underline{Recursive Transformation}: based on the original problem being time separable we can write it as a series of recursive functions. The original problem asks us to find a sequence of $T$ controls (i.e. find $\{ u^{*}_{t} \}_{t=0}^{T-1}$) while the recursive formulation asks us to solve $T$ problems with one control each (i.e. find the series of $U_{t}^{*}(x)$ over the set $t$). In other words, we transform the original problem of finding an infinite sequence of controls that maximizes our function for the problem of finding the optimal value function $V(x)$ and a function $h$ that solves the continuum of maximum problems (ie one maximum problem for each value of x). Here $h$ is a time-invariant policy function that maps the state $x_{t}$ into the control $u_{t}$ such that we can iteratively use $u_{t} = h(x_{t})$ and $x_{t+1} = g(x_{t}, u_{t})$ to find the sequence $\{u_{s}\}_{s=0}^{\infty}$
+    \item  \underline{Recursive Transformation}: based on the original problem being time separable we can write it as a series of recursive functions. The original problem asks us to find a sequence of $T$ controls (i.e. find $\{ u^{*}_{t} \}_{t=0}^{T-1}$) while the recursive formulation asks us to solve $T$ problems with one control each (i.e. find the series of $U_{t}^{*}(x)$ over the set $t$). \\ In other words, we transform the original problem of finding an infinite sequence of controls that maximizes our function for the problem of finding the optimal value function $V(x)$ and a function $h$ that solves the continuum of maximum problems (ie one maximum problem for each value of x). Here $h$ is a time-invariant policy function that maps the state $x_{t}$ into the control $u_{t}$ such that we can iteratively use $u_{t} = h(x_{t})$ and $x_{t+1} = g(x_{t}, u_{t})$ to find the sequence $\{u_{s}\}_{s=0}^{\infty}$
     We make the following Transformation
     \begin{gather*}
         \max_{\{u_{t}\}_{t=0}^{T−1}} \sum_{t=0}^{T−1} \beta^{t}r(x_{t},u_{t}) + W(x_{T}) \\
@@ -557,152 +557,179 @@ There are two main issues with conventional solution methods to this problem; (1
     \end{itemize}
 \end{itemize}
 \vspace{2.5mm}
-\par \underline{One-Sided No Commitment Model}: the economy lasts for $T = \infty$ periods and consists of a village with a large number of households. Household preferences are
+\par \underline{Basic Model}: the economy lasts for $T = \infty$ periods and consists of a village with a large number of households. Household preferences are
 \begin{gather*}
     U = \mathbb{E}_{0} \sum_{t = 0}^{\infty} \beta^{t} u(c_{t})
 \end{gather*}
-where $\beta \in (0, 1)$ and $u$ is concave and has the usual properties. Each HH receives a stochastic endowment stream $\left\{y_{t}\right\}_{t=0}^{\infty}$ where $y_{t} \in \left\{ \overline{y}_{1}, \overline{y}_{2}, \dots, \overline{y}_{S} \right\}, \overline{y}_{s+1} > \overline{y}_{s}$. HHs can only trade with a risk-neutral moneylender who can borrow or lend at the risk free rate $R = \beta^{-1}$. The moneylender maximizes the expected present value of profits from making contracts:
+where $\beta \in (0, 1)$ and $u$ is concave and has the usual properties. \\ \\ Each HH receives a stochastic endowment stream $\left\{y_{t}\right\}_{t=0}^{\infty}$ where $y_{t} \in \left\{ \overline{y}_{1}, \overline{y}_{2}, \dots, \overline{y}_{S} \right\}$ and $\overline{y}_{s+1} > \overline{y}_{s}$. Note that for each $t \geq 0$, $y_{t}$ is independently and identically distributed according to the discrete probability distribution $\Pr(y_{t} = \overline{y}_{s}) = \pi_{s}$ where $s$ is the set from which HHs draw endowments from. At time $t\geq 1$ the household has received a history of endowments $h_{t} = (y_{t}, y_{t-1}, \dots, y_{0})$ \\
+\begin{itemize}
+    \item \underline{Assumptions}: the endowment processes are iid both across time and across households, overline represents the realizations of the endowments, due to concavity HHs value insurance against endowment realizations, $y_{t}$ is non-storable and therefore self-insruance is precluded
+    \item \underline{No Contractual Issue Solution}: if there were a competitive equilibrium with complete markets, at $t=0$ HHs would trade history and date contigent claims before the realization of endowments. Since all HHs are ex ante identical, each HH would end up consuming the per capita endowment in every period and their its lifetime utility would be
+    \begin{gather*}
+        v_{pool} = \sum_{t=0}^{\infty} \beta^{t} u \Big( \sum_{s=1}^{S} \Pi_{s} \overline{y}_{s} \Big) = \frac{1}{1-\beta} u \Big( \sum_{s=1}^{S} \Pi_{s}\overline{y}_{s} \Big)
+    \end{gather*}
+    HHs would thus insure away all of the risk associated with their individual endowment process. However, due to limited commitment and other contractual issues, this allocation is unattainable
+\end{itemize}
+\vspace{2.5mm}
+\par \underline{One-Sided Limited Commitment Contract Issue}: in this case, the HH can only trade with the moneylender and can walk away from the contract. If the HH walks away then the HH consumers their endowment and lives in autarky evermore (i.e. the HH cannot return from autarky). Note that only the HH can break the contract, while the moneylender is fully committed to keeping their promise. Therefore, HHs must be induced not to walk away from the contract via structuring the contract in such a way that it is "self-enforcing" in that HHs prefer to conform to it. \\ \\
+This involves a contract between the moneylender and the HH as a sequence of history dependent functions $\left\{c_{t}\right\}_{t=0}^{\infty}$ with $c_{t} = f_{t} (y^{t})$. The contract specifies that in each period the HH contributes her endowment realization $y_{t}$ to the moneylender in exchange for consumption $c_{t}$. \\ \\
+From this arrangement, the moneylender earns an ex ante expected present value
 \begin{gather*}
     P = \mathbb{E}_{0} \sum_{t=0}^{\infty} \beta^{t} (y_{t} - c_{t})
 \end{gather*}
-where $(y_{t} - c_{t})$ is the net transfer from HH at time t
+where $(y_{t} - c_{t})$ is the net transfer from HH at time t. The moneylender seeks to maximize the expected present value of profits from making contracts. \\ \\
+Given the HHs preferences in the basic model, the contract assigns the HH an expected present value of
+\begin{gather*}
+    v = \mathbb{0} \sum_{t=0}^{\infty} \beta^{t} u(c_{t})
+\end{gather*}
+If the HH walks away from the contract, the ex ante value associated with consuming the endowment stream in autarky is
+\begin{gather*}
+    v_{aut} = \mathbb{E}_{0} \sum_{t=0}^{\infty} \beta^{t} u(y_{t}) = \frac{1}{1-\beta} \sum_{s=1}^{S} \Pi_{s} u(\overline{y}_{s})
+\end{gather*}
+where the continuation utility under autarky is the weighted sum of the possible realizations from the endowment (which due to iid we can remove the dependency of $y$ on time). Note that at time $t$ the HH can guarantee itself a present value of utility of $u(y_{t}) + \beta v_{aut}$ by consuming its own endowment and therefore the moneylender's contract must offer the HH at least this utility at every possible history and every date (this forms the basis of the participation constraint). \\ \\
+Here the optimal contract can be analysed using recursive tools, this relies on the inclusion of a participation constraint and promise constraint to entice the HH to stay in the contract
 \begin{itemize}
-    \item \underline{Assumptions}: $y_{t}$ is iid across time and HHs with $\Pr (y_{t} = \overline{y}_{s}) = \Pi_{S}$, s is the set from which you draw your endowment (it is not time nor is it necessarily growing with time), overline represents the realizations of the endowments,   due to concavity HHs value insurance against endowment realizations, $y_{t}$ is non-storage and therefore self-insruance is precluded, a moneylender (ie the planner) is the only person who has access to a risk-free loan market outside the village, HHs cannot trade with one another, $R$ is exogeneous (ie this is a partial equilibrium model)
-    \item  \underline{Contract}: a contract between the moneylender and the HH is a sequence of history dependent functions $\left\{c_{t}\right\}_{t=0}^{\infty}$ with $c_{t} = f_{t} (y^{t})$. The contract specifies that in each period the HH contributes her endowment realization $y_{t}$ in exchange for consumption $c_{t}$
+    \item  \underline{Assumptions}: information is symmetric and therefore the moneylender can observe $y_{t}$, the HHs cannot borrow or lend with one another and can only trade with the moneylender, the money lender is risk-neutral and can borrow or lend at the risk free rate $R = \beta^{-1}$, only the money lender has access to the risk-free loan market outside the village, $R$ is exogeneous (i.e. this is a partial equilibrium model)
+    \item  \underline{HH "Forward-Looking" State Variable}: note that for the HH, under the contract, the state variable is the promised expected discounted future value (i.e. the sum of all future earnings from the contract). In otherwords, the HH's state variable $v_{t}$ is a "forward-looking" variable where  $v_{t} = \mathbb{E}_{0} \sum_{j=0}^{\infty} \beta^{j} u(c_{t+j})$. This "forward-looking" variable summarizes a stream of future utilities
+    \item \underline{Moneylender "Backward-Looking" State Variable}: note that for the moneylender, under the contract, the state variable is the total net gain $(y- c)$ at time $t$. In otherwords, the moneylender's state variable $w_{t}$ is a "backward-looking" variable where $w_{t} = \sum_{t=0}^{t=T} (y_{t} - c_{t})$ (i.e. $w_{t}$ encodes all history dependence in the contract)
     \begin{itemize}
-        \item  \underline{Contractual Friction}: the HH can walk away from the contract. If the HH walks away then the HH consumers their endowment and lives in autarky evermore. The HH cannot return from autarky
-        \item  \underline{One-Sided No Commitment}: only the HH can break the contract, the moneylender is fully committed to keeping their promise
-        \item  \underline{Information is Symmetric}: the moneylender can observe $y_{t}$
-    \end{itemize}
-    \item  \underline{Optimal Contract Solution}: the optimal contract can be analysed using recursive tools, this relies on knowing the continuation utility under autarky ($v_{aut}$) where:
-    \begin{gather*}
-        v_{aut} = \mathbb{E}_{0} \sum_{t=0}^{\infty} \beta^{t} u(y_{t}) = \frac{1}{1-\beta} \sum_{s=1}^{S} \Pi_{s} u(\overline{y}_{s})
-    \end{gather*}
-    where the continuation utility under autarky is the weighted sum of the possible realizations from the endowment (which due to iid we can remove the dependency of $y$ on time). Note that we can use the geometric series transformation to remove the dependency of $\beta$ on time, giving us a time independent equation
-    \begin{itemize}
-        \item \underline{Participation Contraint}: since autarky is the outside option of the agents, the optimal contract must satisfy the participation constaints where the value of the contract is worth more than the value of autarky (otherwise the HH will default) :
-        \begin{gather*}
-            u(\overbrace{f_{t}(y^{t})}^{\begingroup\color{magenta} c_{t} \endgroup}) + \underbrace{\beta \mathbb{E}_{t} \sum_{j=1}^{\infty} \beta^{j-1} u(\overbrace{f_{t+j}(y^{t+j})}^{\begingroup\color{magenta} c_{t+j} \endgroup})}_{\begingroup\color{magenta} w_{t}(y^{t}): \ \text{continuation utility at t} \endgroup} \geq u(y_{t}) + \beta v_{aut}
-        \end{gather*}
-        for all $t, y^{t}$
-        A contract that satisfies the participation contraint is said to be self-enforcing. Participation constraints can be written as
-        \begin{gather*}
-            u(f_{t}(y^{t})) + \beta \begingroup\color{cyan} w_{t}(y^{t}) \endgroup \geq u(y_{t}) + \beta v_{aut}
-        \end{gather*}
-        for all $t, y^{t}$ where
-        \begin{gather*}
-            \begingroup\color{cyan} w_{t}(y^{t}) \endgroup \equiv \mathbb{E}_{t} \sum_{j=1}^{\infty} \beta^{j-1} u(f_{t+j} (y^{t+j}))
-        \end{gather*}
-        is the continuation utility of the agent at time $t$, given endowment history $y^{t}$
-        \item  \underline{Moneylender Problem}: each period the money lender chooses how much to give to the HH and how much that they will promise to transfer in the future (which is encoded in $w$). Therefore, the the money lender solves
-        \begin{gather*}
-            P(v) = \max_{\left\{ c_{s}, w_{s} \right\} } \sum_{s=1}^{S} \Pi_{s} [\overline{y}_{s} - c_{s} + \beta P(w_{s})]
-        \end{gather*}
-        subject to
+        \item \underline{Logic}: to see how this works, consider the following way of representing a contract $\left\{ f_{t} \right\}$ in terms of a state variable $x_{t}$:
         \begin{align*}
-            \sum_{s=1}^{S} \Pi_{s} [u(c_{s}) + \beta w_{s}] \geq v & \rightarrow \ \text{Promise Keeping Constraint} \\
-            u(c_{s}) + \beta w_{s} \geq u(\overline{y}_{s}) + \beta v_{aut}, \ \ s = 1, \dots, S & \rightarrow \ \text{Participation Constraint}
+            c_{t} &= g(x_{t}) \\
+            x_{t+1} &= \mu (x_{t}, y_{t})
         \end{align*}
-        Here $w_{s} \in [v_{aut}, \overline{v}]$ where $\overline{v}$ is a large number. $w_{s}$ is the promised future transfers from next period onwards while $w$ is the previous promised transfers from last period. We have one state variable, promised utility $v$. The Promise Keeping Constraint states that the amount the HH gets in expectation must be greater than $v$, in other words the moneylender must be able to fulfil the contract. The Promise Keeping Constraint renders the planning problem time-consistent.
+        Here $g$ and $\mu$ are time-invariant functions. Notice that by iterating the $\mu(\cdot)$ function $t$ times starting from $(x_{0}, y_{0})$, one obtains
+        \begin{gather*}
+            x_{t} = m_{t}(x_{0}; y_{t-1}, \dots, y_{0}), \ \ \ t \geq 1
+        \end{gather*}
+        This allows one to summarize large dimensional shocks and rewards into a single variable and thus $x_{t}$ summarizes histories of endowments
+    \end{itemize}
+    \item \underline{Participation Contraint}: since autarky is the outside option of the agents, the optimal contract must satisfy the participation constaints where the value of the contract is worth more than the value of autarky (otherwise the HH will default) :
+    \begin{gather*}
+        u(\overbrace{f_{t}(y^{t})}^{\begingroup\color{magenta} c_{t} \endgroup}) + \underbrace{\beta \mathbb{E}_{t} \sum_{j=1}^{\infty} \beta^{j-1} u(\overbrace{f_{t+j}(y^{t+j})}^{\begingroup\color{magenta} c_{t+j} \endgroup})}_{\begingroup\color{magenta} w_{t}(y^{t}): \ \text{continuation utility at t} \endgroup} \geq u(y_{t}) + \beta v_{aut}
+    \end{gather*}
+    for all $t, y^{t}$ \\
+    A contract that satisfies the participation contraint is said to be self-enforcing. Participation constraints can be written as
+    \begin{gather*}
+        u(f_{t}(y^{t})) + \beta \begingroup\color{cyan} w_{t}(y^{t}) \endgroup \geq u(y_{t}) + \beta v_{aut}
+    \end{gather*}
+    for all $t, y^{t}$ where
+    \begin{gather*}
+        \begingroup\color{cyan} w_{t}(y^{t}) \endgroup \equiv \mathbb{E}_{t} \sum_{j=1}^{\infty} \beta^{j-1} u(f_{t+j} (y^{t+j}))
+    \end{gather*}
+    is the continuation utility of the agent at time $t$, given endowment history $y^{t}$
+    \item  \underline{Promise Keeping Constraint}: the Promise Keeping Constraint states that the amount the HH gets in expectation must be greater than $v$, in other words the moneylender must be able to fulfil the contract such that
+    \begin{gather*}
+        \sum_{s=1}^{S} \Pi_{s} [u(c_{s}) + \beta w_{s}] \geq v
+    \end{gather*}
+    this renders the planning problem time-consistent with $w_{t}$ encoding the received endowments from the contracts history
+    \item  \underline{Moneylender Problem}: each period the money lender chooses how much to give to the HH and how much that they will promise to transfer in the future (which is encoded in $w$) in order to make the contract "self-enforcing". Therefore, the the money lender solves
+    \begin{gather*}
+        P(v) = \max_{\left\{ c_{s}, w_{s} \right\} } \sum_{s=1}^{S} \Pi_{s} [\overline{y}_{s} - c_{s} + \beta P(w_{s})]
+    \end{gather*}
+    subject to
+    \begin{align*}
+        \sum_{s=1}^{S} \Pi_{s} [u(c_{s}) + \beta w_{s}] \geq v & \rightarrow \ \text{Promise Keeping Constraint} \\
+        u(c_{s}) + \beta w_{s} \geq u(\overline{y}_{s}) + \beta v_{aut}, \ \ s = 1, \dots, S & \rightarrow \ \text{Participation Constraint}
+    \end{align*}
+    Here $w_{s} \in [v_{aut}, \overline{v}]$ where $\overline{v}$ is a large number. $w_{s}$ is the \textit{future} sum of realized transfers from previous periods while $w$ is the sum of realized transfers from previous periods. We have one state variable, promised utility $v$.
+    \begin{itemize}
+        \item  \underline{Characterisation}: it can be shown that the constraint set is convex and P is stictly concave (as well as differentiable). Given this we have the following lemmas that essentially state that agents have incentives to walk away when income realisations are large enough - wherein the participation constraint will bind for a $\overline{y}_{s}$ that is significantly high
         \begin{itemize}
-            \item \underline{Promised Utility $w$}: encodes all history dependence in the contract, allowing one to summarize large dimensional shocks and rewards into a single variable - i.e. continuation utility given the history of endowment shocks
-            \item  \underline{Characterisation}: it can be shown that the constraint set is convex and P is stictly concave (as well as differentiable). Given this we have the following lemmas that essentially state that agents have incentives to walk away when income realisations are large enough - wherein the participation constraint will bind for a $\overline{y}_{s}$ that is significantly high
-            \begin{itemize}
-                \item \underline{Lemma 1}: for each $v$, there exists a threshold $\underline{y}(v)$ such that the PC binds binds if and only if $\overline{y}_{s} \geq \overline{y}(v)$
-                \item  \underline{Lemma 2}: the threshold $\overline{y}(v)$ is increasing in v
-                \item  \underline{Proof}: we write the lagrangian as
-                \begin{gather*}
-                    \mathcal{L} = \sum_{s=1}^{S} \Pi_{s} [\overline{y}_{s} - c_{s} + \beta P(w_{s})] \\ + \varepsilon \left\{ \sum_{s=1}^{S} \Pi_{s} [u(c_{s}) + \beta w_{s} - v \right\} \\ +  \sum_{s=1}^{S} \eta_{s} \left\{ u(c_{s}) + \beta w_{s} - u(\overline{y}_{s}) - \beta v_{aut} \right\}
-                \end{gather*}
-                where $\varepsilon$ and $\eta$ are the lagrangian multipliers on the Promise Keeping Constraint and Participation Contraint respectively. Taking first order conditions and applying the envelope theorem yields the following:
-                \begin{align*}
-                    \frac{\partial \mathcal{L}}{\partial C_{s}} = 0 &\rightarrow -\Pi_{s} + \varepsilon \Pi_{s} u^{'}(C_{s}) + \eta_{s} u^{'} (C_{s}) = 0 \tag{(1)} \\
-                    \frac{\partial \mathcal{L}}{\partial w_{s}} = 0 &\rightarrow \eta_{s} + \varepsilon \Pi_{s} = - \Pi_{s}P^{'}(w_{s}) \tag{(2)} \\
-                    \text{Envelope Theorem}: \ \ &\rightarrow P'(v) = - \varepsilon < 0 \tag{(3)}
-                \end{align*}
-                Rearranging equations $(1)$ and $(2)$ for $\varepsilon \Pi_{s} + \eta_{s}$ and solving them simultaneously yields
-                \begin{align*}
-                    u^{'}(C_{s}) = - P^{'}(w_{s})^{-1} \tag{(4)}
-                \end{align*}
-                It is clear to see that the LHS of this equation falls with $C_{s}$ due to concavity of $u(\cdot)$ and the RHS of this equation falls with $w_{s}$ due to concavity of $P(\cdot)$. This implies that $C_{s}$ and $w_{s}$ are positively related.
+            \item \underline{Lemma 1}: for each $v$, there exists a threshold $\underline{y}(v)$ such that the PC binds binds if and only if $\overline{y}_{s} \geq \overline{y}(v)$
+            \item  \underline{Lemma 2}: the threshold $\overline{y}(v)$ is increasing in v
+            \item  \underline{Proof}: we write the lagrangian as
+            \begin{gather*}
+                \mathcal{L} = \sum_{s=1}^{S} \Pi_{s} [\overline{y}_{s} - c_{s} + \beta P(w_{s})] \\ + \varepsilon \left\{ \sum_{s=1}^{S} \Pi_{s} [u(c_{s}) + \beta w_{s} - v \right\} \\ +  \sum_{s=1}^{S} \eta_{s} \left\{ u(c_{s}) + \beta w_{s} - u(\overline{y}_{s}) - \beta v_{aut} \right\}
+            \end{gather*}
+            where $\varepsilon$ and $\eta$ are the lagrangian multipliers on the Promise Keeping Constraint and Participation Contraint respectively. Taking first order conditions and applying the envelope theorem yields the following:
+            \begin{align*}
+                \frac{\partial \mathcal{L}}{\partial C_{s}} = 0 &\rightarrow -\Pi_{s} + \varepsilon \Pi_{s} u^{'}(C_{s}) + \eta_{s} u^{'} (C_{s}) = 0 \tag{(1)} \\
+                \frac{\partial \mathcal{L}}{\partial w_{s}} = 0 &\rightarrow \eta_{s} + \varepsilon \Pi_{s} = - \Pi_{s}P^{'}(w_{s}) \tag{(2)} \\
+                \text{Envelope Theorem}: \ \ &\rightarrow P'(v) = - \varepsilon < 0 \tag{(3)}
+            \end{align*}
+            Rearranging equations $(1)$ and $(2)$ for $\varepsilon \Pi_{s} + \eta_{s}$ and solving them simultaneously yields
+            \begin{align*}
+                u^{'}(C_{s}) = - P^{'}(w_{s})^{-1} \tag{(4)}
+            \end{align*}
+            It is clear to see that the LHS of this equation falls with $C_{s}$ due to concavity of $u(\cdot)$ and the RHS of this equation falls with $w_{s}$ due to concavity of $P(\cdot)$. This implies that $C_{s}$ and $w_{s}$ are positively related.
+            \newline
+            Combining $(3)$ and $(2)$ yields the law of motion for continuation Utility
+            \begin{align*}
+                P^{'}(w_{s}) = P^{'}(v) - \frac{\eta_{s}}{\Pi_{s}} \tag{(5)}
+            \end{align*}
+            \newline
+            \underline{Lemma 1 Proof}
+            \newline
+            Take as given that $\overline{y}_{s}$ subject to PC is not binding (i.e. $\eta_{s} = 0$), therefore by $(5)$ we have
+            \begin{gather*}
+                P^{'}(w_{s}) = P^{'}(v) \Rightarrow w_{s} = v \ \ \text{by concavity}
+            \end{gather*}
+            Using this fact into $(4)$ we can write $c$ as a function of only $v$ and so have
+            \begin{gather*}
+                u^{'}(C_{s}) = -P^{'} (v)^{-1}
+            \end{gather*}
+            Which can be rewritten as $C_{s} = g_{1}(v), \ \ g_{1}^{'} > 0$. This allows us to rewrite the PC as
+            \begin{gather*}
+                u(C_{s}) + \beta w_{s} > u(\overline{y}_{S}) + \beta v_{aut} \\
+                \Big\Downarrow \\
+                u(g_{1}(v)) + \beta v > u(\overline{y}) + \beta v_{aut} \equiv \overline{y}(v) \\
+                \Big\Downarrow \\
+                \underbrace{u^{-1} (u(g_{1}(v)) _ \beta (v-v_{aut}))}_{\begingroup\color{cyan} \equiv \overline{y}(v) \endgroup} > \overline{y_{s}}
+            \end{gather*}
+            Thus, given the definition of $\overline{y}(v)$, the PC is not binding if and only if $\overline{y}_{s} < \overline{y}(v)$
+            \newline
+            \underline{Lemma 2 Proof}
+            \newline
+            Given the definition of $\overline{y}(v)$ from the proof for Lemma 1, this is straightforward
                 \newline
-                Combining $(3)$ and $(2)$ yields the law of motion for continuation Utility
-                \begin{align*}
-                    P^{'}(w_{s}) = P^{'}(v) - \frac{\eta_{s}}{\Pi_{s}} \tag{(5)}
-                \end{align*}
-                \newline
-                \underline{Lemma 1 Proof}
-                \newline
-                Take as given that $\overline{y}_{s}$ subject to PC is not binding (i.e. $\eta_{s} = 0$), therefore by $(5)$ we have
-                \begin{gather*}
-                    P^{'}(w_{s}) = P^{'}(v) \Rightarrow w_{s} = v \ \ \text{by concavity}
-                \end{gather*}
-                Using this fact into $(4)$ we can write $c$ as a function of only $v$ and so have
-                \begin{gather*}
-                    u^{'}(C_{s}) = -P^{'} (v)^{-1}
-                \end{gather*}
-                Which can be rewritten as $C_{s} = g_{1}(v), \ \ g_{1}^{'} > 0$. This allows us to rewrite the PC as
-                \begin{gather*}
-                    u(C_{s}) + \beta w_{s} > u(\overline{y}_{S}) + \beta v_{aut} \\
-                    \Big\Downarrow \\
-                    u(g_{1}(v)) + \beta v > u(\overline{y}) + \beta v_{aut} \equiv \overline{y}(v) \\
-                    \Big\Downarrow \\
-                    \underbrace{u^{-1} (u(g_{1}(v)) _ \beta (v-v_{aut}))}_{\begingroup\color{cyan} \equiv \overline{y}(v) \endgroup} > \overline{y_{s}}
-                \end{gather*}
-                Thus, given the definition of $\overline{y}(v)$, the PC is not binding if and only if $\overline{y}_{s} < \overline{y}(v)$
-                \newline
-                \underline{Lemma 2 Proof}
-                \newline
-                Given the definition of $\overline{y}(v)$ from the proof for Lemma 1, this is straightforward
-                    \newline
-                    \begin{center}
-                    \includegraphics[width=4cm, height=3cm]{pic11}
-                    \end{center}
-            \end{itemize}
+                \begin{center}
+                \includegraphics[width=4cm, height=3cm]{pic11}
+                \end{center}
         \end{itemize}
-        \item \underline{Properties of PC Binding vs Not Binding}
-        Suppose PC is not binding, then $w_{s} = v$ and $C_{s} = g_{1}(v)$ where $g_{1}^{'} > 0$. Therefore, if PC is not binding then $w_{s}$ and $C_{s}$ remain constant
-        Suppose PC is binding, then $w_{s} = l(\overline{y}_{s}) > v$ and $C_{s} = g_{2}(\overline{y}_{s}) \in (g_{1}(v), \overline{y}_{s})$ where $l^{'}, g_{2}^{'} \geq 0$. Therefore, if PC is binding then $w_{s}$ and $C_{s}$ must increase to induce the agent not to walk away from the contract - wherein $w_{s}$ and $c_{s}$ only depend on current income realisations (and not on the history of shocks given by  $v$)
+    \end{itemize}
+    \item \underline{Properties of PC Binding vs Not Binding}
+    Suppose PC is not binding, then $w_{s} = v$ and $C_{s} = g_{1}(v)$ where $g_{1}^{'} > 0$. Therefore, if PC is not binding then $w_{s}$ and $C_{s}$ remain constant
+    Suppose PC is binding, then $w_{s} = l(\overline{y}_{s}) > v$ and $C_{s} = g_{2}(\overline{y}_{s}) \in (g_{1}(v), \overline{y}_{s})$ where $l^{'}, g_{2}^{'} \geq 0$. Therefore, if PC is binding then $w_{s}$ and $C_{s}$ must increase to induce the agent not to walk away from the contract - wherein $w_{s}$ and $c_{s}$ only depend on current income realisations (and not on the history of shocks given by  $v$)
+    \begin{itemize}
+        \item \underline{Consumption under Oprtimal Contract}: graphically, given v, consumption under the optimal contract is
+            \newline
+            \begin{center}
+            \includegraphics[width=8cm, height=6cm]{pic12}
+            \end{center}
+        \item \underline{Long Run Dynamics}: $c_{t}$ increases over time until $\overline{y}_{S}$ is realized
+            All agents eventually become fully insured (no fluctuations in consumptions) when their highest income realization $\overline{y}_{S}$ is realized and therefore $C$ eventually becomes constant.
+            \newline
+            \begin{center}
+            \includegraphics[width=8cm, height=6cm]{pic13}
+            \end{center}
+            With many HHs, all agents eventually get to consume $g_{1}(\overline{v})$: $\lim_{t \rightarrow \infty} \Pr(c_{t} = g_{1}(\overline{v})) = 1$. Overall, we have "fanning in" of the cross-sectional distribution of consumption and full risk sharing in the long run (ie t=500)
+            \newline
+            \begin{center}
+            \includegraphics[width=8cm, height=6cm]{pic14}
+            \end{center}
+        \item  \underline{Not Binding Proof}: shown in the proof of the lemma
+        \item  \underline{Binding Proof}: assume that PC is binding
         \begin{itemize}
-            \item \underline{Consumption under Oprtimal Contract}: graphically, given v, consumption under the optimal contract is
-                \newline
-                \begin{center}
-                \includegraphics[width=8cm, height=6cm]{pic12}
-                \end{center}
-            \item \underline{Long Run Dynamics}: $c_{t}$ increases over time until $\overline{y}_{S}$ is realized
-                All agents eventually become fully insured (no fluctuations in consumptions) when their highest income realization $\overline{y}_{S}$ is realized and therefore $C$ eventually becomes constant.
-                \newline
-                \begin{center}
-                \includegraphics[width=8cm, height=6cm]{pic13}
-                \end{center}
-                With many HHs, all agents eventually get to consume $g_{1}(\overline{v})$: $\lim_{t \rightarrow \infty} \Pr(c_{t} = g_{1}(\overline{v})) = 1$. Overall, we have "fanning in" of the cross-sectional distribution of consumption and full risk sharing in the long run (ie t=500)
-                \newline
-                \begin{center}
-                \includegraphics[width=8cm, height=6cm]{pic14}
-                \end{center}
-            \item  \underline{Not Binding Proof}: shown in the proof of the lemma
-            \item  \underline{Binding Proof}: assume that PC is binding
-            \begin{itemize}
-                \item \underline{Step 1}: show that $w_{s}$ and $c_{s}$ are only functions of $\overline{y}_{s}$
-                \newline
-                By FOC $(4)$ we have $u^{1} (C_{s}) = -P^{'}(w_{s})^{-1}$ and given the fact that PC is binding we have $u(C_{s}) + \beta w_{s} = u(\overline{y}_{s}) + \beta v_{aut}$. Note that these two equations form a system of 2 equations in 2 unknowns ($C_{s}, w_{s}$). Since promised $v$ does not show up in this system we can write its solution as $w_{s} = \mathcal{l}(\overline{y}_{s})$ and $C_{s} = g_{2}(\overline{y}_{s})$
-                \item  \underline{Step 2}: show that $g_{2}^{'} > 0$ and $\mathcal{l}^{'} > 0$
-                \newline
-                By $u(C_{s}) + \beta w_{s} = u(\overline{y}_{s}) + \beta v_{aut}$ we know that $[u(C_{s}) + \beta w_{s}]$ is non-decreasing in $\overline{y}_{s}$. Also, by $u^{1} (C_{s}) = -P^{'}(w_{s})^{-1}$ (as shown previously), $C_{s}$ is non-decreasing in $w_{s}$ and hence $C_{s}$ should be non-decreasing in $\overline{y}_{s}$
-                \item  \underline{Step 3}: show that $w_{s} > v$
-                \newline
-                By $P^{'}(w_{s}) = P^{'}(v) - \tfrac{\eta_{s}}{\Pi_{s}}$, if the PC binds then $\eta_{s} > 0$ and so $P^{'}(w_{s}) < P^{'}(v) \Rightarrow w_{s} > v$ via concavity
-                \item  \underline{Step 4}: show that $C_{s} \in (g_{1}(v), \overline{y}_{s})$
-                \newline
-                A binding PC implies that $u(C_{s}) + \beta w_{s} = u(\overline{y}_{s}) + \beta v_{aut}$. Therefore, $c_{s} < \overline{y}_{s}$. Because $w_{s} > v$ we have
-                \begin{gather*}
-                    -P^{'}(w_{s})^{-1} < -P^{'}(v)^{-1} \\
-                    \Big\Downarrow \\
-                    u^{'}(C_{s}) < u^{'}(g_{1}(v)) \ \ \text{by (4)} \\
-                    \Big\Downarrow \\
-                    C_{s} > g_{1}(v)
-                \end{gather*}
-            \end{itemize}
+            \item \underline{Step 1}: show that $w_{s}$ and $c_{s}$ are only functions of $\overline{y}_{s}$
+            \newline
+            By FOC $(4)$ we have $u^{1} (C_{s}) = -P^{'}(w_{s})^{-1}$ and given the fact that PC is binding we have $u(C_{s}) + \beta w_{s} = u(\overline{y}_{s}) + \beta v_{aut}$. Note that these two equations form a system of 2 equations in 2 unknowns ($C_{s}, w_{s}$). Since promised $v$ does not show up in this system we can write its solution as $w_{s} = \mathcal{l}(\overline{y}_{s})$ and $C_{s} = g_{2}(\overline{y}_{s})$
+            \item  \underline{Step 2}: show that $g_{2}^{'} > 0$ and $\mathcal{l}^{'} > 0$
+            \newline
+            By $u(C_{s}) + \beta w_{s} = u(\overline{y}_{s}) + \beta v_{aut}$ we know that $[u(C_{s}) + \beta w_{s}]$ is non-decreasing in $\overline{y}_{s}$. Also, by $u^{1} (C_{s}) = -P^{'}(w_{s})^{-1}$ (as shown previously), $C_{s}$ is non-decreasing in $w_{s}$ and hence $C_{s}$ should be non-decreasing in $\overline{y}_{s}$
+            \item  \underline{Step 3}: show that $w_{s} > v$
+            \newline
+            By $P^{'}(w_{s}) = P^{'}(v) - \tfrac{\eta_{s}}{\Pi_{s}}$, if the PC binds then $\eta_{s} > 0$ and so $P^{'}(w_{s}) < P^{'}(v) \Rightarrow w_{s} > v$ via concavity
+            \item  \underline{Step 4}: show that $C_{s} \in (g_{1}(v), \overline{y}_{s})$
+            \newline
+            A binding PC implies that $u(C_{s}) + \beta w_{s} = u(\overline{y}_{s}) + \beta v_{aut}$. Therefore, $c_{s} < \overline{y}_{s}$. Because $w_{s} > v$ we have
+            \begin{gather*}
+                -P^{'}(w_{s})^{-1} < -P^{'}(v)^{-1} \\
+                \Big\Downarrow \\
+                u^{'}(C_{s}) < u^{'}(g_{1}(v)) \ \ \text{by (4)} \\
+                \Big\Downarrow \\
+                C_{s} > g_{1}(v)
+            \end{gather*}
         \end{itemize}
     \end{itemize}
     \item \underline{Connection to Labour Contracts}: early work on one-sided limited commitment models aimed at analysing the characteristics of labour contracts. In our model this can be mapped as $C$ being the wage offered within a firm, $y$ shock being wages offered in the spot market, and the enforcement friction being labour mobility. Since workers are risk-averse, they value insurance against fluctuations in the spot market for wages (i.e. implicit insurance premium in contractual wages). Firms find contractual arrangement beneficial because in the short run they can pay wages below those in the spot market (due to the implicity insurance premium), which is embedded by $C_{s} < \overline{y}_{s}$ when PC binds in our model
