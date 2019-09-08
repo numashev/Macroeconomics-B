@@ -72,6 +72,16 @@
     \item  \underline{Policy Function}: the optimal value for the control variables, given the states
 \end{itemize}
 \vspace{2.5mm}
+\par \underline{Primer on Dynamic Programming Concepts}: any optimization problem has some objective (such as minimizing cost) with the mathematical function that describes this objective being called the objective function.
+Dynamic programming breaks a multi-period planning problem into smaller steps at different points in time and therefore it requires keeping track of how the decision situation is evolving over time. The information about the current situation that is needed to make a correct decision is called the "the state". For example, to decide how much to consume and spend at each point in time, people would need to know their initial wealth and therfore wealth would be one of their state variables.
+The variables chosen at any given point in time are often called the "control" variables. For example, given their current wealth, people might decide how much to consume now. Choosing the control variables now may be equivalent to choosing the next state, since the next state is affected by the current control (in addition to other factors). For example, today's wealth (the state) and consumption (the control) might exactly determine tomorrow's wealth (the new state).
+The dynamic programming approach describes the optimal plan by finding a rule that tells what the control should be, given any possible value of the state. For example, if consumption $(c)$ depends only on wealth $(w)$ then we would seek a rule $c(w)$ that gives consumption as a function of wealth. Such a rule, determining the controls as a function of the states, is called a "policy function".
+Finally, the optimal decision rule is the one that achieves the best possible value of the objective. For example, if someone chooses consumption, given wealth, in order to maximize happiness (represented by a utility function), then each level of wealth with be associated with some highest possible level of happines $H(w)$. The best possible value of the objective, written as a function of the state, is called the value function.
+\vspace{1mm}
+Therefore, a dynamic optimization problem in discrete time can be stated in a recursive, step-by-step, form known as backward induction by writing down the relationship between the value function in one period and the value function in the next period. The relationship between these two value functions is called the "Bellman Equation". In this approach, the optimal policy in the last time period is specified in advance as a function of the state variable's value at that time, and the resulting optimal value of the objective function is thus expressed in terms of that value of the state variable.
+Next, the next-to-last period's optimization involves maximizing the sum of that period's period-specific objective function and the optimal value of the future objective function, giving that period's optimal policy contingent upon the value of the state variable as of the next-to-last period decision.
+This logic continues recursively back in time, until the first period decision rule is derived, as a function of the initial state variable value, by optimizing the sum of the first-period-specific objective function and the value of the second period's value function, which gives the value for all the future periods. Thus, each period's decision is made by explicitly acknowledging that all future decisions will be optimally made.
+\vspace{2.5mm}
 \par \underline{Finite Horizon Problem}: consider a decision-maker solving the deterministic problem
 \begin{gather*}
     \max_{\{ u_{t} \} _{t=0}^{T−1}} \sum_{t=0}^{T-1} \beta^{t}r(x_{t},u_{t}) + W(x_{T}) \\ \text{subject to:} \ x_{t+1} = g(x_{t}, u_{t}) \ \forall t, \ \ \ x_{0} \ \text{is given}
@@ -511,7 +521,7 @@ There are two main issues with conventional solution methods to this problem; (1
 
 \newpage
 
-\section{Enforcement Frictions I}
+\section{Enforcement Frictions I - One-Sided}
 
 \vspace{2.5mm}
 \par \underline{Overview}: the analysis of contractual arrangements and enforcement frictions aims to rectify conflicts of interest that arise from violations of two assumptions - (1) both parties were perfectly committed to the rules of the exchange, (2) both parties in the exchange shared the same information. Dropping either of these assumptions creates conflicts of interest
@@ -700,6 +710,90 @@ where $(y_{t} - c_{t})$ is the net transfer from HH at time t
 
 \newpage
 
-Test
+\section{Enforcement Contracts II - Two-Sided}
+
+\vspace{2.5mm}
+\par \underline{Overview}: two agents "share risk" if they use state-contingent transfers to increase the expected utility of both, by reducing the risk of at least one. In the absence of contractual frictions there should be full risk sharing with all idiosyncratic risk eliminated and only aggregate risk affecting individuals' consumption. However, despite this we find that, even after conditioning for aggregate income, individual income is positively correlated with current and lagged individual income (i.e. risk is not shared across time). This inconsistency has three causes.
+\begin{itemize}
+    \item  \underline{Cause 1 - Exogeneously Incomeplete Markets}: occurs when there are more states than assets and therefore transferring wealth across certain is restricted. For example, in Bewley-Hugget-Aiyagari models agents can only use a single bond to insure against idiosyncratic labour income shocks. However, this involves assuming that some asset markets are shut down - such as through arbitray assumptions about which assets are available (conclusions are sensitive to these assumptions)
+    \item  \underline{Cause 2 - Private Information Frictions}: occurs when consumption is correlated with individual income to induce truth-telling or adequate efforce. This involves two major drawbacks:
+    \begin{itemize}
+        \item  \underline{Drawback 1 - Imperfect Risk Sharing}: holds event in environments where informational asymmetries are small (e.g. village economies or within families)
+        \item  \underline{Drawback 2 - Longrun Implications of Private Infomration}: these models are counterfactual
+    \end{itemize}
+    \item  \underline{Cause 3 - Two-sided Limited Commitment}: occurs when there is an optimal insurance arrangement between two agents who lack commitment. This differs from one-sided limited commitment (where agents can default but principals cannot) in that both the principal and the agent can default. The key results of modelling two-sided limited commitment are that incomeplete risk sharing can be perpetual and the amount of risk sharing endogenously emanates from limited enforcement frictions
+\end{itemize}
+\vspace{2.5mm}
+\par \underline{Kocherlakota Model of Two-sided Limited Commitment}: involves two infinitely-lived agents subject to endowment shocks where the state of the world is determined by realization of $\theta_{t} \in \left\{ 1, \dots, S \right\}$, which is iid with $\Pr (\theta_{t} = s) = \pi_{s} > 0$. In other words, the endowment profile of the agents, $(y_{t}^{1}, y_{t}^{2})$ is determined by realization of $\theta_{t}$.
+The aggregate endowment is $Y_{t} = y_{t}^{1} + y_{t}^{2} \geq 0$ and the joint distribution of endowments is symmetric such that $\Pr(y, y^{'}) = \Pr(y', y)$ \footnote{a special case occurs where there is no aggregate uncertainty (i.e. $Y_{t} = 1$), $\theta_{t} \in [0,1]$, $y_{t}^{1} = \theta_{t}, \ y_{t}^{2} = 1 - \theta_{t}$, and the distribution of $\theta_{t}$ is symmetric around 1/2}.
+Given identical preferences, both agents have the following objective function
+\begin{gather*}
+\mathbb{E}_{0} \sum_{t=0}^{\infty}\beta_{t-1}u(c_{t})
+\end{gather*}
+where $\beta \in (0,1)$, u is increasing, strictly concave, and differentiable.
+An allocation $\textbf{c} = \left\{ c_{t}^{j}\right\}_{t=1, j=1}^{\infty, 2}$ is feasible if and only if $$c_{t}^{1} + c_{t}^{2} \leq Y_{t}$$ for all $t = 1, 2, \dots, \infty$
+\begin{itemize}
+    \item  \underline{Assumptions}: there is no outside lender (agents can only contract with other agents)
+    \item \underline{Contract}: agents sign a contract to insure against endowment shocks and each agent can walk away from the contract at time $t$. Agents proceed with the following steps per period
+    \begin{itemize}
+        \item  \underline{Step 1}: $\theta_{t}$ is realized and therefore $(y_{t}^{1}, y_{t}^{2})$ is observed by both agents
+        \item  \underline{Step 2}: each individual $j$ simultaneously transfers $TR_{t}^{j} = y_{t}^{j} - c_{t}^{j}$ to the other
+    \end{itemize}
+    \item  \underline{Autarky}: if an agent defaults, they live in autark forever with utility
+    \begin{gather*}
+        v_{aut} = \sum_{s=1}^{S} \pi_{s} \big[ u(y_{s}^{j}) + \beta V_{aut} \big]
+    \end{gather*}
+    Note that the symmetry of distribution of $(y_{t}^{1}, y_{t}^{2})$ guarantees that $v_{aut}^{1} = v_{aut}^{2}$
+    \item  \underline{Participation Constraints} in order to induce participation and prevent an agent from defaulting the following participation constraint must hold
+    \begin{gather*}
+        u(c_{t}^{j}) + \mathbb{E}_{t}\sum_{\tau = 1}^{\infty} \beta^{\tau}u(c_{t+\tau}^{j}) \geq u(y_{t}^{j}) + \beta V_{aut}, \ \ \ j = 1,2
+    \end{gather*}
+    for all dates and states.
+    Note that an allocation $\textbf{c}$ is sustainable if it is feasible and satisfies participation constraints
+    \item  \underline{Efficient Allocations}: a sustainable allocation $\textbf{c}$ is efficient if there is no other sustainable allocation providing both individuals with at least as much utility and one individual with more (i.e. an efficient allocation is Pareto Optimal)
+    \item  \underline{Contract Design with a Principal and an Agent}: efficient allocations can be found by solving the planning problem
+    \begin{gather*}
+        V(w) = \max_{c_{s}, w_{s}} \sum_{s=1}^{S} \pi_{s} \big[u(Y_{s} - c_{s}) + \beta V(w_{s})\big] \\
+        \text{s.t:} \ \ \sum_{s=1}^{S} \pi_{s} [u(c_{s}) + \beta w_{s}] = w \\
+        u(c_{s}) + \beta w_{s} \geq u(y_{s}^{1}) + \beta V_{aut}, \ \ \ \forall s \\
+        u(Y_{s} - c_{s}) + \beta V(w_{s}) \geq u(Y_{s} - y_{s}^{1}) + \beta V_{aut}, \ \ \ \forall s
+    \end{gather*}
+    where $w \in [V_{aut}, V_{max}]$
+    Note that $(c_{s}, w_{s})$ are the consumption and continuation utility allocations of Agent 1 given state s, $(Y_{s} - c_{s}, V(w_{s}))$ are the consumption and continuation utility allocations of Agent 2 given state s, and $V(w)$ represents the Pareto frontier (traced out by changing $w$)
+    \begin{itemize}
+        \item  \underline{First Best Allocation} for the first best allocation there is full risk sharing and we solve
+        \begin{gather*}
+            V(w) = \max_{c_{s}, w_{s}} \sum_{s=1}^{S} \pi_{s} [u(Y_{s} - c_{s}) + \beta V(w_{s})] \\
+            \text{s.t:} \ \ \sum_{s=1}^{S} \pi_{s} [u(c_{s}) + \beta w_{s}] = w
+        \end{gather*}
+        The solution will be driven by the pattern of binding PCs wher ethe possible stated of the world can be divided into four groups
+        \begin{itemize}
+            \item  \underline{State 1}: in which $PC_{1}$ binds
+            \item  \underline{State 2}: in which $PC_{2}$ binds
+            \item  \underline{State 3}: in which neither $PC$ binds
+            \item  \underline{State 4}: in which both $PCs$ bind
+        \end{itemize}
+        Since state 4 never holds if the allocation is efficient only state 1-3 are possibilities
+        \item \underline{Efficient Allocations}: it can be shown that V is differentiable, decreasing, and concave. This implies the following evolution of promised utility given our states:
+        \begin{itemize}
+            \item  \underline{State 1 Evolution}: if $PC_{1}$ binds then $w_{s} > w$
+            \item  \underline{State 2 Evolution}: if $PC_{2}$ binds then $w_{s} < w$
+            \item  \underline{State 3 Evolution}: if neither $PC$ binds then $w_{s} = w$
+        \end{itemize}
+        Analogously to what we shoewd in the one-sided limited commitment model, it follows that:
+        \begin{itemize}
+            \item  $PC_{1}$ binds when $y_{s}^{1}$ is high
+            \item  $PC_{2}$ binds when $y_{s}^{2}$ is high
+            \item  $w_{s}$ is a non-decreasing function of $c_{s}$
+        \end{itemize}
+        Combined with the evolution of promised utilitys this implies that $Cov(c_{t}, y_{t} | Y_{t}) \geq 0$ and therefore we have imperfect risk sharing. Given the correlation result with imperfect risk sharing, lagged individual income occurs since in an efficient allocation $$Cov(c_{t}^{j}, y_{t-k}^{j} | Y_{t-k}) \geq 0$$ for $k \geq 0$ and $j = 1,2$
+        \item \underline{Long-Run Dynamics}: suppose the first best allocation is not sustainable. Then as $t \rightarrow \infty$, $\Pr(w_{t} | w_{0})$ converges in distribution to the same non-degenerate limiting distribution for all $w_{0}$.
+        As a result the first best is typically not sustainable whenever $\beta$ is small enouggh. This result strengthens the previous result on imperfect risk sharing in two dimensions:
+        \begin{itemize}
+            \item  \underline{Dimension 1}: it holds in the long run, as the limiting distribution is non-degenerate
+            \item  \underline{Dimension 2}: the same distribution (and hence correlation) is obtained regardless of initial promised values
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
 
 \end{document}
