@@ -179,8 +179,10 @@ INPUT c:/texlive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/ti
 INPUT c:/texlive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
 INPUT c:/texlive/2019/texmf-dist/tex/latex/titlesec/block.tss
 INPUT c:/texlive/2019/texmf-dist/tex/latex/titlesec/block.tss
-INPUT c:/texlive/2019/texmf-dist/tex/latex/cancel/cancel.sty
-INPUT c:/texlive/2019/texmf-dist/tex/latex/cancel/cancel.sty
+INPUT c:/texlive/2019/texmf-dist/tex/generic/ulem/ulem.sty
+INPUT c:/texlive/2019/texmf-dist/tex/generic/ulem/ulem.sty
+INPUT c:/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/latex-fonts/lasy6.tfm
 INPUT Macroeconomics B Notes.aux
 INPUT Macroeconomics B Notes.aux
 OUTPUT Macroeconomics B Notes.aux
@@ -196,7 +198,6 @@ INPUT c:/texlive/2019/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 INPUT c:/texlive/2019/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 INPUT c:/texlive/2019/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT c:/texlive/2019/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-INPUT c:/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
@@ -272,6 +273,15 @@ INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/euler/eufm10.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/euler/eufm7.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm
+INPUT ./Pictures/pic16.png
+INPUT ./Pictures/pic16.png
+INPUT ./Pictures/pic16.png
+INPUT ./Pictures/pic17.png
+INPUT ./Pictures/pic17.png
+INPUT ./Pictures/pic17.png
+INPUT ./Pictures/pic18.png
+INPUT ./Pictures/pic18.png
+INPUT ./Pictures/pic18.png
 INPUT Macroeconomics B Notes.aux
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
