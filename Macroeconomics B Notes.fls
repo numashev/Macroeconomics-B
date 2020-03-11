@@ -183,6 +183,8 @@ INPUT c:/texlive/2019/texmf-dist/tex/generic/ulem/ulem.sty
 INPUT c:/texlive/2019/texmf-dist/tex/generic/ulem/ulem.sty
 INPUT c:/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/latex-fonts/lasy6.tfm
+INPUT c:/texlive/2019/texmf-dist/tex/latex/calrsfs/calrsfs.sty
+INPUT c:/texlive/2019/texmf-dist/tex/latex/calrsfs/calrsfs.sty
 INPUT Macroeconomics B Notes.aux
 INPUT Macroeconomics B Notes.aux
 OUTPUT Macroeconomics B Notes.aux
@@ -221,11 +223,17 @@ INPUT c:/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT c:/texlive/2019/texmf-dist/tex/latex/calrsfs/OMSrsfs.fd
+INPUT c:/texlive/2019/texmf-dist/tex/latex/calrsfs/OMSrsfs.fd
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm
 INPUT c:/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 INPUT c:/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/rsfs/rsfs5.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT Macroeconomics B Notes.toc
@@ -239,6 +247,8 @@ INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm
 INPUT c:/texlive/2019/texmf-dist/tex/latex/amsfonts/ueuf.fd
 INPUT c:/texlive/2019/texmf-dist/tex/latex/amsfonts/ueuf.fd
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/euler/eufm10.tfm
@@ -282,6 +292,36 @@ INPUT ./Pictures/pic17.png
 INPUT ./Pictures/pic18.png
 INPUT ./Pictures/pic18.png
 INPUT ./Pictures/pic18.png
+INPUT ./Pictures/pic29.png
+INPUT ./Pictures/pic29.png
+INPUT ./Pictures/pic29.png
+INPUT ./Pictures/pic19.png
+INPUT ./Pictures/pic19.png
+INPUT ./Pictures/pic19.png
+INPUT ./Pictures/pic20.png
+INPUT ./Pictures/pic20.png
+INPUT ./Pictures/pic20.png
+INPUT ./Pictures/pic21.png
+INPUT ./Pictures/pic21.png
+INPUT ./Pictures/pic21.png
+INPUT ./Pictures/pic22.png
+INPUT ./Pictures/pic22.png
+INPUT ./Pictures/pic22.png
+INPUT ./Pictures/pic23.png
+INPUT ./Pictures/pic23.png
+INPUT ./Pictures/pic23.png
+INPUT ./Pictures/pic25.png
+INPUT ./Pictures/pic25.png
+INPUT ./Pictures/pic25.png
+INPUT ./Pictures/pic26.png
+INPUT ./Pictures/pic26.png
+INPUT ./Pictures/pic26.png
+INPUT ./Pictures/pic27.png
+INPUT ./Pictures/pic27.png
+INPUT ./Pictures/pic27.png
+INPUT ./Pictures/pic28.png
+INPUT ./Pictures/pic28.png
+INPUT ./Pictures/pic28.png
 INPUT Macroeconomics B Notes.aux
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
@@ -306,4 +346,7 @@ INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb
+INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
 INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
+INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb
+INPUT c:/texlive/2019/texmf-dist/fonts/type1/public/rsfs/rsfs7.pfb

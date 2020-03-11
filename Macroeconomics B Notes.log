@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.5.30)  12 SEP 2019 09:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.5.30)  6 DEC 2019 16:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -429,21 +429,23 @@ File: block.tss 2016/03/15
 \ULC@box=\box46
 Package: ulem 2012/05/18
 \ULdepth=\dimen187
+) (c:/texlive/2019/texmf-dist/tex/latex/calrsfs/calrsfs.sty
+\symrsfscript=\mathgroup6
 ) (./Macroeconomics B Notes.aux)
 \openout1 = `"Macroeconomics B Notes.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
  (c:/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count135
@@ -512,22 +514,24 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 38.
+LaTeX Font Info:    Try loading font information for U+msa on input line 41.
  (c:/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 38.
+LaTeX Font Info:    Try loading font information for U+msb on input line 41.
  (c:/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 38.
+LaTeX Font Info:    Try loading font information for OMS+rsfs on input line 41.
+ (c:/texlive/2019/texmf-dist/tex/latex/calrsfs/OMSrsfs.fd)
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 41.
  (c:/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 38.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 41.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <6> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 38.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 41.
  (./Macroeconomics B Notes.toc)
 \tf@toc=\write4
 \openout4 = `"Macroeconomics B Notes.toc"'.
@@ -536,258 +540,427 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <6> not available
 
 {c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 48.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 51.
 
-Underfull \hbox (badness 10000) in paragraph at lines 72--82
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 72--82
+Underfull \hbox (badness 10000) in paragraph at lines 75--85
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 72--82
+Underfull \hbox (badness 10000) in paragraph at lines 75--85
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 72--82
+Underfull \hbox (badness 10000) in paragraph at lines 75--85
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 72--82
+Underfull \hbox (badness 10000) in paragraph at lines 75--85
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 72--82
+Underfull \hbox (badness 10000) in paragraph at lines 75--85
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 72--82
+Underfull \hbox (badness 10000) in paragraph at lines 75--85
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--85
 
  []
 
 [2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 96--98
+Underfull \hbox (badness 10000) in paragraph at lines 99--101
 
  []
 
 [4] [5]
-LaTeX Font Info:    Try loading font information for U+euf on input line 137.
+LaTeX Font Info:    Try loading font information for U+euf on input line 140.
  (c:/texlive/2019/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 ) [6] [7] [8]
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 256.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 259.
 
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 256.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 259.
 
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 269.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 272.
 
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 269.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 272.
 
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 269.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 272.
 
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 269.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 272.
 
 [9] [10] [11]
-Overfull \hbox (11.32246pt too wide) in paragraph at lines 362--363
+Overfull \hbox (55.79964pt too wide) detected at line 348
+[]
+ []
+
+
+Overfull \hbox (97.31422pt too wide) in paragraph at lines 366--367
+[]$\OML/cmm/m/it/10 V[] \OT1/cmr/m/n/10 = [][] []$ which can be writ-ten as $\OML/cmm/m/it/10 J\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k; ^^R\OT1/cmr/m/n/10 ) = [][] []$ 
+ []
+
+[12]
+Overfull \hbox (86.52692pt too wide) detected at line 395
+[]
+ []
+
+
+Overfull \hbox (8.82169pt too wide) detected at line 399
+[]
+ []
+
+[13]
+Overfull \hbox (236.76392pt too wide) detected at line 404
+[]
+ []
+
+
+Overfull \hbox (5.89487pt too wide) detected at line 410
+[]
+ []
+
+
+Overfull \hbox (27.38547pt too wide) in paragraph at lines 412--414
+[]$[]$\OT1/cmr/m/n/10 : up-date your guess for the pol-icy func-tion by solv-ing $[][] []$ 
+ []
+
+[14] [15]
+Overfull \hbox (11.32246pt too wide) in paragraph at lines 479--480
 []$[]$\OT1/cmr/m/n/10 : if we dis-cretize $\U/euf/m/n/10 x$ \OT1/cmr/m/n/10 then the Bell-man equa-tion be-comes $\OML/cmm/m/it/10 V[] \OT1/cmr/m/n/10 = [][] []$
  []
 
-[12] [13]
-Underfull \hbox (badness 10000) in paragraph at lines 397--399
+[16] [17]
+Underfull \hbox (badness 10000) in paragraph at lines 514--516
 
  []
 
-<./Pictures/pic5.png, id=66, 475.17525pt x 353.52075pt>
+<./Pictures/pic5.png, id=80, 475.17525pt x 353.52075pt>
 File: ./Pictures/pic5.png Graphic file (type png)
 <use ./Pictures/pic5.png>
-Package pdftex.def Info: ./Pictures/pic5.png  used on input line 400.
+Package pdftex.def Info: ./Pictures/pic5.png  used on input line 517.
 (pdftex.def)             Requested size: 113.80511pt x 85.35916pt.
 
-Overfull \hbox (0.23143pt too wide) in paragraph at lines 423--425
+Overfull \hbox (0.23143pt too wide) in paragraph at lines 540--542
 []$[]$\OT1/cmr/m/n/10 : $[](\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ) = 2\OML/cmm/m/it/10 t;   x\OT1/cmr/m/n/10 (0) = 1\OML/cmm/m/it/10 ;   t \OMS/cmsy/m/n/10 2 \OT1/cmr/m/n/10 [0\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1000]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 423--425
+Underfull \hbox (badness 10000) in paragraph at lines 540--542
 
  []
 
-<./Pictures/pic6.png, id=68, 641.39626pt x 201.75375pt>
+<./Pictures/pic6.png, id=82, 641.39626pt x 201.75375pt>
 File: ./Pictures/pic6.png Graphic file (type png)
 <use ./Pictures/pic6.png>
-Package pdftex.def Info: ./Pictures/pic6.png  used on input line 426.
+Package pdftex.def Info: ./Pictures/pic6.png  used on input line 543.
 (pdftex.def)             Requested size: 142.26247pt x 85.35785pt.
-[14 <./Pictures/pic5.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 441--443
+[18 <./Pictures/pic5.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 558--560
 
  []
 
-<./Pictures/pic8.png, id=73, 410.13225pt x 283.65974pt>
+<./Pictures/pic8.png, id=87, 410.13225pt x 283.65974pt>
 File: ./Pictures/pic8.png Graphic file (type png)
 <use ./Pictures/pic8.png>
-Package pdftex.def Info: ./Pictures/pic8.png  used on input line 444.
+Package pdftex.def Info: ./Pictures/pic8.png  used on input line 561.
 (pdftex.def)             Requested size: 113.8099pt x 85.35826pt.
-[15 <./Pictures/pic6.png> <./Pictures/pic8.png>] [16] [17]
-Underfull \hbox (badness 10000) in paragraph at lines 499--501
+[19 <./Pictures/pic6.png> <./Pictures/pic8.png>] [20] [21]
+Underfull \hbox (badness 10000) in paragraph at lines 616--618
 
  []
 
-<./Pictures/pic9.png, id=85, 238.491pt x 151.767pt>
+<./Pictures/pic9.png, id=100, 238.491pt x 151.767pt>
 File: ./Pictures/pic9.png Graphic file (type png)
 <use ./Pictures/pic9.png>
-Package pdftex.def Info: ./Pictures/pic9.png  used on input line 502.
+Package pdftex.def Info: ./Pictures/pic9.png  used on input line 619.
 (pdftex.def)             Requested size: 113.81206pt x 85.35713pt.
-[18 <./Pictures/pic9.png>] [19]
-Overfull \hbox (19.85693pt too wide) in paragraph at lines 542--543
+[22 <./Pictures/pic9.png>] [23]
+Overfull \hbox (19.85693pt too wide) in paragraph at lines 659--660
 []$[]$\OT1/cmr/m/n/10 : re-la-tion-ship lasts for more than one pe-riod (gives rise to en-force-ment/commitment
  []
 
-[20]
-Underfull \hbox (badness 10000) in paragraph at lines 562--565
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 679--682
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 573--576
+Underfull \hbox (badness 10000) in paragraph at lines 690--693
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 573--576
+Underfull \hbox (badness 10000) in paragraph at lines 690--693
 
  []
 
-[21]
-Underfull \hbox (badness 10000) in paragraph at lines 578--581
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 695--698
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 587--591
-
- []
-
-[22]
-Overfull \hbox (103.33896pt too wide) detected at line 605
-[]
- []
-
-[23] [24] [25]
-Underfull \hbox (badness 10000) in paragraph at lines 699--706
+Underfull \hbox (badness 10000) in paragraph at lines 704--708
 
  []
 
 [26]
-<./Pictures/pic11.jpg, id=118, 436.63126pt x 203.5605pt>
+Overfull \hbox (103.33896pt too wide) detected at line 722
+[]
+ []
+
+[27] [28] [29]
+Underfull \hbox (badness 10000) in paragraph at lines 816--823
+
+ []
+
+[30]
+<./Pictures/pic11.jpg, id=133, 436.63126pt x 203.5605pt>
 File: ./Pictures/pic11.jpg Graphic file (type jpg)
 <use ./Pictures/pic11.jpg>
-Package pdftex.def Info: ./Pictures/pic11.jpg  used on input line 707.
+Package pdftex.def Info: ./Pictures/pic11.jpg  used on input line 824.
 (pdftex.def)             Requested size: 113.80792pt x 85.35815pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 711--715
+Underfull \hbox (badness 10000) in paragraph at lines 828--832
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 711--715
+Underfull \hbox (badness 10000) in paragraph at lines 828--832
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 715--717
+Underfull \hbox (badness 10000) in paragraph at lines 832--834
 
  []
 
-<./Pictures/pic12.png, id=119, 460.119pt x 293.29575pt>
+<./Pictures/pic12.png, id=134, 460.119pt x 293.29575pt>
 File: ./Pictures/pic12.png Graphic file (type png)
 <use ./Pictures/pic12.png>
-Package pdftex.def Info: ./Pictures/pic12.png  used on input line 718.
+Package pdftex.def Info: ./Pictures/pic12.png  used on input line 835.
 (pdftex.def)             Requested size: 227.6227pt x 170.72028pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 720--723
+Underfull \hbox (badness 10000) in paragraph at lines 837--840
 
  []
 
-<./Pictures/pic13.png, id=120, 384.83775pt x 289.08pt>
+<./Pictures/pic13.png, id=135, 384.83775pt x 289.08pt>
 File: ./Pictures/pic13.png Graphic file (type png)
 <use ./Pictures/pic13.png>
-Package pdftex.def Info: ./Pictures/pic13.png  used on input line 724.
+Package pdftex.def Info: ./Pictures/pic13.png  used on input line 841.
 (pdftex.def)             Requested size: 227.6219pt x 170.71451pt.
-[27 <./Pictures/pic11.jpg> <./Pictures/pic12.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 726--728
+[31 <./Pictures/pic11.jpg> <./Pictures/pic12.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 843--845
 
  []
 
-<./Pictures/pic14.png, id=125, 435.42674pt x 343.88475pt>
+<./Pictures/pic14.png, id=141, 435.42674pt x 343.88475pt>
 File: ./Pictures/pic14.png Graphic file (type png)
 <use ./Pictures/pic14.png>
-Package pdftex.def Info: ./Pictures/pic14.png  used on input line 729.
+Package pdftex.def Info: ./Pictures/pic14.png  used on input line 846.
 (pdftex.def)             Requested size: 227.61914pt x 170.71935pt.
-[28 <./Pictures/pic13.png> <./Pictures/pic14.png>]
-Overfull \hbox (9.60701pt too wide) in paragraph at lines 755--756
+[32 <./Pictures/pic13.png> <./Pictures/pic14.png>]
+Overfull \hbox (9.60701pt too wide) in paragraph at lines 872--873
 []$[]$\OT1/cmr/m/n/10 : early work on one-sided lim-ited com-mit-ment mod-els aimed at analysing
  []
 
-[29] [30]
-Underfull \hbox (badness 10000) in paragraph at lines 807--812
+[33] [34]
+Underfull \hbox (badness 10000) in paragraph at lines 924--929
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 807--812
+Underfull \hbox (badness 10000) in paragraph at lines 924--929
 
  []
 
-[31]
-<./Pictures/pic16.png, id=144, 540.8205pt x 334.851pt>
+[35]
+<./Pictures/pic16.png, id=159, 540.8205pt x 334.851pt>
 File: ./Pictures/pic16.png Graphic file (type png)
 <use ./Pictures/pic16.png>
-Package pdftex.def Info: ./Pictures/pic16.png  used on input line 813.
+Package pdftex.def Info: ./Pictures/pic16.png  used on input line 930.
 (pdftex.def)             Requested size: 227.62169pt x 170.71555pt.
- [32 <./Pictures/pic16.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 852--855
+ [36 <./Pictures/pic16.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 969--972
 
  []
 
-[33] [34]
-<./Pictures/pic17.png, id=155, 446.26724pt x 198.14024pt>
+[37] [38]
+<./Pictures/pic17.png, id=171, 446.26724pt x 198.14024pt>
 File: ./Pictures/pic17.png Graphic file (type png)
 <use ./Pictures/pic17.png>
-Package pdftex.def Info: ./Pictures/pic17.png  used on input line 916.
+Package pdftex.def Info: ./Pictures/pic17.png  used on input line 1033.
 (pdftex.def)             Requested size: 113.80685pt x 85.35887pt.
-<./Pictures/pic18.png, id=156, 452.28975pt x 248.127pt>
+<./Pictures/pic18.png, id=172, 452.28975pt x 248.127pt>
 File: ./Pictures/pic18.png Graphic file (type png)
 <use ./Pictures/pic18.png>
-Package pdftex.def Info: ./Pictures/pic18.png  used on input line 920.
+Package pdftex.def Info: ./Pictures/pic18.png  used on input line 1037.
 (pdftex.def)             Requested size: 113.81061pt x 85.3578pt.
- [35 <./Pictures/pic17.png> <./Pictures/pic18.png>] (./Macroeconomics B Notes.aux) ) 
+ [39 <./Pictures/pic17.png> <./Pictures/pic18.png>] [40] [41] [42] [43] [44] [45] [46] [47]
+Missing character: There is no 1 in font rsfs7!
+Missing character: There is no 1 in font rsfs7!
+Missing character: There is no 1 in font rsfs7!
+Missing character: There is no 1 in font rsfs7!
+
+Underfull \hbox (badness 10000) in paragraph at lines 1288--1290
+
+ []
+
+<./Pictures/pic29.png, id=203, 344.78813pt x 120.45pt>
+File: ./Pictures/pic29.png Graphic file (type png)
+<use ./Pictures/pic29.png>
+Package pdftex.def Info: ./Pictures/pic29.png  used on input line 1291.
+(pdftex.def)             Requested size: 227.624pt x 170.73325pt.
+[48]
+Missing character: There is no 1 in font rsfs7!
+Missing character: There is no 1 in font rsfs7!
+ [49 <./Pictures/pic29.png>] [50] [51] [52]
+Missing character: There is no u in font rsfs10!
+Missing character: There is no u in font rsfs10!
+Missing character: There is no u in font rsfs10!
+Missing character: There is no u in font rsfs10!
+ [53]
+Overfull \hbox (3.1797pt too wide) in paragraph at lines 1440--1441
+[]$[]$\OT1/cmr/m/n/10 : if the dis-tri-bu-tion of skills is bounded then $[] = 0$ so that $\OML/cmm/m/it/10 T[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^R[]\OT1/cmr/m/n/10 ) =
+ []
+
+[54]
+Underfull \hbox (badness 10000) in paragraph at lines 1455--1458
+
+ []
+
+<./Pictures/pic19.png, id=228, 482.55281pt x 325.96782pt>
+File: ./Pictures/pic19.png Graphic file (type png)
+<use ./Pictures/pic19.png>
+Package pdftex.def Info: ./Pictures/pic19.png  used on input line 1459.
+(pdftex.def)             Requested size: 227.61716pt x 170.72282pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1464--1467
+
+ []
+
+[55 <./Pictures/pic19.png>]
+<./Pictures/pic20.png, id=234, 469.00218pt x 371.13657pt>
+File: ./Pictures/pic20.png Graphic file (type png)
+<use ./Pictures/pic20.png>
+Package pdftex.def Info: ./Pictures/pic20.png  used on input line 1468.
+(pdftex.def)             Requested size: 227.61607pt x 170.71922pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1477--1479
+
+ []
+
+<./Pictures/pic21.png, id=235, 509.65407pt x 302.63063pt>
+File: ./Pictures/pic21.png Graphic file (type png)
+<use ./Pictures/pic21.png>
+Package pdftex.def Info: ./Pictures/pic21.png  used on input line 1480.
+(pdftex.def)             Requested size: 227.62355pt x 170.71878pt.
+[56 <./Pictures/pic20.png> <./Pictures/pic21.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1494--1498
+
+ []
+
+<./Pictures/pic22.png, id=241, 298.86656pt x 128.73094pt>
+File: ./Pictures/pic22.png Graphic file (type png)
+<use ./Pictures/pic22.png>
+Package pdftex.def Info: ./Pictures/pic22.png  used on input line 1499.
+(pdftex.def)             Requested size: 227.62433pt x 170.73068pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1501--1503
+
+ []
+
+<./Pictures/pic23.png, id=242, 487.06969pt x 265.74281pt>
+File: ./Pictures/pic23.png Graphic file (type png)
+<use ./Pictures/pic23.png>
+Package pdftex.def Info: ./Pictures/pic23.png  used on input line 1504.
+(pdftex.def)             Requested size: 227.62216pt x 170.71954pt.
+[57 <./Pictures/pic22.png>] [58 <./Pictures/pic23.png>] [59]
+Overfull \hbox (14.75287pt too wide) detected at line 1553
+[]
+ []
+
+[60] [61] [62]
+Overfull \hbox (173.22026pt too wide) detected at line 1627
+[]
+ []
+
+[63] [64] [65] [66] [67]
+Overfull \hbox (6.80911pt too wide) in paragraph at lines 1764--1766
+\OT1/cmr/m/n/10 strictly de-creas-ing, dif-fer-en-tiable, that $[][] \OML/cmm/m/it/10 K\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 w\OT1/cmr/m/n/10 ) = [][] \OML/cmm/m/it/10 K[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 w\OT1/cmr/m/n/10 ) = 0$ and $[][] \OML/cmm/m/it/10 K\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 w\OT1/cmr/m/n/10 ) =
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1764--1766
+
+ []
+
+<./Pictures/pic25.png, id=280, 532.23843pt x 398.23781pt>
+File: ./Pictures/pic25.png Graphic file (type png)
+<use ./Pictures/pic25.png>
+Package pdftex.def Info: ./Pictures/pic25.png  used on input line 1767.
+(pdftex.def)             Requested size: 227.6155pt x 170.71632pt.
+[68 <./Pictures/pic25.png>] [69] [70] [71] [72]
+Underfull \hbox (badness 10000) in paragraph at lines 1876--1878
+
+ []
+
+<./Pictures/pic26.png, id=297, 427.5975pt x 338.76563pt>
+File: ./Pictures/pic26.png Graphic file (type png)
+<use ./Pictures/pic26.png>
+Package pdftex.def Info: ./Pictures/pic26.png  used on input line 1879.
+(pdftex.def)             Requested size: 227.61732pt x 170.72119pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1881--1883
+
+ []
+
+<./Pictures/pic27.png, id=298, 419.31656pt x 264.23718pt>
+File: ./Pictures/pic27.png Graphic file (type png)
+<use ./Pictures/pic27.png>
+Package pdftex.def Info: ./Pictures/pic27.png  used on input line 1884.
+(pdftex.def)             Requested size: 227.61763pt x 170.71591pt.
+[73 <./Pictures/pic26.png> <./Pictures/pic27.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1915--1917
+
+ []
+
+<./Pictures/pic28.png, id=305, 481.8pt x 277.78781pt>
+File: ./Pictures/pic28.png Graphic file (type png)
+<use ./Pictures/pic28.png>
+Package pdftex.def Info: ./Pictures/pic28.png  used on input line 1918.
+(pdftex.def)             Requested size: 227.62228pt x 170.71767pt.
+[74] [75 <./Pictures/pic28.png>] (./Macroeconomics B Notes.aux) ) 
 Here is how much of TeX's memory you used:
- 15076 strings out of 492609
- 287254 string characters out of 6132818
- 351688 words of memory out of 5000000
- 18651 multiletter control sequences out of 15000+600000
- 13447 words of font info for 53 fonts, out of 8000000 for 9000
+ 15152 strings out of 492609
+ 288886 string characters out of 6132818
+ 353730 words of memory out of 5000000
+ 18706 multiletter control sequences out of 15000+600000
+ 14438 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,22n,48p,1213b,1007s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive
-/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "Macroeconomics B Notes.pdf" (35 pages, 866267 bytes).
+ 55i,23n,48p,1213b,1007s stack positions out of 5000i,500n,10000p,200000b,80000s
+<c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2019/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/rsfs/rsfs7.pfb>
+Output written on "Macroeconomics B Notes.pdf" (75 pages, 1347944 bytes).
 PDF statistics:
- 238 PDF objects out of 1000 (max. 8388607)
- 154 compressed objects within 2 object streams
+ 401 PDF objects out of 1000 (max. 8388607)
+ 253 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 68 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 118 words of extra memory for PDF output out of 10000 (max. 10000000)
 

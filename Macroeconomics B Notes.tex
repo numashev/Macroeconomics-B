@@ -28,6 +28,9 @@
 \newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
 \titleformat{\section}[block]{\color{blue}\Large\bfseries\filcenter}{}{1em}{}
 \usepackage[normalem]{ulem}
+\usepackage{calrsfs}
+\renewcommand{\labelitemiv}{$\circledast$}
+\renewcommand{\labelitemii}{$\circ$}
 
 \title{Macroeconomics B Notes}
 \author{Nicholas Umashev \footnote{content is not of my own authorship}}
@@ -335,6 +338,120 @@ We want to compute the solution $\{u_{t}^{*}, x_{t+1}^{*}\}_{t=0}^{\infty}$
         \item \underline{Integral Valuation}: the integral in expectation can be approximated by quadrature, if closed form solutions are infeasible
     \end{itemize}
 \end{itemize}
+\vspace{2.5mm}
+\par \underline{Problem Example 1}: consider the following infinite horizon problem's Bellman Equation: $$V(x) = \max_{u} \left\{ r(x, u) + \beta V (g(x,u)) \right\}$$ Let $V^{*}$ be the equations solution, show that $$V^{*'}(x) = r_{1}(x,U^{*}(x)) + \beta V^{*'}(g(x,U(x))) g_{1}(x, U(x))$$
+\begin{itemize}
+    \item  \underline{Solution}: the first order condition for the Bellman Equation is $0 = \tfrac{\partial}{\partial u} = r_{2}(x,u) + \beta V^{'}(g(x,u)) \cdot g_{2}(x,u)$. Let $U(x)$ be the optimal policy function that solves $V^{*}$ then we have: $$V^{*}(x) = r(x, U(x)) + \beta V^{*}(g(x,U(x)))$$. If $U(x)$ is differentiable then we have the following first order condition:
+    \begin{align*}
+        \tfrac{\partial}{\partial x} = 0 \rightarrow V'^{*}(x) &= r_{2}(x,U(x)) \cdot U'(x) + r_{1}(x, U(x)) + \beta V'^{*}(g(x,U(x))) \cdot \left\{ g_{1}(x,U(x)) + g_{2}(x,U(x)) \cdot U'(x) \right\} \\
+        V'^{*}(x) &= r_{1}(x,U(x)) + \beta V'^{*}(g(x,U(x)))g_{1}(x,U(x)) + U'(x) \left\{ r_{2}(x,U(x)) + \beta V'^{*} (g(x,U(x))) g_{2}(x,U(x)) \right\}
+    \end{align*}
+    Due to our first order condition from before we have:
+    \begin{gather*}
+        V^{*}(x) = r_{1}(x,U(x)) + \beta V'^{*}(g(x,U(x)))g_{1}(x,U(x))
+    \end{gather*}
+\end{itemize}
+\vspace{2.5mm}
+\par \underline{Problem Example 2}: consider the Brock-Mirman stochastic growth model:
+    \begin{gather*}
+        \max_{\left\{ c_{t}, k_{t+1} \right\} ^{\infty}_{t=0}} \mathbb{E}_{0} \sum_{t=0}^{\infty} \beta^{t} \ln(c_{t}) \\
+        \text{subject to} \\
+        c_{t} + k_{t++1} = Ak_{t}^{\alpha}\theta_{t} \\
+        k_{0} \ \text{is given}
+    \end{gather*}
+where $\{ \theta_{t} \}$ is an i.i.d sequence with $n(\theta_{t}) \sim N(0, \sigma^{2})$, $\sigma > 0$, $A > 0$, $\alpha \in (0,1)$, and $\beta \in (0,1)$. It is assumed that the shock $\theta_{t}$ is realised before $k_{t+1}$ is chosen. Solve this problem analytically by applying policy function iteration
+\begin{itemize}
+    \item  \underline{Solution Step 1}: write the problem recursively
+    \begin{itemize}
+        \item  $V_{t} = \max_{k_{t+1}} \left\{ \ln(Ak_{t}^{\alpha}\theta_{t} - k_{t+1}) + \beta \mathbb{E} V_{t+1} \right\}$ which can be written as $J(k, \theta) = \max_{k^{'}} \left\{ \ln (Ak^{\alpha} \theta - k^{'}) + \beta \mathbb{E}_{0} [J(k^{'},\theta^{'})|k^{'}] \right\}$
+    \end{itemize}
+    \item  \underline{Solution Step 2}: guess a policy function of the form $k_{t+1} = h_{0}(Ak_{t}^{\alpha}\theta_{t})$ for some constant $h_{0} \in (0,1)$ and compute the value from following this policy function forever, i.e. $$J_{0} (k_{0}, \theta_{0}) = \mathbb{E}_{0} \sum_{t=0}^{\infty} \beta^{t} \ln (Ak_{t}^{\alpha}\theta_{t} - h_{0} Ak_{t}^{\alpha} \theta_{t})$$
+    \begin{itemize}
+        \item  Our guess is $k_{t+1} = h_{0} (Ak_{t}^{\alpha} \theta_{t})$. We want to make this a function of $k_{0}$ and $\theta_{0}$ only. We can reduce the policy function as follows:
+        \begin{align*}
+            J_{0}(k_{0}, \theta_{0}) &= \mathbb{E}_{0} \sum_{t=0}^{\infty} \beta^{t} \ln (Ak_{t}^{\alpha}\theta_{t} - h_{0}Ak_{t}^{\alpha} \theta_{t}) \\
+            &= \mathbb{E}_{0} \sum_{t=0}^{\infty} \beta^{t} \ln (A(1-h)k_{t}^{\alpha}\theta_{t}) \\
+            &= \tfrac{1}{1 - \beta} \ln(A(1-h)) + \mathbb{E}_{0} \sum_{t=0}^{\infty} \beta^{t} \ln (\theta_{t}) + \sum_{t=0}^{\infty} \beta^{t} \ln (k_{t}^{\alpha}) \\
+            &= \tfrac{\ln (A(1-h))}{1 - \beta} + \ln(\theta_{0}) + \mathbb{E}_{0} \sum_{t=1}^{\infty} \ln (\theta_{t}) \beta^{t} + \alpha \ln (k_{0}) + \sum_{t=1}^{\infty} \ln (k_{t}^{\alpha}) \beta^{t} \\
+            &= \tfrac{\ln (A(1-h))}{1 - \beta} + \alpha \ln (k_{0}) + \ln (\theta_{0}) + \sum_{t=1}^{\infty} \ln (k_{t})\beta^{t} \alpha
+        \end{align*}
+        Using the fact that $k_{t+1} = h_{0}(Ak_{t}^{\alpha}\theta_{t})$ we can derive an equation for all $k_{t}$ as a function of the parameters:
+        \begin{align*}
+            k_{1} &= h_{0}(Ak_{0}^{\alpha}\theta_{0}) \\
+            k_{1}: \ln(k_{1}) &= \ln(k_{1}) - \ln(h_{0}Ak_{0}^{\alpha}\theta_{0})\\
+             &= \ln(h_{0}A) + \ln(\theta_{0}) + \alpha \ln(k_{0}) \\
+            k_{2}: \ln(k_{2}) &= \ln(h_{0} A k_{1}^{\alpha} \theta_{1}) \\
+             &= \ln(h_{0}A) + \alpha \ln(k_{1}) + \ln(\theta_{1}) \\
+             &= \ln(h_{0}A) + \alpha \left\{ \ln(h_{0}A) + \ln(\theta_{0}) + \alpha \ln (k_{0}) \right\} + \ln (\theta_{1}) \\
+             &= (1- \alpha) \ln (h_{0}A) + \alpha \ln(\theta_{0}) + \alpha^{2} \ln (k_{0}) + \ln (\theta_{1}) \\
+            k_{3}: \ln(k_{3}) &= \ln(h_{0}Ak_{2}^{\alpha}\theta_{2}) \\
+             &= \ln(h_{0}A) +  \ln(\theta_{2}) + \alpha \ln(k_{2}) \\
+             &= \ln (h_{0}A) + \ln(\theta_{2}) +  \alpha \left\{ (1- \alpha)\ln(h_{0}A) + \alpha \ln(\theta_{0}) + \alpha^{2} \ln(k_{0}) + \ln(\theta_{1}) \right\} \\
+             &= (1 - \alpha - \alpha^{2}) \ln(h_{0}A) + \alpha^{3} \ln (k_{0}) + \ln (\theta_{2}) + \alpha \ln (\theta_{1}) + \alpha^{2} \ln(\theta_{0})
+            k_{4}: \ln(k_{4}) &= \ln (h_{0}A k_{3}^{\alpha}\theta_{3}) \\
+             &= \ln(h_{0}A) + \ln (\theta_{3}) + \alpha \ln (k_{3}) \\
+             &= \ln(h_{0}A) + \ln(\theta_{3}) + \alpha \left\{ (1-\alpha - \alpha^{2})\ln(h_{0}A) + \alpha^{3} \ln(k_{0}) + \ln(\theta_{2}) + \alpha \ln(\theta_{1}) + \alpha^{2} \ln(\theta_{0}) \right\} \\
+             &= (1-\alpha-\alpha^{2}-\alpha^{3}) \ln(h_{0}A) + \alpha^{4} \ln(k_{0}) + \ln(\theta_{3}) + \alpha \ln(\theta_{2}) + \alpha^{2} \ln(\theta_{1}) + \alpha^{3} \ln(\theta_{0})
+        \end{align*}
+        Based on the above, we have:
+        \begin{gather*}
+            \sum_{t=1}^{\infty} \ln(k_{t}) = \sum_{t=1}^{\infty} \bigg[\tfrac{1 - \alpha^{t}}{1 - \alpha} \ln (h_{0}A) + \alpha^{t}\ln(k_{0}) + \ln(\theta_{t-1}) + \alpha \ln(\theta_{t-2}) + \alpha^{2} \ln (\theta_{t-3}) + \dots + \alpha^{t-1} \ln(\theta_{0}) \bigg]
+        \end{gather*}
+        Plugging this into $J_{0}(k_{0}, \theta_{0})$ we have:
+        \begin{align*}
+            J_{0}(k_{0},\theta_{0}) &= \tfrac{1}{1-\beta} \ln (A(1-h)) + \alpha \ln(k_{0}) + \ln(\theta_{0}) + \sum_{t=1}^{\infty} \bigg( \frac{1-\alpha^{t}}{1-\alpha} \ln (h_{0}A) + \alpha^{t}\ln(k_{0}) + \ln(\theta_{t-1}) + \alpha \ln(\theta_{t-2}) + \alpha^{2} \ln (\theta_{t-3}) + \dots + \alpha^{t-1} \ln(\theta_{0}) \bigg) \\
+            &= \tfrac{1}{1-\beta} \ln (A(1-h)) + \alpha \ln(k_{0}) + \ln(\theta_{0}) + \sum_{t=1}^{\infty} \left\{ \tfrac{1 - \alpha^{t}}{1 - \alpha} \ln (h_{0}A) \right\} + \sum_{t=1}^{\infty} \left\{ \alpha^{t}\ln(k_{0}) \right\} + \sum_{t=1}^{\infty} \left\{ \ln(\theta_{t-1}) + \alpha \ln(\theta_{t-2}) + \alpha^{2} \ln (\theta_{t-3}) + \dots + \alpha^{t-1} \ln(\theta_{0}) \right\}
+        \end{align*}
+        Since $\theta$ is i.i.d we have that $E_{0}\theta_{t} = 0 \ \ \forall t >0$ and therefore:
+        \begin{align*}
+            J_{0}(k_{0},\theta_{0}) &= \overbrace{\tfrac{1}{1 - \beta} \ln (A(1-h)) + \sum_{t=1}^{\infty} \beta_{t} \left\{ \tfrac{1 - \alpha^{t}}{1 - \alpha} \ln (hA) \right\} }^{H} + \alpha \sum_{t=0}^{\infty} (\beta \alpha)^{t} \left\{ \ln (k_{0}) \right\} + (1 + \sum_{t=1}^{\infty}(\beta \alpha)^{t}) \ln (\theta_{0}) \\
+            J_{0} (k_{0}, \theta_{0}) &= H + \tfrac{\alpha}{1 - \beta \alpha} \ln (k_{0}) + \sum_{t=0}^{\infty}(\beta \alpha)^{t} \ln(\theta_{0}) \\
+            J_{0}(k_{0},\theta_{0}) &= H + \tfrac{\alpha}{1 - \beta \alpha}\ln(k_{0}) + \tfrac{1}{1 - \beta \alpha} \ln (\theta_{0})
+        \end{align*}
+    \end{itemize}
+    \item  \underline{Solution Step 3}: update your guess for the policy function by solving $\max_{k'} \left\{ \ln (Ak^{\alpha}\theta - k') + \beta \mathbb{E} [j_{0} (k',\theta')|k'] \right\}$
+    \begin{itemize}
+        \item based on our solution to step 2, we can rewrite the above equation as
+        \begin{gather*}
+            \max_{k'} \left\{ \ln (Ak^{\alpha}\theta - k') + \beta \mathbb{E} [H_{0} + \tfrac{\alpha}{1 - \beta \alpha}\ln(k') + \tfrac{1}{1 - \beta \alpha} \ln (\theta')] \right\}
+        \end{gather*}
+        Taking first order conditions yields:
+        \begin{gather*}
+            0 = \tfrac{\partial}{\partial k'} = \frac{-1}{Ak^{\alpha}\theta - k'} + \frac{\beta \alpha}{(1-\beta \alpha)k'} \\
+            \therefore \frac{1}{Ak^{\alpha}\theta - k'} = \frac{\beta \alpha}{(1-\beta \alpha)k'} \\
+            Ak^{\alpha} \theta = \frac{(1-\beta \alpha)k'}{\beta \alpha} + k' \\
+            A k^{\alpha} \theta \beta \alpha = (1 - \beta \alpha) k' + k'\beta \alpha \\
+            k' = Ak^{\alpha} \theta \beta \alpha
+        \end{gather*}
+    \end{itemize}
+    \item  \underline{Solution Step 4}: compute the value from following the new policy function forever
+    \begin{itemize}
+        \item In this case $h_{1} = \beta \alpha$, which has the same form as our initial guess. Since this policy function is the same as our initial policy function, the value of operating with this policy function will be of the same form as that in step 2:
+        \begin{gather*}
+            J_{0}(k_{0},\theta_{0}) = H_{1} + \tfrac{\alpha}{1 - \beta \alpha}\ln(k_{0}) + \tfrac{1}{1 - \beta \alpha} \ln (\theta_{0})
+        \end{gather*}
+    \end{itemize}
+    \item  \underline{Solution Step 5}: iterate until the policy function converges. How many iterations were necessary?
+    \begin{itemize}
+        \item we have that
+        \begin{gather*}
+            \max_{k'} \left\{ \ln (Ak^{\alpha}\theta - k') + \beta \mathbb{E} [H_{1} + \tfrac{\alpha}{1 - \beta \alpha}\ln(k') + \tfrac{1}{1 - \beta \alpha} \ln (\theta')] \right\}
+        \end{gather*}
+        The first order conditions for this function is:
+        \begin{gather*}
+            0 = \tfrac{\partial}{\partial k'} = \frac{-1}{Ak^{\alpha}\theta - k'} + \frac{\beta \alpha}{(1-\beta \alpha)k'}
+        \end{gather*}
+        This yields the same policy function as before so no more iterations are necessary
+    \end{itemize}
+    \item  \underline{Summary}: in summary we executed the following procedure
+    \begin{itemize}
+        \item  \underline{(1)} Make a guess on the policy function
+        \item  \underline{(2)} Compute the value of operating with this function forever by making it time invariant and only dependent on our state variables
+        \item  \underline{(3)} In the value function at $t=0$, substitute $V_{1}$ for the value obtained in step 2. Take FOC of the value function and solve for the control variables to derive a new policy function
+        \item  \underline{(4)} Repeat from step 2, iterating until the derived policy functions converge
+    \end{itemize}
+\end{itemize}
+
 
 \newpage
 
@@ -515,6 +632,58 @@ There are two main issues with conventional solution methods to this problem; (1
     \end{align*}
     \begin{itemize}
         \item  \underline{Note}: this expression can only hold for all feasible perturbation paths $(P_{x}, P_{y})$ if each integrand vanishes and $\mu(t_{1}) = 0$ such that $P_{y}(t)$ and $P_{x}(t)$ equal 0, which are the conditions of the maximum principle
+    \end{itemize}
+\end{itemize}
+\vspace{2.5mm}
+\par \underline{Problem Example 1}: consider the optimal consumption problem of an agent living between two dates, 0 and 1. Time is continuous and the individual has an instantaneous utility function $\ln(c)$ over consumption $c$ and discount future payoffs exponentially at rate $p > 0$. \\ Let $a(t) \geq 0$ be the level of assets of the agent at time $t$. Assume that the individual starts with assets $a(0) = \overline{a} > 0$ and has to end up with zero assets at the end of her planning horizon such that $a(1) = 0$. At every point in time, the individual obtains income from two sources: interest $r > 0$ on asset holdings and labour earnings $w > 0$. \\ The lifetime utility maximization problem can be written as:
+\begin{gather*}
+    \max_{c(t) \geq 0, a(t) \geq 0} \ \int_{0}^{1} \exp (- \rho t) \ln (c(t)) dt \\
+    \text{subject to} \\
+    \cdot{a}(t) = r a(t) + w - c(t) \\
+    a(0) = \overline{a}, \ \ a(1) = 0
+\end{gather*}
+\begin{itemize}
+    \item  \underline{Question 1}: write up the Hamiltonian of the consumer's problem. In doing so, let $\mu(t)$ be the costate variable
+    \begin{itemize}
+        \item  \underline{Solution}: $H = \exp (-\rho t) \ln (c(t)) + \mu(t) (ra(t) + w - c(t))$
+    \end{itemize}
+    \item  \underline{Question 2}: show that the optimal solution satisfies the following system of differential equation in $\mu(t)$ and $a(t)$:
+    \begin{gather*}
+        \cdot{a}(t) = ra(t) + w - \frac{\exp(-\rho t)}{\mu(t)} \\
+        \cdot{\mu}(t) = - \mu(t) \rho
+    \end{gather*}
+    with $a(0) = \overline{a}$ and $a(1) = 0$. (Hint: given the terminal condition $a(1) = 0$, this problem does not feature the condition $\mu(1) = 0$)
+    \begin{itemize}
+        \item  \underline{Solution}:
+        \begin{arrange*}
+            \frac{\partial H}{\partial c} = 0 \Rightarrow \frac{\exp(-\rho t)}{c(t)} - \mu &= 0 \\
+            \therefore c(t) = \frac{\exp (-\rho t)}{\mu (t)}
+        \end{arrange*}
+        \begin{gather*}
+            \frac{\partial H}{\partial a} = - \cdot{\mu}(t) \Rightarrow \cdot{\mu}(t) = -\mu(t)\rho \tag{*} \\
+        \end{gather*}
+        \begin{gather*}
+            \mu(t) = 0
+        \end{gather*}
+        Plugging $c(t) = \frac{\exp (-\rho t)}{\mu (t)}$ into our constraint we have:
+        \begin{gather*}
+            \cdot{a}(t) = ra(t) + w - \frac{\exp(\rho t)}{\mu (t)}
+        \end{gather*}
+    \end{itemize}
+    \item  \underline{Question 3}: show that $\mu(t) = \mu(0) \exp (-\rho t)$ so that optimal assets evolve according to $\cdot{a}(t) = ra(t) + w - \tfrac{\exp ((r-\rhi)t)}{\mu(0)}$
+    \begin{itemize}
+        \item  \underline{Solution}: by equation (*) we have $\tfrac{\cdot{\mu}(t)}{\mu(t)} = \rho$. Note that $\cdot{\mu}(t) = \partial \mu(t)$ and therefore:
+        \begin{gather*}
+            \frac{\partial \mu(t)}{\mu(t)} = -\rho \tag{**}
+        \end{gather*}
+        Multiplying the equation (**) by the integrand $\in [0, t]$ and taking the derivative with respect to $t$ on both sides we have:
+        \begin{gather*}
+            up to here
+        \end{gather*}
+    \end{itemize}
+    \item  \underline{Question 4}: how does the difference between the subjective discount rate $\rho$ and the interest rate $r$ affect the optimal consumption path $c(t)$
+    \begin{itemize}
+        \item  \underline{Solution}:
     \end{itemize}
 \end{itemize}
 
@@ -920,5 +1089,887 @@ An allocation $\textbf{c} = \left\{ c_{t}^{j}\right\}_{t=1, j=1}^{\infty, 2}$ is
 \includegraphics[width=4cm, height=3cm]{pic18}
 \end{center}
 
+\newpage
+
+\section{Mirrlees Taxation Model with Two Types}
+
+\vspace{2.5mm}
+\par \underline{Variable Overview}: let $y$ denote before-tax income and let $T(y)$ denote the income tax schedule. The optimal income tax system $T^{*}(y)$ is the one that maximizes social welfare subject to a revenue requirement. $T^{*}(y)$ can be found by either the Ramsey approach of Mirrlees approach
+\vspace{2.5mm}
+\par \underline{Ramsey Approach}: makes parametric assumptions on the tax function $T(y)$ (i.e. a progressive tax function such as $T(y) = y - \lambda y^{1-\tau}$) and precludes non-distortionary lump sum taxes (i.e. $T(y) = constant$ is not allowed)
+\begin{itemize}
+    \item  \underline{Advantages}: tractability
+    \item  \underline{Disadvantages}: the set of possible tax instruments is exogeneous, by precluding lump-sum taxation the taxes are distortionary by assumption, the optimal tax function is arbitrarily restricted
+\end{itemize}
+\vspace{2.5mm}
+\par \underline{Mirrlees Approach}: feasible tax instruments are endogeneised given informational frictions by featuring workers who are traditionally heterogeneous across labour productivity/skill (which are private information). This leads to a trade off between redistribution and work incentives where the right balance in this trade-off will shape tax distortions and hence the optimal tax function $T^{*}(y)$
+\begin{itemize}
+    \item  \underline{Contractual Friction}: applies tools from contract theory and adverse selection where private information acts as a contractual frictions
+    \item  \underline{Static Environments}: involves either a discrete number of different worker skill types or a continuous number of different worker skill types
+\end{itemize}
+
+\vspace{2.5mm}
+\par \underline{Mirrlees Model with Two Types}: involves a static economy with a single consumption good and a continuum of workers of one of two skill types. No ad-hoc structure on tax design ($T^{*}(y)$) is imposed and the only contraints on $T^{*}(y)$ arise endogenously due to informational frictions. Workers earn money on the basis of their skills and their effort, so there is a tradeoff between effort and taxes the planner applies
+\begin{itemize}
+    \item  \underline{Assumptions}: $\theta$ and $n$ are private information, $y$ is observable, aggregate output is linear in effective effort (implies that in a competitive equilibrium with a perfect labor market that y equals before tax income), workers have no income effects due to quasi-linear preferences (there are only substitution effects of after-tax  income)
+    \item  \underline{Heterogeneity of Workers}: workers are heterogeneous across skills/labor productivity where $\theta \in \Theta$ and $F: \ \Theta \rightarrow [0,1]$ denotes the cumulative distribution function of $\theta$
+    \item  \underline{Worker Preferences and Transformation}: workers have quasi-linear preferences over consumption $c$ and effort $n$:
+    \begin{gather*}
+        U(c,n) = c - v(n)
+    \end{gather*}
+    where $v^{'}, v^{''} > 0$ (i.e. $v$ is convex). Workers transform effort into output $y$ (or effective labour) using the technology function $y = \theta \cdot n$. Note that $n$ is substituted by $y/\theta$ due to n not being observable, allowing us to write the contract in terms of observables
+    \item  \underline{Key Tradeoff}: there is a tradeoff between equity and efficieny. This is as confiscatory taxation improves upon the distribution of the 'social pie' but also reduces production and thus the size of the pie
+    \item  \underline{Allocation (the contract)}: an allocation is an assignment of $c$ and $y$ given $\theta$:
+    \begin{gather*}
+        \left\{ c(\theta), y(\theta) \right\}_{\theta \in \Theta} \ \ \Rightarrow \ \text{the contract}
+    \end{gather*}
+    This allocation is feasible if and only if
+    \begin{gather*}
+        \int c(\theta) dF(\theta) + G \leq \int y(\theta) dF(\theta)
+    \end{gather*}
+    where the LHS is aggregate consumption plus exogenous government expenditure, the RHS is aggregate output.
+    \item  \underline{Social Welfare Function}: the government aims to allocate $c$ and $y$ across $\theta$ to maximize the SWF:
+    \begin{gather*}
+        SWF = \int \Psi \big( c (\theta) - v(\frac{y(\theta)}{\theta}) \big) d F(\theta)
+    \end{gather*}
+    where $\Psi^{'} > 0$ and $\Psi^{''} < 0$ (ie is increasing and concave). The SWF encapsulates the normative criterion followed by the government and given the concavity of $\Psi$ displays a preference for redistribution across $\theta$s
+    \item \underline{Aim}: to design an income tax system that maximizes social welfare. More precisely, let $T(y)$ be the income tax schedule so that agents face the budget constraint $c \leq y - T(y)$. In this case, we are seeking a function $T^{*}(y)$ that maximizes the SWF in a competitive equilibrium and focus on characterising optimal marginal tax rates $T^{*'}(y)$ across the income distribution
+    \item  \underline{Solution for Optimal Taxes}: we find $T^{*}(y)$ by following two steps
+    \begin{itemize}
+        \item  \underline{Step 1 - Centralization (Contract Design)}: characterise the allocations for $\left\{ c^{*}, y^{*} \right\}$ that maximise the SWF subject to informational constraints
+        \begin{itemize}
+            \item \underline{First Best}: Start by analyzing the case in which the government can observe $\theta$. At this 'first best', the government solves:
+            \begin{gather*}
+                \max_{\left\{c(\theta), y(\theta) \right\}_{\theta \in \Theta} } \int \Psi \big( c (\theta) - v(\frac{y(\theta)}{\theta}) \big) d F(\theta) \\
+                \text{subject to} \\
+                \int c(\theta) dF(\theta) + G \leq \int y(\theta) dF(\theta) \tag{RC}
+            \end{gather*}
+            Assume that the set of possible types (i.e. two) is given by $\Theta = \left\{\theta_{L}, \theta_{H} \right\}$ with $\theta_{L} < \theta_{H}$ and let $\pi_{i} \in (0,1)$ denote the probability of being type $theta_{i}$. Therefore, with two types, the first best becomes:
+            \begin{gather*}
+                \max_{c_{L}, y_{L}, c_{H}, y_{H}} \sum_{i \in \left\{ L, H \right\} } \pi_{i} \Psi \big( c_{i} - v(\frac{y_{i}}{\theta_{i}})\big) \\
+                \text{subject to} \\
+                \sum_{i \in \left\{ L,H \right\} } \pi_{i} c_{i} + G \leq \sum_{i \in \left\{ L,H \right\} } \pi_{i} y_{i} \tag{RC}
+            \end{gather*}
+            It can be shown that at the first best:
+            \begin{itemize}
+                \item  \underline{Property 1}: everyone gets the same utility, $c_{L}^{FB} - v(\frac{y_{L}^{FB}}{\theta_{L}}) = c_{H}^{FB} - v(\frac{y_{H}^{FB}}{\theta_{H}})$
+                \item  \underline{Property 2}: high types work more, $y^{FB}_{H} > y^{FB}_{L}$
+            \end{itemize}
+            \underline{Issue}: the first best cannot be implemented under private information since high types have incentives to misreport their type
+            \begin{itemize}
+                \item  \underline{Proof}: using $\theta_{H} > \theta_{L}$ and $y_{H}^{FB} > y_{L}^{FB}$ we get:
+                \begin{align*}
+                    c_{L}^{FB} - v(\frac{y_{L}^{FB}}{\theta_{H}}) &> c_{L}^{FB} - v(\frac{y_{L}^{FB}}{\theta_{L}}) \\
+                    &= c_{H}^{FB} - v(\frac{y_{H}^{FB}}{\theta_{H}^{FB}})
+                \end{align*}
+                which follows property 1 and implies that if the principal offered the First Best contract, both types of agents would choose $(c_{L}^{FB}, y_{L}^{FB})$. Therefore, there will not be equal utility between types.
+            \end{itemize}
+            \item  \underline{Second Best}: the principal can generally do better than the first best by screening types. This is done via offering a contract through which different types get different allocations - wherein, under the Revelation Principle, asking agents directly about their types can occur without loss of generality. \\ With the Revelation Principle we add the Incentive Compatibility Contraints ($IC_{H}$ and $IC_{L}$), which requires that individuals should be better-off by revealing their true types. Therefore, the second best problem becomes:
+            \begin{gather*}
+                \max_{c_{L}, y_{L}, c_{H}, y_{H}} \sum_{i \in \left\{ L, H \right\} } \pi_{i} \Psi \big( c_{i} - v(\frac{y_{i}}{\theta_{i}}) \big) \\
+                \text{subject to} \\
+                \sum_{i \in \left\{ L,H \right\} } \pi_{i} c_{i} + G \leq \sum_{i \in \left\{ L,H \right\} } \pi_{i} y_{i} \tag{RC} \\
+                c_{H} - v(\frac{y_{H}}{\theta_{H}}) \geq c_{L} - v(\frac{y_{L}}{\theta_{H}}) \tag{$IC_{H}$} \\
+                c_{L} - v(\frac{y_{L}}{\theta_{L}}) \geq c_{H} - v(\frac{y_{H}}{\theta_{L}}) \tag{$IC_{L}$}
+            \end{gather*}
+            This is a direct mechanism since allocations are indexed by $\theta$-types. It can be shown that only $IC_{H}$ will be binding at the optimum.
+            \begin{itemize}
+                \item  \underline{Logic}: this is a reflection of the equity and efficiency tradeoff. Since the redistribution from $\theta_{H}$ to $\theta_{L}$ is desired, $\theta_{H}$ might mimic $\theta_{L}$ and work less (thus decreasing the size of the pie). The binding of $IC_{H}$ means that $\theta_{H}$ should be provided with incentives not to shirk. The ICs effectively are just constraints that a types utility from correctly reporting must be greater than or equal to their utility from misreporting
+            \end{itemize}
+            Since only $IC_{H}$ is binding, the second best problem becomes:
+            \begin{gather*}
+                \max_{c_{L}, y_{L}, c_{H}, y_{H}} \sum_{i \in \left\{L, H \right\}} \pi_{i} \Psi \big( c_{i} - v(\frac{y_{i}}{\theta_{i}}) \big) \\
+                \text{subject to} \\
+                \sum_{i \in \left\{L,H \right\}} \pi_{i} c_{i} + G \leq \sum_{i \in \left\{L,H \right\}} \pi_{i} y_{i} \tag{$\lambda$} \\
+                c_{H} - v(\frac{y_{H}}{\theta_{H}}) \geq c_{L} - v(\frac{y_{L}}{\theta_{H}}) \tag{$\mu$}
+            \end{gather*}
+            where $\lambda, \mu > 0$ and denote the multipliers on $RC$ and $IC_{H}$ respectively.
+            \begin{itemize}
+                \item  \underline{First Order Conditions}: taking FOCs on the second best problem with $IC_{H}$ binding yields:
+                \begin{align*}
+                    0 = \frac{\partial U}{\partial c(\theta_{L})} &= \pi(\theta_{L}) \Psi^{'}[c(\theta_{L}) - v(\frac{y(\theta_{L})}{\theta_{L}})] - \lambda \pi(\theta_{L}) - \mu \tag{1} \\
+                    0 = \frac{\partial U}{\partial c(\theta_{H})} &= \pi(\theta_{H}) \Psi^{'}[c(\theta_{H}) - v(\frac{y(\theta_{H})}{\theta_{H}})] - \lambda \pi(\theta_{H}) - \mu \tag{2} \\
+                    0 = \frac{\partial U}{\partial y(\theta_{L})} &= -\theta(\lambda_{L}) \Psi^{'}[c(\lambda_{L}) - v(\frac{y(\theta_{L})}{\theta_{L}})] v^{'}(\frac{y(\theta_{L})}{\theta_{L}}) \frac{1}{L} + \lambda \pi(\theta_{L}) + \mu v^{'} (\frac{y(\theta_{L})}{\theta_{H}}) \frac{1}{\theta_{H}} \tag{3} \\
+                    0 = \frac{\partial U}{\partial y(\theta_{H})} &= -\theta(\lambda_{H}) \Psi^{'}[c(\lambda_{H}) - v(\frac{y(\theta_{H})}{\theta_{H}})] v^{'}(\frac{y(\theta_{H})}{\theta_{H}}) \frac{1}{H} + \lambda \pi(\theta_{H}) + \mu v^{'} (\frac{y(\theta_{H})}{\theta_{H}}) \frac{1}{\theta_{H}} \tag{4}
+                \end{align*}
+            \end{itemize}
+        \end{itemize}
+        \item  \underline{Step 2 - Decentralisation}: back out the $T^{*}(y)$ that implement $\left\{ c^{*}, y^{*} \right\}$ as a competitive equilibrium
+        \begin{itemize}
+            \item  \underline{Framework}: in a decentralised economy an agent of type $\theta$ solves:
+            \begin{gather*}
+                \max_{c,y} c - v(\frac{y}{\theta}) \\
+                \text{subject to} \\
+                c = y - T(y)
+            \end{gather*}
+            This implies that $T^{'}$ satisfies:
+            \begin{gather*}
+                1 - T^{'}(y) = v^{'}(\frac{y}{\theta}) \frac{1}{\theta} \tag{5}
+            \end{gather*}
+            This, together with the FOCs, can be used to characterise optimal marginal taxes $T^{*'}(y)$ for $y_{L}$ and $y_{H}$.
+            \item \underline{High Skilled Taxation}: recall that
+            \begin{gather*}
+                1 - T^{*'}(y(\theta_{H})) = v^{'}(\frac{y(\theta_{H})}{\theta_{H}}) \frac{1}{\theta_{H}}
+            \end{gather*}
+            By equation (2) we have that:
+            \begin{gather*}
+                \pi(\theta_{H}) \Psi^{'}(\mathcal{U}(\theta_{H})) + \mu = \lambda \pi(\theta_{H}) \tag{2'} \\
+                \text{where}: \ \ \mathcal{U}(\theta_{H}) = c(\theta_{H}) - v(\frac{y(\theta_{H})}{\theta_{H}})
+            \end{gather*}
+            By equation (4) we have that:
+            \begin{gather*}
+                v^{'}(\frac{y(\theta_{H})}{\theta_{H}}) \frac{1}{\theta_{H}} \big[\pi(\theta_{H})\Psi^{'}(\mathcal{U}(\theta_{H}))+\mu] = \lambda \pi(\theta_{H}) \tag{4'}
+            \end{gather*}
+            By (2') and (4') we have that:
+            \begin{gather*}
+                v^{'}(\frac{y(\theta_{H})}{\theta_{H}}) \frac{1}{\theta_{H}} = 1 \tag{*}
+            \end{gather*}
+            By (5) we have
+            \begin{gather*}
+                T^{'}(y(\theta_{H})) = 0 \tag{**}
+            \end{gather*}
+            implying that we have zero marginal taxation at the top.
+            \item  \underline{Low Skilled Taxation}: by (1) we have:
+            \begin{gather*}
+                \lambda \pi(\theta_{L}) = \pi(\theta_{L}) \Psi^{'}(\mathcal{U}(\theta_{L})) - \mu \tag{1'}
+            \end{gather*}
+            By (3) we have:
+            \begin{gather*}
+            \lambda \pi (\theta_{L}) = \pi (\theta_{L}) \Psi^{'} (\mathcal{U}(\theta_{L})) v^{'}(\frac{y(\theta_{L})}{\theta_{L}}) \frac{1}{\theta_{L}} - \mathcal{U} v^{'} (\frac{y(\theta_{L})}{\theta_{H}}) \frac{1}{\theta_{H}} \tag{3'}
+            \end{gather*}
+            Combining (1') and (3') yields:
+            \begin{gather*}
+                \pi(\theta_{L}) \Psi^{'}(\mathcal{U}(\theta_{L})) - \mu = \pi(\theta_{L}) \Psi^{'} (\mathcal{U}(\theta_{L})) v^{'}(\frac{y(\theta_{L})}{\theta_{L}}) \frac{1}{\theta_{L}} - \mu v^{'} (\frac{y(\theta_{L})}{\theta_{H}}) \frac{1}{\theta_{H}} \\
+                \text{which is equivalent to} \\
+                \pi(\theta_{L}) \Psi^{'}(\mathcal{U}(\theta_{L})) \underbrace{\big[1 - v^{'}(\frac{y(\theta_{L})}{\theta_{L}}) \frac{1}{\theta_{L}} \big]}_{\begingroup\color{cyan} \equiv T^{'}(y(\theta_{L})) \endgroup} = \mu \big[1 - v^{'}(\frac{y(\theta_{L})}{\theta_{H}}) \frac{1}{\theta_{H}} \big]
+            \end{gather*}
+            Rearranging this and inserting $+/- \mu v^{'}(\frac{y(\theta_{H})}{\theta_{H}}) \frac{1}{\theta_{H}}$ we have:
+            \begin{align*}
+                T^{'}(y(\theta_{L})) &= \mu \big[1 - v^{'}(\frac{y(\theta_{L})}{\theta_{H}}) \frac{1}{\theta_{H}} \big] \frac{1}{\pi(\theta_{L}) \Psi^{'}(u(\theta_{L}))} \\
+                T^{'}(y(\theta_{L})) &= \mu \big[\underbrace{1 - v^{'}(\frac{y(\theta_{H})}{\theta_{H}}) \frac{1}{\theta_{H}}}_{\begingroup\color{magenta} \equiv 0 \ \ \text{by (**)}\endgroup} + v^{'}(\frac{y(\theta_{H})}{\theta_{H}})\frac{1}{\theta_{H}} - v^{'}(\frac{y(\theta_{L})}{\theta_{H}})\frac{1}{\theta_{H}} \big] \frac{1}{\pi(\theta_{L}) \Psi^{'}(u(\theta_{L}))} \\
+                T^{'}(y(\theta_{L})) &= \mu \big[ v^{'}(\frac{y(\theta_{H})}{\theta_{H}})\frac{1}{\theta_{H}} - v^{'}(\frac{y(\theta_{L})}{\theta_{H}})\frac{1}{\theta_{H}} \big] \frac{1}{\pi(\theta_{L}) \Psi^{'}(u(\theta_{L}))} \tag{**}
+            \end{align*}
+            Note that since $y(\theta_{H}) \geq y(\theta_{L})$, ** must be positive. Therefore, $0 \leq T^{'}(y(\theta_{L})) \leq 1$
+        \end{itemize}
+        \item  \underline{Summary}: optimal marginal taxes satisfy (A): $T^{*'}(y_{h}) - 0$ and (B): $0 \leq T^{'}(y(\theta_{L})) \leq 1$. Overall, high incomes are untaxed at the margin but low incomes are levied a positive marginal tax (optimal income tax is therefore regressive)
+        \begin{itemize}
+            \item \underline{Proof}: (A) follows from combining (2), (4), and (5). (B) follows from combining (1), (3), (5), and that $y(\theta_{H}) \geq y(\theta_{L})$
+            \item  \underline{Intuition}: there should be no taxation at the top since the distribution of skills is bounded - therefore, a marginal tax on the highest type would only decrease work incenstives without yielding additional revenue. The tax should be regressive to prevent the high type from deviating, so the planner distorts the low type at the margin
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\newpage
+\section{Mirrless Taxation Model with a Continuum of Types}
+\vspace{2.5mm}
+\par \underline{Setup}: involves a static economy with a single consumption good and a continuum of workers of a continuum of skill types. No ad-hoc structure on tax design ($T^{*}(y)$) is imposed and the only contraints on $T^{*}(y)$ arise endogenously due to informational frictions.
+\\ \underline{Assumptions}: $\theta$ and $n$ are private information, $y$ is observable, aggregate output is linear in effective effort (implies that in a competitive equilibrium with a perfect labor market that y equals before tax income)
+\underline{Heterogeneity of Workers}: workers are heterogeneous across skills/labor productivity where $\theta \in \Theta$ and $F: \ \Theta \rightarrow [0,1]$ denotes the cumulative distribution function of $\theta$. Here $\Theta = [\theta_{LB}, \theta_{UB}] \rightarrow \ \text{continuum of types}$, wherein $\theta_{UB}$ can be finite or infinite (unbounded distribution)
+\\ \underline{Worker Preferences and Transformation}: workers have quasi-linear preferences over consumption $c$ and effort $n$:
+\begin{gather*}
+    U(c,n) = c - v(n)
+\end{gather*}
+where $v^{'}, v^{''} > 0$. Workers transform effort into output $y$ (or effective labour) using the technology function $y = \theta \cdot n$. Note that $n$ is substituted by $y/\theta$, allowing us to write the contract in terms of observables
+\\ \underline{Key Tradeoff}: there is a tradeoff between equity and efficieny. This is as confiscatory taxation improves upon the distribution of the 'social pie' but also reduces production and thus the size of the pie
+\\ \underline{Allocation}: an allocation is an assignment of $c$ and $y$ given $\theta$:
+\begin{gather*}
+    \left\{ c(\theta), y(\theta) \right\}_{\theta \in \Theta} \ \ \Rightarrow \ \text{the contract}
+\end{gather*}
+This allocation is feasible if and only if
+\begin{gather*}
+    \int c(\theta) dF(\theta) + G \leq \int y(\theta) dF(\theta)
+\end{gather*}
+where the LHS is aggregate consumption plus exogenous government expenditure, the RHS is aggregate output.
+\\ \underline{Social Welfare Function}: the government aims to allocate $c$ and $y$ across $\theta$ to maximize the SWF:
+\begin{gather*}
+    SWF = \int \Psi \big( c (\theta) - v(\frac{y(\theta)}{\theta}) \big) d F(\theta)
+\end{gather*}
+where $\Psi^{'} > 0$ and $\Psi^{''} < 0$. The SWF encapsulates the normative criterion followed by the government and given the concavity of $\Psi$ displays a preference for redistribution across $\theta$s
+\\ \underline{Aim}: to design an income tax system that maximizes social welfare. More precisely, let $T(y)$ be the income tax schedule so that agents face the budget constraint $c \leq y - T(y)$. In this case, we are seeking a function $T^{*}(y)$ that maximizes the SWF in a competitive equilibrium and focus on characterising optimal marginal tax rates $T^{*'}(y)$ across the income distribution
+\\ \underline{Solution for Optimal Taxes}: we find $T^{*}(y)$ by following two steps
+\\ \underline{Step 1 - Contract Design}: characterise the allocations for $\left\{ c^{*}, y^{*} \right\}$ that maximise the SWF subject to informational Constraints
+\begin{itemize}
+    \item \underline{Planning Problem}: the social planner solves:
+    \begin{gather*}
+        \max_{\left\{ c(\theta), y(\theta) \right\}} \int \Psi  \big( c(\theta) - v(\frac{y(\theta)}{\theta}) \big) \\
+        \text{subject to}
+        \int c(\theta) d F(\theta) \leq \int y(\theta) d F(\theta) \tag{RC} \\
+        c(\theta) - v(\frac{y(\theta)}{\theta}) \geq c(\theta^{'}) - v (\frac{y(\theta^{'})}{\theta}), \ \ \forall (\theta, \theta^{'}) \tag{IC}
+    \end{gather*}
+    \item  \underline{Double Infinite IC Constraints}: as we have a continuum number of types we have an infinite number of $\theta$s, since for each $\theta$ we also have an infinite number of constraints (i.e. $\theta$s to compare to) we therefore have a double infinite number of IC constraints.
+    \item  \underline{IC Constraints Simplification}: due to there being a double infinite number of ICs, they must be simplified to characterise the solution. The double infinite series of ICs is simplified by the proposition that (IC) holds if and only if for all $\theta$:
+    \begin{gather*}
+        c^{'}(\theta) - v^{'}(\frac{y(\theta)}{\theta}) \frac{y^{'}(\theta)}{\theta} = 0 \tag{$IC_{1}$} \\
+        \text{and} \\
+        y^{'}(\theta) \geq 0 \tag{$IC_{2}$}
+    \end{gather*}
+    which are the simplified IC constraints
+    \begin{itemize}
+        \item  \underline{Proof}: the idea of the proof is to show that under $(IC_{1})$ and $(IC_{2})$ we have that $\mathcal{U}(\theta^{'}; \theta) = c(\theta^{'}) - v(\frac{y(\theta^{'})}{\theta})$ attains a global maximum at $\theta^{'} = \theta$ for all $\theta$. Let
+        \begin{gather}
+            \mathcal{U} (\theta^{'}; \theta) = c(\theta^{'}) - v(\frac{y(\theta')}{\theta})
+        \end{gather}
+        be the utility of agent $\theta$ from reporting as $\theta^{'}$. This involves proving lemma 1 and then lemma 2
+        \item \underline{First Lemma:} \textit{a local maximum of $\mathcal{U}(\theta^{'}; \theta)$ at $\theta^{'} = \theta$ is attained if and only if $\forall \theta \in \Theta$ $(IC_{1})$ and $(IC_{2})$ hold}
+        \begin{itemize}
+            \item \underline{Lemma 1 Proof}: The first order conditions for local maximum are $$\frac{\partial \mathcal{U}(\theta^{'};\theta)}{\partial \theta^{'}} |_{\theta^{'} = \theta} = 0$$ More succinctly, by $\mathcal{U}_{1}(\theta; \theta) = 0$ and recalling that $\mathcal{U}(\theta^{'}; \theta) = c(\theta^{'}) - v(\frac{y(\theta^{'})}{\theta})$ we have $$\mathcal{U}_{1}(\theta^{'}; \theta) = \underbrace{c^{'}(\theta^{'}) - v^{'}(\frac{y(\theta^{'})}{\theta})\frac{y^{'}(\theta^{'})}{\theta} = 0}_{IC_{1}}$$
+            \newline
+            The second order conditions for a local maximum at $\theta^{'} = \theta$ are:
+            \begin{gather*}
+                \frac{\partial^{2} \mathcal{U}(\theta^{'}; \theta)}{\partial \theta^{'2}}|_{\theta^{'} = \theta} \leq 0
+            \end{gather*}
+            Which can be written as
+            \begin{gather}
+                \mathcal{U_{11}} (\theta; \theta) \leq 0 \tag(1)
+            \end{gather}
+            Recall that we showed at a local maximum that $\mathcal{U}_{1}(\theta; \theta) = 0$ and therefore $\mathcal{U}_{11}(\theta; \theta) \leq 0$. Differentiating this with respect to $\theta$ we have
+            \begin{gather*}
+                \mathcal{U}_{11}(\theta; \theta) + \mathcal{U}_{12}(\theta; \theta) = 0 \tag{2}
+            \end{gather*}
+            This is as the total derivative is equal to the sum of partial derivatives and the total second order derivative equals 0 at a critical value (e.g. a local minima). By (1) we must then have that $\mathcal{U}_{12}(\theta; \theta) \geq 0$
+            \newline
+            Expanding on the LHS of (2) and recalling that $\mathcal{U}_{1}(\theta^{'}; \theta) = c^{'}(\theta^{'}) - v^{'}(\frac{y(\theta^{'})}{\theta^{'}})\frac{y^{'}(\theta^{'})}{\theta} = 0$ we have
+            \begin{align*}
+                \underbrace{\mathcal{U}_{12}(\theta; \theta)}_{\geq 0 \ \text{by (2)}} &= v^{''}(\frac{y(\theta}{\theta}) \frac{y(\theta)}{\theta^{2}} \frac{y^{'}(\theta)}{\theta} + v^{'}(\frac{y(\theta)}{\theta})\frac{y^{'}(\theta)}{\theta^{2}} \\
+                &= \underbrace{\big[ v^{''} (\frac{y(\theta)}{\theta}) \frac{y(\theta)}{\theta^{3}} + v^{'}(\frac{y(\theta)}{\theta})\frac{1}{\theta^{2}} \big]}_{\geq 0} y^{'}(\theta)
+            \end{align*}
+            This implies that $y^{'}(\theta) \geq 0$ ($IC_{2}$)
+        \end{itemize}
+        \item \underline{Second Lemma:} \textit{ a global maximum of $\mathcal{U}(\theta^{'}; \theta)$ at $\theta^{'} = \theta$ is attained at $\theta^{'} = \theta$ if and only if $\forall \theta \in \Theta$ $(IC_{1})$ and $(IC_{2})$ hold}
+        \begin{itemize}
+            \item \underline{Lemma 2 Proof}: the idea is to show that the sign of $\mathcal{U}_{1}(\theta^{'}, \theta)$ is the same as $(\theta^{'} - \theta)$
+            \newline
+            \begin{center}
+                \includegraphics[width=8cm, height=6cm]{pic29}
+            \end{center}
+            Here we show that the sign of $\mathcal{U}_{1}(\theta^{'};\theta)$ is the same as $(\theta - \theta^{'})$ (which is greater or equal to zero). First note that
+            \begin{gather*}
+                \mathcal{U}_{1}(\theta^{'}; \theta) = c^{'}(\theta^{'}) - v^{'}(\frac{y(\theta^{'})}{\theta^{'}})\frac{y^{'}(\theta^{'})}{\theta} \tag{i}
+            \end{gather*}
+            By condition ($IC_{1}$) evaluated at $\theta^{'}$ we have:
+            \begin{gather*}
+                c^{'}(\theta^{'}) = v^{'}(\frac{y(\theta^{'})}{\theta^{'}})\frac{y^{'}(\theta^{'})}{\theta^{'}} \tag{ii}
+            \end{gather*}
+            Combining (i) and (ii) yields:
+            \begin{align*}
+                \mathcal{U}_{1}(\theta^{'}; \theta) &= v^{'}(\frac{y(\theta^{'})}{\theta^{'}})\frac{y^{'}(\theta^{'})}{\theta^{'}} - v^{'}(\frac{y(\theta^{'})}{\theta})\frac{y^{'}(\theta)}{\theta} \\
+                &= \underbrace{\big[v^{'}(\frac{y(\theta^{'})}{\theta^{'}}) \frac{1}{\theta^{'}} - v^{'}(\frac{y(\theta^{'})}{\theta})\frac{1}{\theta} \big]}_{\geq 0 \ \text{by} \ (IC_{2})} y^{'}(\theta^{'}) \tag{$[\cdot]$}
+            \end{align*}
+            By ($IC_{2}$) and because $v^{''} \geq 0$ (i.e. since we have convexity in $v$), we get the following:
+            \begin{gather*}
+                \text{sign} \ (\mathcal{U_{1}}(\theta^{'},\theta)) = \ \text{sign} \ ([\cdot]) = \ \text{sign} \ (\theta - \theta^{'})
+            \end{gather*}
+        \end{itemize}
+    \end{itemize}
+    This proposition has the advantage of reducing dimensionality (from double infinity to infinity constraints) since ($IC_{1}$) and ($IC_{2}$) are conditions for local maxima and therefore we actually work with a local version of ($IC$).
+    \item  \underline{Simplified IC Qualities}: ($IC_{2}$) requires that higher types work more. ($IC_{1}$) requires that higher types get higher utility at the optimum.
+    \begin{itemize}
+        \item  \underline{Proof}: let $\mathcal{U}^{'}(\theta) \equiv U(\theta; \theta)$ be the utility for type $\theta$ at the optimum. Note that
+        \begin{gather*}
+            \mathcal{U}^{'}(\theta) = \underbrace{\big[c^{'}(\theta) - v^{'}(\frac{y(\theta)}{\theta}) \frac{y^{'}(\theta)}{\theta}\big] }_{\begingroup\color{cyan} = 0 \ by \ (IC_{1}) \endgroup\color{cyan}} + \underbrace{ v^{'} (\frac{y(\theta)}{\theta}) \frac{y(\theta)}{\theta^{2}}}_{\begingroup\color{magenta} \geq 0 \endgroup\color{magenta}}
+        \end{gather*}
+        Hence, $\mathcal{U}^{'}(\theta) \geq 0$. Note that the above is derived by solving the simplified $IC_{1}$ and substituting it into the utility formula
+        \item  \underline{Intuition}: $\mathcal{U}(\lambda)$ should increase with $\lambda$ to incentivise high types to work at full potential. More technically, we need that the informational rent (embedded in $\mathcal{U}(\lambda)$) increases with $\lambda$. These results extend what we obtained in the 2-types case
+    \end{itemize}
+    \item  \underline{Final Planning Problem} let $\mathcal{U} = c(\theta) - v(\frac{y(\theta)}{\theta})$ be the utility of agent $\theta$ at the optimum. WE can therefore rewrite the planning problem using $\mathcal{U}(\theta)$ as a state variable where:
+    \begin{itemize}
+        \item  \underline{Consumption}: can be written as $c(\theta) = \mathcal{U}(\theta) + v(\frac{y(\theta)}{\theta})$
+        \item  \underline{$IC_{1}$}: is equivalent to $\mathcal{U}^{'}(\theta) = v^{'}(\frac{y(\theta)}{\theta})\frac{y(\theta)}{\theta^{2}}$
+    \end{itemize}
+    Therefore, the planning problem can be rewritten as:
+    \begin{gather*}
+        \max_{\left\{ \mathcal{U}(\theta), y(\theta)\right\}_{\theta \in \Theta}} \int \Psi (\mathcal{U}(\theta))f(\theta) d \theta \\
+        \text{subject to} \\
+        \int \big(\overbrace{\mathcal{U}(\theta) + v(\frac{y(\theta)}{\theta})}^{ \equiv c(\theta)} - y(\theta) \big) f(\theta) d \theta = 0 \tag{RC} \\
+        \mathcal{U}^{'}(\theta) = v^{'}(\frac{y(\theta)}{\theta}) \frac{y(\theta)}{\theta^{2}}, \ \ \forall \theta \tag{$IC_{1}$} \\
+        y^{'}(\theta) \geq 0, \ \ \forall \theta \tag{$IC_{2}$}
+    \end{gather*}
+    \item  \underline{Relaxing the Planning Problem}: by applying optimal control techniques we can handle the inequality contraint ($IC_{2}$) and integral constraint (RC)
+    \begin{itemize}
+        \item  \underline{Inequality Constraint ($IC_{2}$)}: to make progress we neglect the monotonicity condition by assuming it holds at the optimum - thus working with a 'relaxed' planning problem by ignoring ($IC_{2}$)s existence. This is equivalent to assuming that there is no bunching at the optimum (i.e. different types are offered a different contract)
+        \newline
+        This is the so called 'first-order approach' to the planning problem because ($IC_{1}$), the condition we keep, is a first order condition for truth telling to be optimal while ($IC_{2}$) came from second order conditions. In practice, we typically verify $(IC_{2})$ ex-post via simulations
+        \item  \underline{Integral Constraint (RC)}: for applying the Maximum Principle, the constraint set should only include differential equations, not integral constraints. To do this, we define a new state variable $z(\theta)$ such that $z(\theta_{LB}) = z(\theta_{UB}) = 0$ and $z^{'}(\theta) = \underbrace{\big(\mathcal{U}(\theta) + v(\frac{y(\theta)}{\theta}) - y(\theta) \big) f(\theta)}_{\text{integrand of RC}}$. Clearly these conditions are equivalent to the RC, therefore:
+        \begin{gather*}
+            0 = z(\theta_{UB}) - z(\theta_{LB}) = \int_{\theta_{LB}}^{\theta_{UB}} z'(\theta) d \theta = \int_{\theta_{LB}}^{\theta_{UB}} \big( \mathcal{U}(\theta) + v \frac{y(\theta)}{\theta} - y(\theta) \big) f(\theta) d \theta
+        \end{gather*}
+        \item  \underline{Relaxed Problem}: by handling (RC) and ($IC_{2}$), the relaxed problem becomes:
+        \begin{gather*}
+            \max_{\left\{ \mathcal{U}(\theta), y(\theta)\right\}_{\theta \in \Theta}} \int \Psi (\mathcal{U}(\theta))f(\theta) d \theta \\
+            \text{subject to} \\
+            z^{'}(\theta) = \big(\mathcal{U}(\theta) + v(\frac{y(\theta)}{\theta}) - y(\theta) \big) f(\theta), \ \forall \theta \tag{$\lambda, \ RC$} \\
+            \mathcal{U}^{'}(\theta) = v^{'}(\frac{y(\theta)}{\theta}) \frac{y(\theta)}{\theta^{2}}, \ \forall \theta \tag{$\mu, \ IC_{1}$} \\
+            z(\theta_{LB}) = z(\theta_{UB}) = 0
+        \end{gather*}
+    \end{itemize}
+    \item  \underline{Solving the Relaxed Problem}: this can be done via applying the Maximum Principle with $y(\theta)$ as the control variable and $z(\theta), \mathcal{U}(\theta)$ as the state Variables. The Hamiltonian is:
+    \begin{gather*}
+        H = \Psi (\mathcal{U}(\theta)) f(\theta) + \lambda (\theta) \big[\mathcal{U}(\theta) + v(\frac{y(\theta)}{\theta}) - y(\theta) \big] f(\theta) + \mu (\theta) v^{'} (\frac{y(\theta)}{\theta}) \frac{y(\theta)}{\theta^{2}}
+    \end{gather*}
+    where $\lambda (\theta)$ and $\mu (\theta)$ are the costates associated with $z(\theta)$ and $\mathcal{U}(\theta)$. According to the Maximum Principle, the necessary consitions for an optimum are (dropping explicit dependencies on $\theta$):
+    \begin{align*}
+        \frac{\partial H}{\partial y} &= 0 \ \Rightarrow \ H_{y} = \lambda \big[v^{'}(\frac{y}{\theta}) \frac{1}{\theta} - 1 \big]f + \mu \big[v^{''}(\frac{y}{\theta})\frac{1}{\theta^{3}} + v^{'}(\frac{y}{\theta}) \frac{1}{\theta^{2}} \big] = 0\\
+        \frac{\partial H}{\partial z} &= -\lambda^{'} \Rightarrow \lambda^{'} = 0 \\
+        \frac{\partial H}{\partial \mathcal{U}} &= -\mu^{'} \Rightarrow \mu^{'} = - \big[\Psi^{'}(\mathcal{U}) + \lambda \big] f
+    \end{align*}
+    Boundary conditions are (recall that $\mathcal{U}$ is free at the boundaries):
+    \begin{gather*}
+        \mu(\theta_{LB}) = \mu(\theta_{UB}) = 0
+    \end{gather*}
+    \begin{itemize}
+        \item  \underline{Disutility of Effort}: the disutility for effort is isoelastic $$v(n) = \frac{n^{1+\tfrac{1}{\varepsilon}}}{1 + \tfrac{1}{\varepsilon}}$$ where $\varepsilon > 0$ is the Frisch elasticity of labour supply and measures the elasticity of effort to a change in wages, holding constant the marginal utility of wealth
+        \item  \underline{Average Marginal SW}: let $$D(\theta) \equiv \frac{1}{1 - F(\theta)} \int_{\theta_{LB}}^{\theta_{UB}} \Psi^{'} (\mathcal{U}(\widetilde{\theta})) f (\widetilde{\theta}) d \widetilde{\theta} $$ be the average marginal social welfare weight on individuals with $\widetilde{\theta} \geq \theta$
+        \begin{itemize}
+            \item $\underline{D(\theta)}$: summarises the redistributive tastes of the planner where $D(\theta) \geq 0$ and is decreasing in $\theta$ by the concavity of $\Psi$
+            \item \underline{Note}: $F(\theta)$ is the proportion of agents with skill type $\theta \leq \widetilde{\theta}$ and will increase as $\widetilde{\theta}$ increases. This implies a higher social weight on individuals with higher $\widetilde{\theta}$ and therefore that they should be taxed less (all else equal). Further note that $(1 - F(\theta)) = \int_{\theta - \theta_{LB}} f(\theta) d \theta$
+        \end{itemize}
+    \end{itemize}
+    \item \underline{Optimal Marginal Taxes}: the optimal marginal taxes satisfy $$\frac{T^{*'}(y^{*}(\theta))}{1 - T^{*'}(y^{*}(\theta))} = (1 + \frac{1}{\varepsilon})(1 - \frac{D(\theta)}{D(\theta_{LB})})\frac{1 - F(\theta)}{\theta f(\theta)}$$ This has three key determinants: (1) elasticity of labour supply, (2) redistributive tastes, (3) distribution of skills. Recall that $y^{'} \geq 0$.
+    \begin{itemize}
+        \item  \underline{Proof Step 1 - Centralization}: characterise the allocations for $\{ c^{*}, y^{*} \}$ that maximise the SWF subject to informational constraints using the planning problem. \\
+        By the maximum principal we have:
+        \begin{gather*}
+            \lambda [v^{'} (\frac{y}{\theta})\frac{1}{\theta}-1]f + \mu [v^{''}(\frac{y}{\theta})\frac{y}{\theta^{3}} + v^{'}(\frac{y}{\theta})\frac{1}{\theta^{2}}] = 0 \tag{1} \\
+            \lambda^{'} = 0 \tag{2} \\
+            \mu^{'} = -[\Psi^{'}(\mathcal{U}) + \lambda]f \tag{3}
+        \end{gather*}
+        Recall that $\mathcal{U}$ is free at the boundaries so $\mu(\theta_{LB}) = \mu(\theta_{UB}) = 0$. Therefore, by integrating (3) over all $\theta$ we have:
+        \begin{gather*}
+            \underbrace{\int_{\theta_{LB}}^{\theta_{UB}} \mu^{'}(\widetilde{\theta}) d \widetilde{\theta}}_{\mu(\theta_{UB}) - \mu(\theta_{LB}) = 0} = -\int_{\theta_{LB}}^{\theta_{UB}} [\Psi^{'} (\mathcal{U}(\widetilde{\theta})) + \lambda]f(\widetilde{\theta}) d \widetilde{\theta} \tag{4}
+        \end{gather*}
+        Based on (4), we have that:
+        \begin{align*}
+            \lambda' &= - \int_{\theta_{LB}}^{\theta_{UB}} \Psi^{'} (\mathcal{U}(\widetilde{\theta}))f(\widetilde{\theta})d \widetilde{\theta} \\
+            \lambda' &= -D(\theta_{LB}) \tag{5}
+        \end{align*}
+        Since when $\widetilde{\theta} = \theta_{LB}$ we have that $(1 - F(\theta) = 1$, yielding the above result. Also, by integrating (3) between $[\theta, \theta_{UB}]$ we get:
+        \begin{gather*}
+            \underbrace{\mu(\theta_{UB})}_{=0} - \mu(\theta) = - \int_{\theta}^{\theta_{UB}} [\Psi^{'} (\mathcal{u}(\widetilde{\theta})) + \lambda]f (\widetilde{\theta}) d \widetilde{\theta} \\
+            \mu(\theta) =  \underbrace{\int_{\theta}^{\theta_{UB}} [\Psi^{'} (\mathcal{u}(\widetilde{\theta}))]f (\widetilde{\theta}) d \widetilde{\theta}}_{(1 - F(\theta))D(\theta)} +  \underbrace{\lambda}_{-D(\theta_{LB})}  \underbrace{\int_{\theta}^{\theta_{UB}} f (\widetilde{\theta}) d \widetilde{\theta}}_{1 - F(\theta)}
+        \end{gather*}
+        Therefore, we have that:
+        \begin{gather*}
+            \mu (\theta) = (1-F(\theta)) (D(\theta) - D(\theta_{LB})) \tag{6}
+        \end{gather*}
+        Note that $\mu(\theta) \leq 0$ since $(D(\theta) - D(\theta_{LB})) \leq 0$ as $D(\theta)$ is decreasing in $\theta$ (based on the planner's taste for redistribution). Using the functional form for $v(\cdot)$ we have:
+        \begin{gather*}
+            v(n) = \frac{n^{1+\tfrac{1}{\varepsilon}}}{1 + \tfrac{1}{\varepsilon}} \\
+            \therefore v^{'}(n) = n^{\tfrac{1}{\varepsilon}} \tag{7} \\
+            \therefore v^{''}(n) = \frac{1}{\varepsilon} n^{\tfrac{1}{\varepsilon} -1} \tag{7}
+        \end{gather*}
+        Using (5), (6), and (7) into (1), we get:
+        \begin{gather*}
+            \underbrace{D(\theta_{LB})}_{\lambda} [(\frac{y}{\theta})^{\tfrac{1}{\varepsilon}} \frac{1}{\theta} - 1] f(\theta) = \underbrace{(1 - F(\theta))(D(\theta) - D(\theta_{LB}))}_{\mu(\theta)} [\frac{1}{\varepsilon} (\frac{y}{\theta})^{\tfrac{1}{\varepsilon} - 1} \frac{y}{\theta^{3}} + (\frac{y}{\theta})^{\tfrac{1}{\varepsilon}} \frac{1}{\theta^{2}}] \\
+            \underbrace{(\frac{y}{\theta})^{\frac{1}{\varepsilon}} \frac{1}{\theta} - 1}_{-T^{'}(y)} = \frac{1 - F(\theta)}{\theta f (\theta)} (\frac{D(\theta)}{D(\theta_{LB})} - 1) (\frac{1}{\varepsilon} + 1) \underbrace{(\frac{y}{\theta})^{\tfrac{1}{\varepsilon}} \frac{1}{\theta}}_{1 - T^{'}(y)} \tag{8}
+        \end{gather*}
+        (8) can be used in conjunction with the decentralization step to solve for the optimal tax formula
+        \item  \underline{Proof Step 2 - Decentralisation}: back out the $T^{*}(y)$ that implement $\left\{ c^{*}, y^{*} \right\}$ as a competitive equilibrium using the individual problem. \\
+        The individual solves the following problem in the decentralization
+        \begin{gather*}
+            \max_{y} \ \underbrace{y - T(y)}_{c} - \underbrace{(\frac{y}{\theta})^{1 + \frac{1}{\varepsilon}} \frac{1}{1 + \tfrac{1}{\varepsilon}}}_{v(\tfrac{y}{\theta})}
+        \end{gather*}
+        The first order conditions to this problem are:
+        \begin{gather*}
+            1 - T^{'}(y) = (\frac{y}{\theta})^{\tfrac{1}{\varepsilon}} \frac{1}{\theta} \tag{9}
+        \end{gather*}
+        By combining (8) and (9) we derive the optimal tax formula
+        \begin{gather*}
+            \frac{T^{*'}(\theta)}{1 - T^{*'}(\theta)} = (1 + \frac{1}{\varepsilon}) (1 - \frac{D(\theta)}{D(\theta_{LB})}) \frac{1 - F(\theta)}{\theta f(\theta)}
+        \end{gather*}
+    \end{itemize}
+\end{itemize}
+\underline{Characteristics of $T^{*'}$}: (1) $T^{*'}(\theta)$ decreases with $\varepsilon$ since large $\varepsilon$ means that marginal taxes create large distortions, (2) $T^{*'}$ decreases with $D(\theta)$ since more social weight on individuals with $\widetilde{\theta} \geq \theta$ implies that the government taxes such individuals less, (3) $T^{*'}$ increases with $\frac{1 - F(\theta)}{\theta f(\theta)}$
+\begin{itemize}
+    \item  \underline{Logic for (3)}: suppose you increase $T^{*'}$. Then, all else equal, the government collects more tax revenue on individuals above $\theta$, who are $(1 - F(\theta))$ in number. This explains the positive dependence on $(1 - F(\theta))$. However, the resulting distortion is proportional to the mass of individuals at $\theta$ and to their productivity level $\theta$. This explains the negative dependence on $\theta f (\theta)$
+\end{itemize}
+\vspace{2.5mm}
+\par \underline{Quantifying Optimal Taxes}: optimal marginal taxes satisfy $\frac{T^{*'}(\theta)}{1 - T^{*'}(\theta)} = (1 + \frac{1}{\varepsilon}) (1 - \frac{D(\theta)}{D(\theta_{LB})}) \frac{1 - F(\theta)}{\theta f(\theta)}$ with its key determinants being (1) elasticity of labour supply, (2) redistributive tastes, (3) distribution of skills
+\begin{itemize}
+    \item  \underline{Elasticity of Labour Supply ($\varepsilon$)}: $\varepsilon$ can be estimated from the data which suggests that the reasonable range among US males is $\varepsilon \in [0,0.5]$ and for US females $\varepsilon \geq 0.5$
+    \item  \underline{Redistributive Tastes ($D(\theta)$)}: the shape of $D(\theta)$ is driven by the parameterisation of $\Psi$, typically the 'weighted utilitarian' SWF is used: $$\Psi(\mathcal{U}(\theta)) = a(\theta)\mathcal{U}(\theta) \Rightarrow D(\theta) = \frac{1}{1 - F(\theta)} \int_{\theta}^{\theta_{UB}} a(\widetilde{\theta})f(\widetilde{\theta}) d \widehat{\theta}$$ where $a(\theta)$ decreases with $\theta$. The Rawlsian $a(\theta_{LB}) = + \infty$ and Utilitarian $a(\theta) = 1$ for all $\theta$
+    \item  \underline{Skill Distribution $f(\theta)$}: given the issue of the distribution of skills being unobservable, there are two common approaches - (1) the Saez approach backs out distribution of skills from distribution of income, (2) the Mankiw approach proxies skills with wages
+    \begin{itemize}
+        \item  \underline{Distribution of Skills}: if the distribution of skills is bounded then $\frac{1 - F(\theta_{UB})}{\theta_{UB}f (\theta_{UB})} = 0$ so that $T^{*'}(\theta_{UB}) = 0$ as in the two type model. However, if the distribution of skills is unbounded then this is not the case
+    \end{itemize}
+\end{itemize}
+\vspace{2.5mm}
+\par \underline{Saez Approach to Skill Distribution Analysis}: suppose that given the actual tax schedule $T(y)$ we observe an income distribution with cdf $Q(y)$. As long as $y^{'}(\theta) \geq 0$, we can back out the skill distribution based on the relationship $F(\theta) = Q(y(\theta))$. This implies that $f(\theta) = q (y(\theta))y^{'}(\theta)$, where $y^{'}(\theta)$ on the RHS can be recovered from the utility maximization problem given the actual tax code
+\begin{itemize}
+    \item  \underline{Optimization Problem}: given the actual tax code $T$, the agent solves
+    \begin{gather*}
+        \max_{c,y} c - v(\frac{y}{\theta}) \\
+        \text{Subject to:} \ c = y - T(y)
+    \end{gather*}
+    The first order conditions of this problem imply that $$1 - T^{'}(y) - v^{'}(\frac{y}{\theta})\frac{1}{\theta} = 0$$ This implicity defines $y(\theta)$ and $y^{'}(\theta)$. Therefore, we can identify the skill distribution from the distribution of observed incomes and the observed tax schedule
+    \item  \underline{Skill Distribution at the Top}: both the Saez and Mankiw approach for estimating $f(\theta)$ sets $\theta_{UB} = \infty$ and usually assumes that skills follow a pareto distribution at the top (e.g. above the 95th percentile). This assumption is due to limitations in the data. Specifically, above some productivity level $\theta_{p}$ we have:
+    \begin{gather*}
+        f(\theta) = \frac{\alpha (\theta_{p})^{\alpha}}{\theta^{1+\alpha}} \ \text{and} \ F(\theta) = 1 - (\frac{\theta_{p}}{\theta})^{\alpha}
+    \end{gather*}
+    where $\alpha$ measures the 'thinness' of the upper tail of F (i.e. low $\alpha$ implies a thick upper tail, therefore having distribution of top skills more spread out and more inequality within the top quantiles of skills). The below shows the pareto pdf for $\theta_{p} = 1$ (x is $\theta$):
+    \newline
+    \begin{center}
+    \includegraphics[width=8cm, height=6cm]{pic19}
+    \end{center}
+    The reason for fitting a pareto distribution for skills at the top is because income distribution is well approximated with a pareto distribution. This suggests that the underlying skill distribution should have a "right pareto tail". If income is pareto distributed with tail index $\alpha_{y}$, then
+    \begin{gather*}
+        \lim_{y \rightarrow \infty} \frac{1 - Q(y)}{y q(y)} = \frac{1}{\alpha_{y}} \rightarrow \ \text{constant}
+    \end{gather*}
+    In the data $\frac{1 - Q(y)}{y q(y)}$ is extremely stable at the top as seen below
+    \newline
+    \begin{center}
+    \includegraphics[width=8cm, height=6cm]{pic20}
+    \end{center}
+    In summary, if the skill distribution is also pareto at the top then
+    \begin{gather*}
+        \lim_{\theta \rightarrow \infty} \frac{1 - F(\theta)}{\theta f(\theta)} = \frac{1}{\alpha}
+    \end{gather*}
+    where $\alpha$ is backed out from $\alpha_{y}$ based on $a = (1 + \varepsilon) \alpha_{y}$ (this can be proven by manipulating the FOC of the agent's problem in decentralisation facing the linear top tax rate $\overline{\tau}$)
+\end{itemize}
+\vspace{2.5mm}
+\par \underline{Simulation of Optimal Taxes}: from simulating the model we can derive optimal taxes as being
+\newline
+\begin{center}
+\includegraphics[width=8cm, height=6cm]{pic21}
+\end{center}
+\begin{itemize}
+ \item  \underline{Bottom and Top Distribution Results}: we have that the optimal $T^{'}$ at the bottom is very high, which deters high incomes from not working at full potential (counterpart of the $T^{'}(\theta_{L}) > 0$ result in the two-type model). Moreover, $\frac{1 - F(\theta)}{\theta f(\theta)}$ is very high at the bottom since (1) there are too many individual above the bottom making the numerator big, (2) the denominator being small because of few individual around the bottom and low $\theta$. Due to the low number of individuals and low skill level, distortions induced by high $T^{'}$ for low income agents are not too large
+ \item  \underline{Distribution Shape Results}: the optimal $T^{'}$ is U-shaped, mirroring the behaviour of ratio  $\frac{1 - F(\theta)}{\theta f(\theta)}$. $T^{'}$ only becomes progressive at high incomes
+ \item  \underline{Qualitative Results}: top tax rates can be quite large for high incomes. The 'zero taxation at the top' (see two type model) only applies to the very top income earner. With an unbounded skill distribution the level of top earnings is not known in advance. Hence, the 'zero taxation at the top' (and the implication that $T^{'}$ decreases at the top) has little empirical and policy relevance
+\end{itemize}
+\vspace{2.5mm}
+\par \underline{Top Tax Formula}: with our optimal tax formula $\frac{T^{*'}(\theta)}{1 - T^{*'}(\theta)} = (1 + \frac{1}{\varepsilon}) (1 - \frac{D(\theta)}{D(\theta_{LB})}) \frac{1 - F(\theta)}{\theta f(\theta)}$, as $\theta \rightarrow \infty$ we have that $D(\theta) \rightarrow 0$ and $\frac{1 - F(\theta)}{\theta f(\theta)} \rightarrow \frac{1}{\alpha}$. Therefore, the optimal asymptotic top tax rate, known as the Diamond-Saez Top Tax Formula, is:
+\begin{gather*}
+    \overline{T}^{*'} = \frac{1}{1 + \alpha \tfrac{\varepsilon}{1 + \varepsilon}}
+\end{gather*}
+\begin{itemize}
+    \item   \underline{Implications}: with low $\varepsilon$ we have low distortions as $\overline{T}^{*'}$ increases. With low $\alpha$ we have thick right tails of skill distribution and therefore if $\overline{T}^{*'}$ increases few will be affected at the margin but many inframarginally
+    \item  \underline{Data}: $\overline{T}^{*'}$ is a key policy instrument to achieve redistribution and accounts for a significant fraction of individual tax revenue (about 40 $\%$ in the US). Using a back-of-the-envelope calibration we have $\varepsilon = 0.25$ as a midrange estimate, $\alpha_{y} = 1.5 \ \rightarrow \ \alpha = 1.88$. This implies that $\overline{T}^{*'} = 73 \% 73$.
+    \newline
+    Using a sensitivity analysis we have that:
+    \newline
+    \begin{center}
+    \includegraphics[width=4cm, height=2cm]{pic22}
+    \end{center}
+    which compares to the following statutory rates across time:
+    \newline
+    \begin{center}
+    \includegraphics[width=10cm, height=8cm]{pic23}
+    \end{center}
+\end{itemize}
+
+\newpage
+
+\section{Optimal Dynamic Taxation}
+\vspace{2.5mm}
+\par \underline{Dynamic Mirrlees Approach}: extends the traditional mirrlees model to a dynamic one involving information friction that endogenise feasible tax instruments, a heterogeneous agents framework, and taxes on capital income
+\underline{Baseline Model}: involves a discrete time economy lasting for $T \leq \infty$ periods and an economy populated by a continuum of ex-ante identical individuals
+\begin{itemize}
+    \item  \underline{Expected Lifetime Utility}: the expected lifetime utility of individuals is
+    \begin{gather*}
+        U_{0} \equiv \mathbb{E}_{0} \sum_{t-1}^{T} \beta^{t-1} (u(c_{t}) - v(n_{t}))
+    \end{gather*}
+    where $\beta \in (0,1)$, $c_{t} \geq 0$ is consumption, $n_{t} \geq 0$ is effort, $v$ is strictly increasing and convex, $u$ is strictly increasing and concave (we drop the quasilinearity assumption)
+    \item  \underline{Skill}: individuals are heterogeneous with respect to skills/labour productivity where the skill of an agent at time $t$ is given by $\theta_{t} \in \Theta \in \mathbb{R}_{+}$.  \\ Skill shocks are stochastic where $\theta^{t} =  (\theta_{1}, \dots, \theta_{t}) \in \Theta^{t}$ is the history of shocks up to $t$, $\pi_{t} (\theta^{t})$ is the probability of history $\theta^{t}$, and individuals learn their $\theta_{t}$ at the beginning of $t$ with future realizations unknown. \\ the set of skill shocks is discrete where $$\Theta = \left\{ \overline{\theta}_{1}, \overline{\theta}_{2}, \dots, \overline{\theta}_{N} \right\}$$ with $\overline{\theta}_{1} > \overline{\theta}_{2} > \dots > \overline{\theta}_{N}$. \\ Skill shocks are iid such that: $$\pi_{t}(\theta_{t} |\theta^{t-1}) = \pi(\theta_{t})$$, therefore previous history of skill shocks is not going to impact the probability of experience a skill shock of size $\theta_{t}$ and without loss of generality we assume $\mathbb{E}[\theta] = \sum_{\theta \in \Theta}  \pi (\theta) \theta = 1$
+    \item  \underline{Agent Output and Borrowing} Agents produce output at period $t$ according to $$y_{t} = \theta_{t} \cdot n_{t}$$ where $\theta_{t}$ and $n_{t}$ are private informations. Agents can borrow and lend at an exogenous gross $R$
+    \item  \underline{Firm}: a representative firm produces output by operating a linear technology $$F(Y_{t}, K_{t}) = Y_{t} + RK_{t}$$ where $Y_{t} \equiv \sum_{\theta^{t}} \pi(\theta^{t}) \cdot y(\theta^{t})$ is aggregate effective effort and $K_{t}$ is aggregate savings
+    \item  \underline{Aloocation}: an allocation $\left\{ c, y \right\}$ is a sequence of $\left\{ c_{t}, y_{t} \right\}_{t=0}^{T}$ with $(c_{t}, y_{t}): \Theta^{t} \rightarrow \mathbb{R}_{+}^{2}$. An allocation $\left\{ c, y \right\}$ is feasible if and only if
+    \begin{gather*}
+        \underbrace{\sum_{t=1}^{T} \sum_{\theta^{t} \in \Theta^{T}} R^{1-t} \pi (\theta^{t}) c_{t} (\theta^{t})}_{PV Consumption} \leq \underbrace{\sum_{t=1}^{T} \sum_{\theta^{t} \in \Theta^{t}} R^{1-t} \pi (\theta^{t}) y_{t}(\theta^{t})}_{PV Output}
+    \end{gather*}
+    \item  \underline{Social Welfare}: assume that a social planner evaluates $\left\{ c, y \right\}$ according to a utilitarian social welfare function that maximizes the expected utility of the agents
+    \begin{gather*}
+        SWF(c, y) = \sum_{t=1}^{T} \sum_{\theta^{t} \in \Theta^{t}} \beta^{t-1} \pi(\theta^{t}) \big(u(c_{t}(\theta^{t})) - v (n_{t} (\theta^{t})) \big)
+    \end{gather*}
+    i.e. $SWF(c, y) = U_{0}(c,y)$. Here the motive for redistribution from high to low types is captured by the concavity of $u$ and due to no initial heterogeneity the planner's goal is to provide insurance against $\theta_{t}$ shocks
+    \item  \underline{Incentive Compatibility}: we define a reporting strategy by $\sigma_{t}: \Theta^{t} \rightarrow \Theta$ and a history of reporting strategies by $\sigma^{t} = (\sigma_{1}, \dots, \sigma_{t})$. Given this, we have the following IC Contraints:
+    \begin{gather*}
+        \sum_{t=1}^{T} \sum_{\theta^{t} \in \Theta} \beta^{t-1} \pi(\theta^{t}) \bigg(u(c_{t}(\theta^{t})) - v \big(\frac{y_{t}(\theta^{t})}{\theta_{t}} \big) \bigg) \geq \sum_{t=1}^{T} \sum_{\theta^{t} \in \Theta} \beta^{t-1} \pi(\theta^{t}) \bigg(u(c_{t}(\sigma^{t} (\theta^{t}))) - v \big(\frac{y_{t}(\sigma^{t}(\theta^{t}))}{\theta_{t}} \big) \bigg)
+    \end{gather*}
+    for all $\sigma^{T}$
+    \item  \underline{Optimal Tax Design}: with the goal of the government designing a tax transfer system to provide insurance against $\theta_{t}$ shock, let $\mathcal{T}_{t}(\cdot)$ be a tax system so that agents' budget constraints are
+    \begin{gather*}
+        c_{t} + k_{t+1} \leq y_{t} + Rk_{t} - \mathcal{T}_{t}(\cdot)
+    \end{gather*}
+    We are seeking a function $\mathcal{T}_{t}^{*}(\cdot)$ that maximises ex-ante welfare $U_{0}$ in a competitive equilibrium. To find $\mathcal{T}_{t}^{*}(\cdot)$ we follow two steps
+    \begin{itemize}
+        \item  \underline{Step 1}: find the allocations $\left\{ c^{*}, y^{*} \right\}$ that maximize $U_{0}$ subject to informational frictions (applying dynamic contracts tools)
+        \item  \underline{Step 2}: back out a $\mathcal{T}_{t}^{*}(\cdot)$ that implements $\left\{ c^{*}, y^{*} \right\}$ as a competitive equilibrium
+    \end{itemize}
+    One key difference with the static model is that $\mathcal{T}_{t}^{*}(\cdot)$ is generally not unique. For this reason, we focus on characterising the wedges (distortions) derived from the planning problem
+    \item  \underline{Planning Problem}: the constrained optimal allocations $\left\{ c^{*}, y^{*} \right\}$ solve
+    \begin{gather*}
+        \max_{\left\{ c, y \right\} } \mathbb{E}_{0} \bigg[\sum_{t=1}^{T} \beta^{t-1} \big(u(c_{t}(\theta^{t})) - v\big(\frac{y_{t}(\theta^{t})}{\theta^{t}} \big) \big) \bigg] \\
+        \text{subject to}
+        \mathbb{E}_{0} \bigg[\sum_{t=1}^{T} R^{1-t} \big(c_{t}(\theta^{t}) - y_{t}(\theta^{t}) \big) \bigg] \leq 0 \tag{RC} \\
+        \sum_{t=1}^{T} \sum_{\theta^{t} \in \Theta} \beta^{t-1} \pi(\theta^{t}) \bigg(u(c_{t}(\theta^{t})) - v \big(\frac{y_{t}(\theta^{t})}{\theta_{t}} \big) \bigg) \geq \sum_{t=1}^{T} \sum_{\theta^{t} \in \Theta} \beta^{t-1} \pi(\theta^{t}) \bigg(u(c_{t}(\sigma^{t} (\theta^{t}))) - v \big(\frac{y_{t}(\sigma^{t}(\theta^{t}))}{\theta_{t}} \big) \bigg) \ \forall \ \sigma^{T} \tag(IC)
+    \end{gather*}
+\end{itemize}
+\vspace{2.5mm}
+\par \underline{Two Period Model}: focusing on a two period model ($T = 2$) with constant type across time ($\theta_{1} = \theta_{2}$) and two possible types $\Theta = \left\{ \theta_{L}, \theta_{H} \right\}$. We have ex-ante utility:
+\begin{gather*}
+    U_{0} = \mathbb{E}_{0}\bigg[u(c_{1}) - v(\frac{y_{1}}{\theta}) + \beta \big(u(c_{2}) - v(\frac{y_{2}}{\theta}) \big) \bigg]
+\end{gather*}
+We have the following resource constraints:
+\begin{gather*}
+    \sum_{\theta} \pi (\theta) [c_{1} (\theta) - y_{1}(\theta)] + K_{2} = 0 \tag{1} \\
+    \sum_{\theta} \pi (\theta) [c_{2} (\theta) - y_{2}(\theta)] = RK_{2} \tag{2}
+\end{gather*}
+Combining (1) and (2) yields:
+\begin{gather*}
+\sum_{\theta} \pi (\theta) \bigg[c_{1}(\theta) - y_{1}(\theta) + \frac{1}{R} (c_{2}(\theta) - y_{2}(\theta)) \bigg]
+\end{gather*}
+Overall, we have the following planning problem:
+\begin{gather*}
+    \max_{\left\{ c, y \right\}} \sum_{\theta} \pi(\theta) \bigg[u(c_{1}) - v(\frac{y_{1}}{\theta}) + \beta \big(u(c_{2}) - v(\frac{y_{2}}{\theta}) \big) \bigg] \\
+    \text{subject to} \\
+    \sum_{\theta} \pi (\theta) \bigg[c_{1}(\theta) - y_{1}(\theta) + \frac{1}{R} (c_{2}(\theta) - y_{2}(\theta)) \bigg] \\
+    u(c_{1}(\theta)) - v \big(\frac{y_{1} (\theta)}{\theta} \big) + \beta \big(u(c_{2}(\theta)) - v(\frac{y_{2}(\theta)}{\theta}) \big) \geq u(c_{1}(\theta^{'})) - v(\frac{y_{1}(\theta^{'})}{\theta}) + \beta \big(u(c_{2}(\theta^{'})) - v(\frac{y_{2}(\theta^{'})}{\theta}) \big) \ \forall \ \theta, \theta^{'}
+\end{gather*}
+With ($IC_{H}$) binding at the optimum we transform the planning problem to:
+\begin{gather*}
+    \max_{\left\{ c, y \right\}} \sum_{\theta} \pi(\theta) \bigg[u(c_{1}) - v(\frac{y_{1}}{\theta}) + \beta \big(u(c_{2}) - v(\frac{y_{2}}{\theta}) \big) \bigg] \\
+    \text{subject to} \\
+    \sum_{\theta} \pi (\theta) \bigg[c_{1}(\theta) - y_{1}(\theta) + \frac{1}{R} (c_{2}(\theta) - y_{2}(\theta)) \bigg] \\
+    u(c_{1}(\theta_{H})) - v \big(\frac{y_{1} (\theta_{H})}{\theta_{H}} \big) + \beta \big(u(c_{2}(\theta_{H})) - v(\frac{y_{2}(\theta_{H})}{\theta_{H}}) \big) \geq u(c_{1}(\theta_{L})) - v(\frac{y_{1}(\theta_{L})}{\theta_{H}}) + \beta \big(u(c_{2}(\theta_{L})) - v(\frac{y_{2}(\theta_{L})}{\theta_{H}}) \tag{$IC_{H}$}
+\end{gather*}
+\begin{itemize}
+    \item  \underline{First Best Allocation}: we have two key conditions for optimality
+    \begin{itemize}
+        \item  \underline{Tntratemporal Condition}: the intratemporal efficiency condition must hold where $MRS_{l, c} = MRT_{l,c}$ such that
+        \begin{gather*}
+            \frac{\tfrac{v^{'}(y_{t}^{FB})}{\theta_{t}}}{u^{'}(c_{t}^{FB})} = \theta_{t}
+        \end{gather*}
+        \begin{itemize}
+            \item  \underline{Logic}: if intratemporal efficiency does not hold then I can rearrange $(c, l)$ and increase $U_{0}$
+            \item  \underline{Alternative Form}: this can be alternatively written as
+            \begin{gather*}
+                \underbrace{v^{'}(l_{t}^{FB})}_{\text{Marginal Cost of Y Increase}} = \underbrace{\theta_{t} u^{'}(c_{t}^{FB})}_{\text{Marginal Benefit of Y Increase}}
+            \end{gather*}
+        \end{itemize}
+        \item  \underline{Intertemporal Condition}: the intertemporal efficiency condition must hold where $MRS_{c_{1}, c_{2}} = MRT_{c_{1}, c_{2}}$ such that
+        \begin{gather*}
+            \frac{u^{'}(c_{1}^{FB})}{\beta u^{'}(c_{2}^{FB})} = R
+        \end{gather*}
+        \begin{itemize}
+            \item  \underline{Alternative Form}: this can be alternatively written as
+            \begin{gather*}
+                \underbrace{u^{'}(c_{1}^{FB})}_{\text{Marginal Cost of $c_{2}$ Increase}} = \underbrace{R \beta u^{'}(c_{2}^{FB})}_{\text{Marginal Benefit of $c_{2}$ Increase}}
+            \end{gather*}
+        \end{itemize}
+    \end{itemize}
+    The constrained optimal allocation also features two types of wedges/distortions. These can be interpreted as implicit marginal taxes and will shape $\mathcal{T}_{t}^{*}(\cdot)$ in the decentralization
+    \begin{itemize}
+        \item  \underline{Labor Wedge at $t$}: this involves a distortion between $MRS_{l_{t}, c_{t}}$ and $MRT_{l_{t}, c_{t}}$ due to the implicit marginal tax on labor income at $t$. Note that
+        \begin{gather*}
+            1 - \tau_{t}^{y}(\theta) \equiv \frac{v^{'}(y_{t}^{*}(\theta)/\theta)/theta}{u^{'}(c_{t}^{*}(\theta))}
+        \end{gather*}
+        We have for a two-period dynamic model with $|\Theta| = 2$ and constant types (i.e. $\theta_{t} = \theta$ for $t = 1,2$) that for all $t$: $\tau_{t}^{y}(\theta_{L}) > 0$ and $\tau_{t}^{y}(\theta_{H}) = 0$
+        \item  \underline{Savings Wedge at $t = 1$}: this involves a distortion between $MRS_{c_{1}, c_{2}}$ and $MRT_{c_{1}, c_{2}}$ due to the implicit marginal tax on capital income. Note that
+        \begin{gather*}
+            1 - \tau^{s}(\theta) \equiv \frac{u^{'}(c_{1}^{*}(\theta))}{\beta R u^{'}(c_{2}^{*}(\theta))}
+        \end{gather*}
+        We have for a two-period model with $|\Theta| = 2$ and constant types (i.e. $\theta_{t} = \theta$ for $t = 1,2$) that $\tau^{s}(\theta_{L}) = \tau^{s}(\theta_{H}) = 0$
+    \end{itemize}
+    \item  \underline{Final Planner Problem}: based on the wedges, when types are constant it is optimal not to distort savings decisions - a key assumption of this model. Thus our planning problem becomes:
+     \begin{gather*}
+         \max_{\left\{ c, y \right\}} \sum_{\theta_{1}, \theta_{2}} \pi (\theta_{1}) \pi (\theta_{2}) \bigg[ u(c_{1}(\theta_{1})) - v(\frac{y_{1} (\theta_{1})}{\theta_{1}}) + \beta \big(u(c_{2}(\theta_{2})) - v(\frac{y_{2}(\theta^{2})}{\theta^{2}}) \big) \bigg] \\
+         \text{subject to} \\
+         \sum_{\theta_{1}, \theta_{2}} \pi (\theta_{1}) \pi (\theta_{2}) \big[c_{1}(\theta_{1}) - y_{1}(\theta_{1}) + \frac{1}{R} (c_{2}(\theta^{2}) - y_{2}(\theta^{2})) \big] = 0 \\
+         u(c_{1}(\theta_{1})) - v(\frac{y_{1}(\theta_{1})}{\theta_{1}}) + \beta \sum_{\theta_{2}} \pi(\theta_{2}) \big(u(c_{2}(\theta^{2})) - v (\frac{y_{2}(\theta^{2})}{\theta^{2}}) \big) \geq u(c_{1}(\sigma_{1}(\theta_{1}))) - v(\frac{y_{1}(\sigma_{1}(\theta_{1}))}{\theta_{1}}) + \beta \sum_{\theta_{2}} \pi(\theta_{2}) \big(u(c_{2}(\sigma^{2}(\theta^{2}))) - v(\frac{y_{2}(sigma^{2}(\theta^{2}))}{\theta^{2}}) \big)
+     \end{gather*}
+     for all ($\theta_{1}, \sigma_{1}, \theta^{2}, \sigma^{2}$).
+     \begin{itemize}
+         \item  \underline{Saving Wedge}: the savings wedge with stochastic types is:
+         \begin{gather*}
+             1 - \tau^{s}(\theta_{1}) \equiv \frac{u^{'}(c_{1}^{*}(\theta_{1}))}{\beta R \mathbb{E}_{1}[u^{'}(c_{2}^{*}(\theta_{1},\theta_{2}))]}
+         \end{gather*}
+         \item  \underline{Inverse Euler Equation}: consider the two-period model with stochastic types. The constrained efficient allocation satisfies
+         \begin{gather*}
+             \frac{1}{u^{'}(c_{1}^{*}(\theta_{1}))} = \frac{1}{\beta R} \sum_{\theta_{2}}
+         \end{gather*}
+         This is essentially a euler equation for the reciprocal of the marginal utilities.
+         \begin{itemize}
+             \item  \underline{Proof - Variational Approach with Utility Space}: consider the following variation of the optimal solution: fix $\theta$ and let
+             \begin{gather*}
+                 u_{1}^{\varepsilon}(\theta_{1}) = u_{1}^{*}(\theta_{1}) - \varepsilon, \ \ \varepsilon > 0 \\
+                 u_{2}^{\varepsilon}(\theta_{1}, \theta_{2}) = u_{2}^{*} (\theta_{1}, \theta_{2}) + \frac{\varepsilon}{\beta}, \ \ \forall \theta_{2}
+             \end{gather*}
+             where $u_{1}^{*}(\theta_{1})$ is consumption utility at optimum at $t=1$ and $u_{2}^{*}(\theta_{1}, \theta_{2})$ is consumption utility at optimum at $t=2$. It is easy to show that the perturbed allocation is such that (1) the objective function doesn't change and (2) the ICs are satisfied. Therefore, a necessary condition for the original allocation to be optimal is that resources spent in implementing the allocation are minimized at $\varepsilon = 0$. Let the resource cost of delivering the new allocation be:
+             \begin{gather*}
+                 \mathcal{L}^{\varepsilon}(\theta_{1}) = \underbrace{u^{-1}(u_{1}^{\varepsilon}(\theta_{1}))}_{c_{1}(\theta_{1})} + \frac{1}{R} \sum_{\theta_{2}} \pi (\theta_{2}) \underbrace{u^{-1}(u_{2}^{\varepsilon}(\theta_{1},\theta_{2}))}_{c_{2}^{\varepsilon}(\theta_{1}, \theta_{2})}
+             \end{gather*}
+             If $u_{1}^{*}(\theta_{1})$ and $u_{2}^{*}(\theta_{1}, \theta_{2})$ are optimal, we must have that:
+             \begin{gather*}
+                 \frac{\partial \mathcal{L}^{\varepsilon}(\theta_{1})}{\partial \varepsilon} \big|_{\varepsilon = 0} = 0 \tag{*}
+             \end{gather*}
+             Note that:
+             \begin{gather*}
+                 \mathcal{L}^{\varepsilon} (\theta_{1}) = u^{-1}(u_{1}^{*}(\theta_{1}) - \varepsilon) + \frac{1}{R} \sum_{\theta_{2}} \pi (\theta_{2}) u^{-1} (u_{2}^{*}(\theta_{1}, \theta_{2}) + \tfrac{\varepsilon}{\beta})
+             \end{gather*}
+             Then condition (*) boils down to:
+             \begin{gather*}
+                 \frac{\partial \mathcal{L}^{\varepsilon}(\theta_{1})}{\partial \varepsilon} \big|_{\varepsilon = 0} = 0 \Leftrightarrow \overbrace{\frac{1}{u^{'}(underbrace{u^{-1}(u_{1}^{*}(\theta_{1}))}_{c_{1}^{*}(\theta_{1})})} = \frac{1}{R \beta} \sum_{\theta_{2}} \pi(\theta_{2}) \frac{1}{u^{'}(\underbrace{ u^{-1} (u_{2}^{*}(\theta_{1}, \theta_{2})) }_{c_{2}^{*}(\theta_{1},\theta_{2})})} }^{\text{IEE}}
+             \end{gather*}
+             Use that: $[F^{-1}]^{'}(x) = \frac{1}{f^{'}(f^{-1}(x))}$
+         \end{itemize}
+         \item  \underline{Savings Taxes}: for the two period model with stochastic types, suppose that for some $\theta_{1}, c_{2}^{*}(\theta_{1}, \theta_{2})$ is not independent of $\theta_{2}$. Then we have that
+         \begin{gather*}
+             \tau^{s}(\theta_{1}) > 0, \ \ \forall \theta_{1}
+         \end{gather*}
+         \begin{itemize}
+             \item  \underline{Proof}: by the inverse Euler Equation we have that
+             \begin{gather*}
+                 \frac{1}{u^{'}(c_{1}^{*}(\theta_{1}))} = \frac{1}{R \beta} \mathbb{E}_{1} \big[\frac{1}{u^{'}(c_{2}^{*}(\theta_{1}, \theta_{2}))} \big]
+             \end{gather*}
+             Applying Jensen's inequality we have:
+             \begin{gather*}
+                 \frac{1}{u^{'}(c_{1}^{*}(\theta_{1}))} \geq \frac{1}{R \beta \mathbb{E}_{1}[u^{'}(c_{2}^{*}(\theta_{1}, \theta_{2}))]} \Leftrightarrow 1 \geq \frac{u^{'}(c_{1}^{*})}{\beta R u^{'}(c_{2}^{*})}
+             \end{gather*}
+             If $c_{2}^{*}(\theta_{1}, \theta^{2})$ is not independent of $\theta_{2}$ then the inequality is strict. Using this into the definition of $\tau^{s}(\theta_{1})$ proves the result
+             \item  \underline{Jensen's Inequality}: $E[\frac{1}{x}] \geq \frac{1}{E[x]}$
+             \item  \underline{Intuition behind $\tau^{s}(\theta_{1}) > 0$}: with stochastic types, incentives to exert high effort should also be provided in period $t=2$. When agents save, providing such inventives is more costly since higher savings creates a positive income effect which leads to reducing effort. This goes against the Ramsey approach, where taxing capital/savings is never optimal in the long run, and the Atkinson-Stiglitz result, where taxing capital/savings is never optimal in the presence of non-linear labour income taxes
+         \end{itemize}
+         \item  \underline{Implementing the Savings Wedge}: in an implementation with income taxes, consumers face the following budget constraints
+         \begin{align*}
+             c_{1} + k_{2} &\leq y_{1} - T_{1}(y_{1}) \\
+             c_{2} &\leq y_{2} + R k_{2} - T_{2}(y_{1}, y_{2}, R k_{2})
+         \end{align*}
+         Since tax implementations in the dynamic model are non-unique, different specifications for $T_{2}$ could implement the savings wedge $\tau^{s}$
+     \end{itemize}
+\end{itemize}
+\vspace{2.5mm}
+\par \underline{Finite Horizon Model}: in the finite horizon version of the dynamic mirrlees model we have the following planning problem:
+\begin{gather*}
+    \max_{c,y} \mathbb{E}_{0} \bigg[\sum_{t=1}^{T} \beta^{t-1} \big(u(c_{t}(\theta^{t})) - v(\frac{y_{t}(\theta^{t})}{\theta_{t}}) \big) \bigg] \\
+    \text{subject to} \\
+    \mathbb{E}_{0} \big[\sum_{t=1}^{T} R^{1-t} (c_{t}(\theta^{t}) - y_{t}(\theta^{t})) \big] \leq 0 \\
+    \mathbb{E}_{0} \big[\sum_{t=1}^{T} \beta^{t-1} (u(c_{t}(\theta^{t})) - v(\frac{y_{t} (\theta^{t})}{\theta})) \big] \geq \mathbb{E}_{0} \big[\sum_{t=1}^{T} \beta^{t-1} (u(c_{t}(\sigma^{t}(\theta^{t}))) - v(\frac{y_{t} (\sigma^{t}(\theta^{t})}{\theta})) \big] \ \ \forall \sigma^{t}
+\end{gather*}
+Given history $\theta^{t-1}$, we define continution utility from reporting $\theta$ at $t$ and reporting truthfully from $t+1$ onwards by:
+\begin{gather*}
+    w_{t}(\theta^{t-1}, \theta) = \sum_{s=1}^{T-1}\sum_{\theta^{t+s}} \beta^{s-1} \pi(\theta^{t+s}) \big[ u(c_{t+s}(\theta^{t-1},\theta,\theta_{t+1}^{t+s})) - v(\frac{y_{t+s}(\theta^{t-1}, \theta, \theta^{t+1}_{t+1})}{\theta_{t+s}}) \big]
+\end{gather*}
+It can be shown that the original set of ICs is equivalent to:
+\begin{gather*}
+    u(c_{t}(\theta^{t-1}, \theta)) - v(\frac{y_{t}(\theta^{t-1},\theta)}{\theta}) + \beta w_{t}(\theta^{t-1},\theta) \geq u(c_{t}(\theta^{t-1}, \widehat{\theta})) - v(\frac{y_{t}(\theta^{t-1},\widehat{\theta})}{\theta}) + \beta w_{t}(\theta^{t-1}, \widehat{\theta})
+\end{gather*}
+for all $t, \theta^{t-1}, \theta, \widehat{\theta}$. Therefore, the planning problem now becomes:
+\begin{gather*}
+    \max_{c,y} \mathbb{E}_{0} \bigg[\sum_{t=1}^{T} \beta^{t-1} \big(u(c_{t}(\theta^{t})) - v(\frac{y_{t}(\theta^{t})}{\theta_{t}}) \big) \bigg] \\
+    \text{subject to} \\
+    \mathbb{E}_{0} \big[\sum_{t=1}^{T} R^{1-t} (c_{t}(\theta^{t}) - y_{t}(\theta^{t})) \big] \leq 0 \\
+    u(c_{t}(\theta^{t-1}, \theta)) - v(\frac{y_{t}(\theta^{t-1},\theta)}{\theta}) + \beta w_{t}(\theta^{t-1},\theta) \geq u(c_{t}(\theta^{t-1}, \widehat{\theta})) - v(\frac{y_{t}(\theta^{t-1},\widehat{\theta})}{\theta}) + \beta w_{t}(\theta^{t-1}, \widehat{\theta}) \\
+    w_{t}(\theta^{t}) = sum_{\theta} \pi(\theta) \big[u(c_{t+1}(\theta^{t}, \theta)) - v(\frac{y_{t+1}(\theta^{t}, \theta)}{\theta}) + \beta w_{t+1}(\theta^{t}, \theta) \big]
+\end{gather*}
+for all $t, \theta^{t-1}, \theta, \widehat{\theta}$. Since this problem has no recursive structure we can transofrm it to the dual problem of cost minimization given $w_{0}$:
+\begin{gather*}
+    \max_{c,y} - \mathbb{E}_{0} \big[\sum_{t=1}^{T} R^{1-t} (c_{t}(\theta^{t}) - y_{t}(\theta^{t})) \big]
+    \text{subject to} \\
+    u(c_{t}(\theta^{t-1}, \theta)) - v(\frac{y_{t}(\theta^{t-1},\theta)}{\theta}) + \beta w_{t}(\theta^{t-1},\theta) \geq u(c_{t}(\theta^{t-1}, \widehat{\theta})) - v(\frac{y_{t}(\theta^{t-1},\widehat{\theta})}{\theta}) + \beta w_{t}(\theta^{t-1}, \widehat{\theta}) \\
+    w_{t}(\theta^{t}) = sum_{\theta} \pi(\theta) \big[u(c_{t+1}(\theta^{t}, \theta)) - v(\frac{y_{t+1}(\theta^{t}, \theta)}{\theta}) + \beta w_{t+1}(\theta^{t}, \theta) \big]
+\end{gather*}
+for all $t, \theta^{t-1}, \theta, \widehat{\theta}$. Thereby, we solve this problem by minimizing the cost of delivering $w_{0}$. This dual problem admits a nice recursive formulation:
+\begin{gather*}
+    K_{t}(x) = \max_{c(\theta), y(\theta), w(\theta)} \sum_{\theta} \pi(\theta) [y(\theta) - c(\theta) + R^{-1}K_{t+1}(w(\theta))] \\
+    \text{subject to} \\
+    x = \sum_{\theta} \pi (\theta) \big[ u(c(\theta)) - v(\frac{y(\theta)}{\theta}) + \beta w(\theta) \big] \tag{PKC} \\
+    u(c(\theta)) - v(\frac{y(\theta)}{\theta}) + \beta w (\theta) \geq u(c(\widetilde{\theta})) - v(\frac{y(\widetilde{\theta})}{\theta}) + \beta w(\widetilde{\theta}), \ \ \forall (\theta, \widetilde{\theta}) \tag{IC}
+\end{gather*}
+\vspace{2.5mm}
+\par \underline{Infinite Horizon}: extending the framework to $T = \infty$ we have
+\begin{gather*}
+    K(x) = \max_{c(\theta), y(\theta), w(\theta)} \sum_{\theta} \pi (\theta) [y(\theta) - c(\theta) + R^{-1} K (w(\theta))] \\
+    \text{subject to} \\
+    x = \sum_{\theta} \pi (\theta) \big[u(c(\theta)) - v(\frac{y(\theta)}{\theta}) + \beta w(\theta) \big] \tag{PKC} \\
+    u(c(\theta)) - v(\frac{y(\theta)}{\theta}) + \beta w(\theta) \geq u(c(\widetilde{\theta})) - v(\frac{y(\widetilde{\theta})}{\theta}) +  \beta w(\widetilde{\theta}), \ \ \forall (\theta, \widetilde{\theta}) \tag{IC}
+\end{gather*}
+Note that technical conditions should also be met such that solutions to the original problem and recursive formulation coincide. The key results of the two period model extend to the infinite horizon model, partiicularly the positive savings wedge and implementations discussed. We set $R = \beta^{-1}$ since this is the only configuration consistent with a steady state and otherwise aggregate consumption would not be constant across periods
+\begin{itemize}
+    \item  \underline{Inequality Dynamics}: consider the special case with two types: $$\Theta = \left\{ \theta_{L}, \theta_{H} \right\}$$ The ICs for this problem are
+    \begin{gather*}
+        u(c(\theta_{H})) - v(\frac{y(\theta_{H})}{\theta_{H}}) + \beta w(\theta_{H}) \geq u(c(\theta_{L})) - v(\frac{y(\theta_{L})}{\theta_{H}}) + \beta w(\theta_{L}) \\
+        u(c(\theta_{L})) - v(\frac{y(\theta_{L})}{\theta_{L}}) + \beta w(\theta_{L}) \geq u(c(\theta_{H})) = v(\frac{y(\theta_{H})}{\theta_{L}}) + \beta w(\theta_{H})
+    \end{gather*}
+    Using that only ($IC_{H}$) is binding at the optimum we can show that at an interior solution
+    \begin{gather*}
+        y(\theta_{H}) \geq y(\theta_{L}), \ c(\theta_{H}) \geq c(\theta_{L}), \ w(\theta_{H}) \geq w(\theta_{L})
+    \end{gather*}
+    Here $w$ serves as a new margin for incentive provision where to provide incentives the planner spreads out continuation utilities. Hence, providing incentives to reveal private information leads to inequality in lifetime utility promises and consumption. To analyse the optimal degree of inequality, let $\Psi_{t}$ be the distribution of promised utilities at $t$. The optimal contract defines a mapping $\Omega$ such that
+    \begin{gather*}
+        \Psi_{t+1} = \Omega (\Psi_{t})
+    \end{gather*}
+    with $\Psi_{0}$ given. This gives us the law of motion for $\Psi_{t}$. The aim then is to find the steady state distribution of $\Psi^{*}$ subject to $\Psi^{*} = \Omega (\Psi^{*})$. Rearranging the planning problem's first order conditions reveals that the optimal contract is such that
+    \begin{gather*}
+        K^{'}(x) = \mathbb{E} [K^{'} (w(\theta))]
+    \end{gather*}
+    This implies that $\left\{ K^{'}(w_{t}(\theta^{t})) \right\}$ is martingale and therefore has the following convergence property:
+    \begin{gather*}
+        x_{t} \rightarrow RV \\
+        E_{t}[x_{t+1}] = x_{t} \rightarrow \ \text{martingale property}
+    \end{gather*}
+    \item  \underline{Immiseration Result}: suppose consumption utility $u$ is unbounded below. Then
+    \begin{gather*}
+        w_{t}(\theta^{t}) \rightarrow - \infty
+    \end{gather*}
+    as $t \rightarrow \infty$ with probability 1. Since this implies that $c_{t} \rightarrow 0$, in the long run almost everyone is trapped at misery. Note that this does not mean everyone's consumption converges to zero, there will still be some agents with strictly positive consumption but their measure vanishes at $t \rightarrow \infty$. In other words, inequality grows without bounds over time and a measure 0 of individuals consume the entire production.
+    \begin{itemize}
+        \item  \underline{Proof}: important properties of the value function K are that: K is continuous, strictly concave, strictly decreasing, differentiable, that $\lim_{w \rightarrow - \infty} K(w) = \lim_{w \rightarrow -\infty}K^{'}(w) = 0$ and $\lim_{w \rightarrow \overline{w}} K(w) = \lim_{w \rightarrow \overline{w}}K^{'}(w) = \infty$.
+        \newline
+        \begin{center}
+            \includegraphics[width=8cm, height=6cm]{pic25}
+        \end{center}
+        For being a MG, $K^{'}(w_{t})$ converges to a random variable with probability 1. It is easy to see that $K^{'}(w_{t})$ must converge to 0 since suppose that $K^{'}(w_{t}) \rightarrow k \leq 0$ (recall that K is decreasing) then $w_{t} \rightarrow \widehat{w} > - \infty$, where $\widetilde{w}$ is defined by $K^{'}(\widetilde{w}) = k$. This implies that, in the limit, continuation utilities are not spread out and so $w(\theta_{L}) = w(\theta_{H})$ which is a contradition. Hence, $K^{'}(w_{t})$ must converge to 0 so that $w_{t} \rightarrow - \infty$
+        \item  \underline{Intuition}: providing incentives is cheaper if the planner introduces a downward drift on consumption becaue utility is concave. Therefore, for poor individuals, even tiny increments in consumption would make them super happy.
+        \item  \underline{Issue}: immersiration is an issue and there is no well-defined answer regarding the optimal level of inequality ($\Psi^{*}$ does not exist)
+        \item  \underline{Solving for $\Psi^{*}$}: many economists have provided restricted solutions for if we suppose that $\Psi^{*}$ exists
+        \begin{itemize}
+            \item  \underline{Lower Bound}: impose an exogenous lower bound on continuation utility $\underline{w} > -\infty$
+            \item  \underline{Commitment}: impose lack of commitment by the planner
+            \item  \underline{Philosophical Arguments}: impose political economy arguments to microfound $\underline{w} > - \infty$
+            \item  \underline{Discounting}: impose that the social discount factor < private discount factor
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\newpage
+\section{Optimal Unemployment Insurance}
+\vspace{2.5mm}
+\par \underline{Model}: economy lasts for $T = \infty$ periods, populated by a worker (agent) and an unemployment insurance agency (principal). The worker can be employed or unemployed and the goal is to characterise the optimal unemployment insurance contract between an unemployment agency and a worker
+\begin{itemize}
+    \item  \underline{Worker's Preferences}
+    \begin{gather*}
+        U = \mathbb{E}_{0} \sum_{t=0}^{\infty} \beta^{t} [u(c_{t}) - a_{t}]
+    \end{gather*}
+    where $c_{t} \geq 0$ is consumption, $u(\cdot)$ is strictly increasing, strictly concave, and bounded below, and $a_{t} \geq 0$ is search effort that determines the probability of finding a job at $t+1$
+    \item  \underline{Employment}: employment is an absorbing state (one spell model) where all jobs are alike and pay wage $w > 0$ forever and the search effort is $a = 0$ if employed
+    \item  \underline{Unemployment}: while unemployed the worker finds a job with probability $p(a)$ where $p^{'}(a) > 0, p^{''}(a) < 0, p(0) = 0$. During this time, the worker receives unemployment beneftis from the insurance agency
+    \begin{itemize}
+        \item  \underline{Non-Storable Consumption Good}: the worker cannnot save or borrow. Unemployment benefits are the only source of consumption ($c_{t}$) during unemployment
+    \end{itemize}
+    \item  \underline{Private Information Friction}: $a_{t}$ is unobservable by the insurance agency, with the information friction coming from private action ($a$) rather than private types (making this a moral hazard rather than adverse selection problem)
+    \begin{itemize}
+        \item  \underline{Note}: though this is a moral hazard instead of adverse selection problem, similar techniques (such as the Revelation Principle) still hold
+    \end{itemize}
+    \item  \underline{Value of Employment $V^{e}$}: let $V^{e}$ be the value of being employed for the worker. We assume that once a worker finds a job, she is beyond the reach of the agency (i.e. no further obligations such as taxes based on unemployment length). Given that jobs are permanent and pay $w$ forever, we have
+    \begin{gather*}
+        V^{e} = \frac{u(w)}{1 - \beta}
+    \end{gather*}
+    \item  \underline{Value of Autarky $V_{aut}$}: let $V_{aut}$ denote the value of being unemployed and not having acccess to unemployment insurance. $V_{aut}$ is the solution to the Bellman Equation:
+    \begin{gather*}
+        V_{aut} = \max_{a} \left\{ u(0) - a + \beta [p(a)V^{e} + (1-p(a)) V_{aut}] \right\}
+    \end{gather*}
+\end{itemize}
+\vspace{2.5mm}
+\par \underline{Model with Full Information}: suppose the UI agency can observe and control $c$ and $a$. The agency designs a UI contract to give the unemployed worker expected utility $V \geq V_{aut}$. Let $C(V)$ be the expected discounted cost of delivering $V \geq V_{aut}$, the Bellman Equation therefore becomes:
+\begin{gather*}
+    C(V) = \min_{c,a,V^{u}} \left\{ c + \beta (1 - p(a)) C(V^{u}) \right\} \\
+    \text{subject to} \\
+    u(c) - a + \beta \left\{p(a)V^{e} + (1 - p(a)) V^{u} \right\} = V \tag{PKC}
+\end{gather*}
+Note that PKC is the promise keeping constraint, we assume the agency discounts future payoffs using $\beta$, c is the unemployment benefit, C is structky convex, and $V \geq V_{aut}, V^{u} \geq V_{aut}$. Let $\lambda > 0$ be the multiplier on the (PKC).
+\begin{itemize}
+    \item  \underline{Solution}: the first order conditions are:
+    \begin{align*}
+        \frac{\partial}{\partial c} = 0 &\rightarrow \frac{1}{u^{'}(c)} = \lambda \tag{1} \\
+        \frac{\partial}{\partial a} = 0 &\rightarrow C(V^{u}) = \lambda \big[\frac{1}{\beta p^{'}(a)} - (V_{e} - V^{u}) \big] \geq 0 \tag{2} \\
+        \frac{\partial}{\partial V^{u}} = 0 &\rightarrow C^{'}(v^{u}) = \lambda \\
+        \text{Envelope Theorem} \ &\rightarrow \ C^{'}(V) = \lambda
+    \end{align*}
+    By FOC (3) and (4) we have that $V^{u} = V$ using that C is convex. In sequential notation this is:
+    \begin{gather*}
+        V_{t+1} = V_{t} \ \ \forall t
+    \end{gather*}
+    Unemployment benefits can be written as:
+    \begin{gather*}
+        C_{t} = c(V_{t}) \rightarrow c_{t} = c_{t+1} \ \forall t \\
+        a_{t} = a(V_{t}) \rightarrow a_{t} = a_{t+1} \ \forall t
+    \end{gather*}
+    Rearranging the optimality conditions we get the following proposition: \textit{Under full information, c and a are held constant during the unemployment state}. In the absence of private information, unemployment benefits (c) are fully smoothed during the unemployment state. This implies that the replacement ratio $c/w$ is also constant
+    \item  \underline{Private Information Issue}: the full information solution is not achievable under private information. Note that by FOC (2), the socially optimal level of effort under full information $a^{*}$ satisfies:
+    \begin{gather*}
+        [\beta p^{'}(a^{*})]^{-1} > V^{e} - V^{u*}
+    \end{gather*}
+    However, if offered ($c^{*}, v^{u*}$) the worker could choose $a$ according to:
+    \begin{gather*}
+        a^{private} \in \arg \max_{a} \left\{ u(c^{*}) - a + \beta [p(a)V^{e} + (1-p(a))V^{u*}] \right\}
+    \end{gather*}
+    This leads to:
+    \begin{gather*}
+        [\beta p^{'} (a^{private})]^{-1} = V^{e} - V^{u*}
+    \end{gather*}
+    Since $p$ is concave we have that $a^{*} > a^{private}$. This is as the worker does not take into account the cost of the UI scheme and therefore chooses a level of effort below the socially optimal one.
+\end{itemize}
+\vspace{2.5mm}
+\par \underline{Model with Asymmetric Information}: as effort is not observed, we must ensure that the agent optimally chooses the level of effort $a$ prescribed by the contract. Therefore, we have that:
+\begin{gather*}
+    a \in \arg \max_{\widehat{a}} \left\{ u(c) - \widehat{a} + \beta [p(\widehat{a})V^{e} + (1-p(\widehat{a}))V^{u}] \right\}
+\end{gather*}
+The necessary and sufficient condition is that $a$ satisfies
+\begin{gather*}
+    \beta p^{'}(a) (V^{e} - V^{u}) = 1
+\end{gather*}
+Note that the optimal level of effort is $a > 0$ if and only if $V^{e} - V^{u}$. Therefore, we have the following planning problem:
+\begin{gather*}
+    C(V) = \min_{c, a, V^{u}} \left\{ c + \beta (1 - p(a)) C(V^{u}) \right\} \\
+    \text{subject to} \\
+    u(c) - a + \beta \left\{ p(a)V^{e} + (1 - p(a))V^{u} \right\} = V \tag{PKC} \\
+    \beta p^{'}(a) (V^{e} - V^{u}) = 1 \tag{IC}
+\end{gather*}
+Where we assume that $C(V)$ is strictly convex.
+\begin{itemize}
+    \item  \underline{Solution}: let $\lambda > 0$ be the multiplier on the (PKC) and $\mu$ be the multiplier on the (IC). We have the following first order conditions:
+    \begin{align*}
+        \frac{\partial}{\partial c} = 0 &\rightarrow \frac{1}{u^{'}(c)} = \lambda \tag{1} \\
+        \frac{\partial}{\partial a} = 0 &\rightarrow C(v^{u}) = -\mu \frac{p^{''}(a)}{p^{'}(a)} (V^{e} - V^{u}) \\
+        \frac{\partial}{\partial V^{u}} = 0 &\rightarrow C^{'}(V^{u}) = \lambda - \mu \frac{p^{'}(a)}{1 - p(a)}
+    \end{align*}
+    Rearranging the first order conditions we get the proposition: \textit{under private information - (1) unemployment benefits decrease with the duration of unemployment, (2) search effort rises with the duration of unemployment}.
+    The planner knows that $p^{'}(a) > 0$. Exploiting $p^{'}(a) > 0$, the principal introduces duration dependence to provide incentives to search. Using the 'carrot' we will have high beenfits and low effort early in the unemployment spell. Using the 'stick' we will have low benefits and high effort later in the spell.
+    \item  \underline{Numerical Example}: $\beta = 0.99$ with a weekly frequency, $u(c) = \frac{c^{1-\sigma}}{1 - \sigma}$, $\sigma = 0.5$, $p(a) = 1 - \exp(-ra)$ with $r = 3 \times 10^{-1}$, $w = 100$
+    \newline
+    \begin{center}
+        \includegraphics[width=8cm, height=6cm]{pic26}
+    \end{center}
+    \item  \underline{Model vs. Data}: in most OECD countries, unemployment benefits decrease with the duration of Unemployment
+    \newline
+    \begin{center}
+        \includegraphics[width=8cm, height=6cm]{pic27}
+    \end{center}
+\end{itemize}
+\vspace{2.5mm}
+\par \underline{Model with Employment Taxes}: if we allow the unemployment agency to tax workers once employed we have the key result that taxes typically increase with the duration of the unemployment spell and that the cost savings from switching to this scheme can be large. We have the same environment as before but now the UI agency can use a permanent tax on labor income $\tau$
+\begin{itemize}
+    \item  \underline{Value of Employment}: this is now:
+    \begin{gather*}
+        V^{e} = \frac{u(w - \tau)}{1 - \beta}
+    \end{gather*}
+    We use $V^{e}$ instead of $\tau$ as the control variable for convenience. Therefore, we write tax as a function of $V^{e}$ as:
+    \begin{gather*}
+        \tau = w - u^{-1}((1-\beta)V^{e})
+    \end{gather*}
+    \item  \underline{Continuation Cost}: for the agency in the event of employment::
+    \begin{gather*}
+        W(V^{e}) = \frac{-w + u^{-1}((1-\beta)V^{e})}{1 - \beta}
+    \end{gather*}
+    \item  \underline{Planning Problem}: this becomes:
+    \begin{gather*}
+        C(V) = \min_{c,a,V^{u},V^{e}} \left\{ c + \beta (1- p(a)) C(V^{u}) + \beta p(a)W(V^{e}) \right\} \\
+        \text{subect to} \\
+        u(c) - a + \beta \left\{ (1 - p(a))V^{u} + p(a)V^{e} \right\} = V \tag{PKC} \\
+        \beta p^{'}(a) (V^{e} - V^{u}) = 1 \tag{IC}
+    \end{gather*}
+    From this we have the following propositions:
+    \begin{itemize}
+        \item  \underline{Proposition 1}: the wage tax $\tau$ is not independent of the unemployment history
+        \item  \underline{Proposition 2}: $\tau$ increases with unemployment duration under either of the following two conditions - (1) $-p^{''}(a)/p^{'}(a)^{2}$ is increasing in $a$, (2) $[-p^{''}(a)(1-p(a))p(a)]/p^{'}(a)^{3}$ is increasing in $a$
+    \end{itemize}
+    To provide incentives, the contract punishes workers for continued unemployment by reducing their claims for future consumption. To minimize costs, consumption should be reduced in all possible states of nature (i.e. unemployment and employment). The latter explains why taxes can increase with unemployment duration (proposition 1). But we need to make sure that the negative incentive effects are not too strong (proposition 2)
+    \item  \underline{Numerical Example}: from Hopenhayn-Nicolini (1997) we have the following:
+    \newline
+    \begin{center}
+        \includegraphics[width=8cm, height=6cm]{pic28}
+    \end{center}
+    Here the gains from using the employment tax can be large where agency's savings can increase by about 30%
+\end{itemize}
 
 \end{document}
